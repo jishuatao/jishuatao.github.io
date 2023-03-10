@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2023-03-10T05:51:04.149Z</updated>
+  <updated>2023-03-10T05:58:03.626Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="http://example.com/2023/03/10/restart/"/>
     <id>http://example.com/2023/03/10/restart/</id>
     <published>2023-03-10T04:43:42.000Z</published>
-    <updated>2023-03-10T05:51:04.149Z</updated>
+    <updated>2023-03-10T05:58:03.626Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="tips"><a href="#tips" class="headerlink" title="tips"></a>tips</h3><p>无法打开应用，因为Apple无法检查其是否包含恶意软件解决方法</p><p>在应用程序-&gt;实用工具中找到<code>终端</code>，打开，执行下面一条命令，禁用新安全检查即可。</p><p>sudo spctl –master-disable</p><p><img src="/Users/mac/Desktop/1.jpg" alt="1"></p>]]></content>
+    <content type="html"><![CDATA[<h3 id="tips"><a href="#tips" class="headerlink" title="tips"></a>tips</h3><p>无法打开应用，因为Apple无法检查其是否包含恶意软件解决方法</p><p>在应用程序-&gt;实用工具中找到<code>终端</code>，打开，执行下面一条命令，禁用新安全检查即可。</p><p>sudo spctl –master-disable</p><p>sdaad</p><p>![截屏2023-03-10 下午1.50.44](&#x2F;Users&#x2F;mac&#x2F;mylog&#x2F;source&#x2F;_posts&#x2F;截屏2023-03-10 下午1.50.44.png)</p>]]></content>
     
     
       
