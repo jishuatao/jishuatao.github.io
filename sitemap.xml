@@ -56,14 +56,14 @@
 
   
   <url>
-    <loc>http://example.com/tags/OKR/</loc>
+    <loc>http://example.com/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/</loc>
     <lastmod>2023-03-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://example.com/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/</loc>
+    <loc>http://example.com/tags/OKR/</loc>
     <lastmod>2023-03-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -72,14 +72,14 @@
 
   
   <url>
-    <loc>http://example.com/categories/%E5%B7%A5%E4%BD%9C/</loc>
+    <loc>http://example.com/categories/%E8%B8%A9%E5%9D%91/</loc>
     <lastmod>2023-03-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://example.com/categories/%E8%B8%A9%E5%9D%91/</loc>
+    <loc>http://example.com/categories/%E5%B7%A5%E4%BD%9C/</loc>
     <lastmod>2023-03-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
