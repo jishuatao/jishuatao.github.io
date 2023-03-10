@@ -1,0 +1,276 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"><title>1-20 | 技术阿涛</title><meta name="author" content="XiongTaoTao"><meta name="copyright" content="XiongTaoTao"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="学习CrackMe练习题">
+<meta property="og:type" content="article">
+<meta property="og:title" content="1-20">
+<meta property="og:url" content="http://example.com/2020/01/20/1.20/index.html">
+<meta property="og:site_name" content="技术阿涛">
+<meta property="og:description" content="学习CrackMe练习题">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg">
+<meta property="article:published_time" content="2020-01-20T08:15:57.000Z">
+<meta property="article:modified_time" content="2020-03-23T09:18:46.457Z">
+<meta property="article:author" content="XiongTaoTao">
+<meta property="article:tag" content="CrackMe">
+<meta property="article:tag" content="逆向">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2020/01/20/1.20/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '1-20',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2020-03-23 17:18:46'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="技术阿涛" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">45</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">55</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">10</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw iconfont icon-shouyex"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw iconfont icon-zuixinwenzhang_huaban"></i><span> 找文章</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw iconfont icon-fenlei1"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw iconfont icon-biaoqian1"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw iconfont icon-shijianzhou"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw iconfont icon-shenghuo"></i><span> 生活</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/guestbook/"><i class="fa-fw iconfont icon-liaotian-04"></i><span> 留言板</span></a></li><li><a class="site-page child" href="/link/"><i class="fa-fw iconfont icon-lianjie"></i><span> 友人帐</span></a></li><li><a class="site-page child" href="/share/"><i class="fa-fw iconfont icon-fenxiang"></i><span> 分享</span></a></li><li><a class="site-page child" href="/gallery/"><i class="fa-fw iconfont icon-xiangce"></i><span> 相册</span></a></li><li><a class="site-page child" href="/books/"><i class="fa-fw iconfont icon-shuji"></i><span> 书籍</span></a></li><li><a class="site-page child" href="/FilmAndTV/"><i class="fa-fw iconfont icon-yingshi1"></i><span> 影视</span></a></li><li><a class="site-page child" href="/daohang/"><i class="fa-fw iconfont icon-daohang"></i><span> 导航站</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw iconfont icon-gerenzhongxin"></i><span> 关于笔者</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="技术阿涛"><span class="site-name">技术阿涛</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw iconfont icon-shouyex"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw iconfont icon-zuixinwenzhang_huaban"></i><span> 找文章</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw iconfont icon-fenlei1"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw iconfont icon-biaoqian1"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw iconfont icon-shijianzhou"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw iconfont icon-shenghuo"></i><span> 生活</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/guestbook/"><i class="fa-fw iconfont icon-liaotian-04"></i><span> 留言板</span></a></li><li><a class="site-page child" href="/link/"><i class="fa-fw iconfont icon-lianjie"></i><span> 友人帐</span></a></li><li><a class="site-page child" href="/share/"><i class="fa-fw iconfont icon-fenxiang"></i><span> 分享</span></a></li><li><a class="site-page child" href="/gallery/"><i class="fa-fw iconfont icon-xiangce"></i><span> 相册</span></a></li><li><a class="site-page child" href="/books/"><i class="fa-fw iconfont icon-shuji"></i><span> 书籍</span></a></li><li><a class="site-page child" href="/FilmAndTV/"><i class="fa-fw iconfont icon-yingshi1"></i><span> 影视</span></a></li><li><a class="site-page child" href="/daohang/"><i class="fa-fw iconfont icon-daohang"></i><span> 导航站</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw iconfont icon-gerenzhongxin"></i><span> 关于笔者</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">1-20</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-01-20T08:15:57.000Z" title="发表于 2020-01-20 16:15:57">2020-01-20</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2020-03-23T09:18:46.457Z" title="更新于 2020-03-23 17:18:46">2020-03-23</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%AF%8F%E6%97%A5%E5%AD%A6%E4%B9%A0%E5%B0%8F%E7%BB%93/">每日学习小结</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="1-20"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>学习CrackMe练习题</p>
+<span id="more"></span>
+
+
+
+<h1 id="早报"><a href="#早报" class="headerlink" title="早报"></a>早报</h1><h2 id="freebuf"><a href="#freebuf" class="headerlink" title="freebuf"></a>freebuf</h2><p>内网渗透</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.freebuf.com/vuls/224507.html">https://www.freebuf.com/vuls/224507.html</a></p>
+</blockquote>
+<h1 id="CrackMe-003"><a href="#CrackMe-003" class="headerlink" title="CrackMe-003"></a>CrackMe-003</h1><h1 id="逆向学习"><a href="#逆向学习" class="headerlink" title="逆向学习"></a>逆向学习</h1><h2 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h2><blockquote>
+<p>OllyDbg(OD)：<a target="_blank" rel="noopener" href="https://www.52pojie.cn/thread-350397-1-1.html">https://www.52pojie.cn/thread-350397-1-1.html</a><br>PEID：<a target="_blank" rel="noopener" href="https://www.52pojie.cn/thread-170387-1-1.html">https://www.52pojie.cn/thread-170387-1-1.html</a><br>Exeinfo PE：<a target="_blank" rel="noopener" href="https://www.52pojie.cn/thread-437586-1-1.html">https://www.52pojie.cn/thread-437586-1-1.html</a><br>樱花补丁制作工具：<a target="_blank" rel="noopener" href="https://www.52pojie.cn/thread-62307-1-1.html">https://www.52pojie.cn/thread-62307-1-1.html</a><br>内存补丁生成器：<a target="_blank" rel="noopener" href="https://www.52pojie.cn/thread-162411-1-1.html">https://www.52pojie.cn/thread-162411-1-1.html</a><br>注册机生成器：<a target="_blank" rel="noopener" href="https://www.52pojie.cn/thread-159470-1-1.html">https://www.52pojie.cn/thread-159470-1-1.html</a><br>IDA Pro v7：<a target="_blank" rel="noopener" href="https://www.52pojie.cn/thread-675251-1-1.html">https://www.52pojie.cn/thread-675251-1-1.html</a></p>
+</blockquote>
+<h2 id="闯关题目"><a href="#闯关题目" class="headerlink" title="闯关题目"></a>闯关题目</h2><blockquote>
+<p>160个CrackMe的打包文件下载地址：<br>下载地址1：<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1cySNkj9uENG_ppK80BmjUQ">https://pan.baidu.com/s/1cySNkj9uENG_ppK80BmjUQ</a> 密码：8d77<br>下载链接2：<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/150wDRlmXTQjwm2-ey-3I6Q">https://pan.baidu.com/s/150wDRlmXTQjwm2-ey-3I6Q</a> 密码：qr21</p>
+</blockquote>
+<h2 id="第二关"><a href="#第二关" class="headerlink" title="第二关"></a>第二关</h2><h3 id="算法部分"><a href="#算法部分" class="headerlink" title="算法部分"></a>算法部分</h3><p>回到爆破的那个地方（大佬们都这么说，就是把je换成noop那一块）</p>
+<p><img src="http://www.xt996.top/muggle/2020/01/20/1.20/6.png" alt="image-20200120094115100"></p>
+<p>攻略的步骤反正我是没整明白（大佬求放过）我就自己一步一步往上走，设置断点，然后观察寄存器FPU，到了下面这步有了发现</p>
+<p><img src="http://www.xt996.top/muggle/2020/01/20/1.20/7.png" alt="image-20200120094115100"></p>
+<p>反正就是在这一步计算出了注册码，但是没有添加AKA头部，通过尝试发现确实是这样</p>
+<p><img src="http://www.xt996.top/muggle/2020/01/20/1.20/8.png" alt="image-20200120094115100"></p>
+<p>接下来就有思路了，往上看看注册码的算法</p>
+<p><img src="http://www.xt996.top/muggle/2020/01/20/1.20/9.png" alt="image-20200120094115100"></p>
+<p>emmm大致算法就这样吧，我也理不清了</p>
+<h2 id="第三关"><a href="#第三关" class="headerlink" title="第三关"></a>第三关</h2><p>首先用工具查看一些基本的信息，可以看到编译程序是VB，没有壳</p>
+<p><img src="http://www.xt996.top/muggle/2020/01/20/1.20/1.png" alt="image-20200120094115100"></p>
+<p>原程序启动有一个NAG窗口，若干秒后会自动关闭，打开主窗口，这里看大佬们都是要去除NAG窗口然后开始操作，我也跟着来吧哈哈</p>
+<p><img src="http://www.xt996.top/muggle/2020/01/20/1.20/2.png" alt="image-20200120094115100"></p>
+<p>NAG窗口关闭后，进入主程序，长这个憨憨样子</p>
+<p><img src="http://www.xt996.top/muggle/2020/01/20/1.20/3.png" alt="image-20200120094115100"></p>
+<p>这里就自己随便测试，输入数字和字符的结果不太一样</p>
+<p><img src="http://www.xt996.top/muggle/2020/01/20/1.20/4.png" alt="image-20200120094115100"></p>
+<p><img src="http://www.xt996.top/muggle/2020/01/20/1.20/5.png" alt="image-20200120094115100"></p>
+<h3 id="NAG部分"><a href="#NAG部分" class="headerlink" title="NAG部分"></a>NAG部分</h3><p>接着就用OD打开分析，首先就要把那个头痛的NAG窗口去掉</p>
+<p>VB程序有个特点-入口点处都是一个PUSH指令,然后一个CALL指令，看JMP 后面跟的MSVBVM50，应该是VB5.0编写的。(如果不是这种情况的话,那么该程序可能被加过壳)， PUSH将要压入堆栈的是004067D4,现在我们在数据窗口中定位到这个地址<code>右键--follow in Dump--Immediate constant</code>数据窗口中跟随–立即数</p>
+<p><img src="http://www.xt996.top/muggle/2020/01/20/1.20/11.png"></p>
+<p>第一行PUSH后的<strong>立即数加4c</strong>得到406820作为跳转地址,00406820就在<code>68684000</code>，右键跟随</p>
+<p><img src="http://www.xt996.top/muggle/2020/01/20/1.20/10.png" alt="10"></p>
+<p><img src="http://www.xt996.top/muggle/2020/01/20/1.20/12.png" alt="image-20200120112119106"></p>
+<p>跳转之后，将标记的<code>01</code>与<code>00</code>修改成<code>00</code>和<code>01</code>，在右键复制可执行文件，选择保存，即可</p>
+<p><img src="http://www.xt996.top/muggle/2020/01/20/1.20/13.png"></p>
+<p><img src="http://www.xt996.top/muggle/2020/01/20/1.20/14.png"></p>
+<p><img src="http://www.xt996.top/muggle/2020/01/20/1.20/15.png"></p>
+<h3 id="爆破部分"><a href="#爆破部分" class="headerlink" title="爆破部分"></a>爆破部分</h3><p>用OD打开已经修改NAG的程序，还是经典操作哈哈</p>
+<p><img src="http://www.xt996.top/muggle/2020/01/20/1.20/16.png"></p>
+<p>往上查找什么<code>jmp</code>或者<code>jn</code>的语句，直接选中JE语句，<code>右键-&gt;Binary-&gt;Fill with NOPs</code>. 试一试，OK，爆破成功。</p>
+<p><img src="http://www.xt996.top/muggle/2020/01/20/1.20/17.png"></p>
+<p><img src="http://www.xt996.top/muggle/2020/01/20/1.20/18.png"></p>
+<h3 id="算法部分-1"><a href="#算法部分-1" class="headerlink" title="算法部分"></a>算法部分</h3><p>感觉每次最难的地方就是算法，就引用大佬的思路吧（头大）</p>
+<p>这个程序和002基本一样的，在跳转附近无任何和Name&#x2F;Serial相关的内容，所以，向上找到这段代码的开头，下断，一路F8记录重要信息。</p>
+<p><strong>PS：由于这个代码太长，只将重要片段拿出来。查找开头时不要急，代码真的很长。需要特别注意和Name&#x2F;Serial相关的部分。</strong></p>
+<p>出现Serial</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">004085C8   .  FF15 18B14000 call dword ptr ds:[&lt;&amp;MSVBVM50.__vbaHresu&gt;;  msvbvm50.__vbaHresultCheckObj</span><br><span class="line">004085CE   &gt;  8B45 E8       mov eax,dword ptr ss:[ebp-0x18]</span><br><span class="line">004085D1   .  50            push eax                                 ;  // 获取Serial</span><br><span class="line">004085D2   .  FF15 74B14000 call dword ptr ds:[&lt;&amp;MSVBVM50.__vbaR8Str&gt;;  msvbvm50.__vbaR8Str</span><br><span class="line">004085D8   .  8B4D E4       mov ecx,dword ptr ss:[ebp-0x1C]          ;  // 1066828</span><br><span class="line">004085DB   .  DD9D 1CFFFFFF fstp qword ptr ss:[ebp-0xE4]</span><br><span class="line">004085E1   .  51            push ecx</span><br><span class="line">004085E2   .  FF15 74B14000 call dword ptr ds:[&lt;&amp;MSVBVM50.__vbaR8Str&gt;;  msvbvm50.__vbaR8Str</span><br><span class="line">004085E8   .  833D 00904000&gt;cmp dword ptr ds:[0x409000],0x0</span><br><span class="line">004085EF   .  75 08         jnz short 004085F9</span><br><span class="line">004085F1   .  DCBD 1CFFFFFF fdivr qword ptr ss:[ebp-0xE4]            ;  // 做除法</span><br><span class="line">004085F7   .  EB 11         jmp short 0040860A</span><br><span class="line">004085F9   &gt; \FFB5 20FFFFFF push dword ptr ss:[ebp-0xE0]</span><br><span class="line">004085FF   .  FFB5 1CFFFFFF push dword ptr ss:[ebp-0xE4]</span><br><span class="line">00408605   .  E8 888AFFFF   call &lt;jmp.&amp;MSVBVM50._adj_fdivr_m64&gt;</span><br><span class="line">0040860A   &gt;  DFE0          fstsw ax                                 ;  // 把结果送入ax</span><br><span class="line">0040860C   .  A8 0D         test al,0xD</span><br><span class="line">0040860E   .  0F85 AB010000 jnz 004087BF</span><br><span class="line">00408614   .  FF15 34B14000 call dword ptr ds:[&lt;&amp;MSVBVM50.__vbaFpR8&gt;&gt;;  msvbvm50.__vbaFpR8</span><br><span class="line">0040861A   .  DC1D 28104000 fcomp qword ptr ds:[0x401028]</span><br><span class="line">00408620   .  DFE0          fstsw ax                                 ;  //ax=20</span><br><span class="line">00408622   .  F6C4 40       test ah,0x40                             ;  // ah=40</span><br><span class="line">00408625   .  74 07         je short 0040862E</span><br></pre></td></tr></table></figure>
+
+<p>后面做的除法运算和取反，为了处理esi的值，然后做为JE的条件。我们到这里其实就可以试试算出来的字符串“1066828”是否是正确的？哈哈，他肯定是的啦！</p>
+<p>至此，序列号的生成过程已经分析完毕。过程中设计到的常量都是使用[0040100A]等固定地址得到的固定值，不用理会，我们可以直接使用。</p>
+<p><strong>小结一下：先计算出Name的长度nLen,然后edi&#x3D;edi*0x15B38+cName, cName是Name第一个字符的ANSI码。然后，计算浮点数10.0&#x2F;5.0&#x3D;2.0, edi转换为浮点数，加上2.0，然后结果再乘以3.0，然后减去2，然后再减去-15，得到的值转换为文本，即为正确的序列号。</strong></p>
+<h1 id="宏病毒"><a href="#宏病毒" class="headerlink" title="宏病毒"></a>宏病毒</h1><p>学习目录</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://bbs.ichunqiu.com/forum.php?mod=collection&action=view&ctid=133">https://bbs.ichunqiu.com/forum.php?mod=collection&amp;action=view&amp;ctid=133</a></p>
+</blockquote>
+<h2 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h2><p>宏就是把一系列的指令组织成一独立的命令，类似C语言中#define宏定义，避免同一动作的一再重复</p>
+<p>我们大多接触到的宏或者说大多数攻击是在office文档中的宏病毒，由于wps只有专业版才会带有宏功能，所以office的攻击相对来说多一点</p>
+<p>使用office文档文件(demo1.doc)时，有时候我们会遇到“安全警告”，这说明该文档文件中含有宏，并且office软件设置了“宏禁用”功能。</p>
+<p>我们可以用快捷键Alt+F11可以打开vb编辑器，查看宏代码</p>
+<p>宏病毒的强大是建立在强大的VBA组件的基础上的。同时，宏病毒与系统平台无关，任何计算机如果能够运行Microsoft Office办公软件，都有可能感染宏病毒</p>
+<h2 id="VB基础"><a href="#VB基础" class="headerlink" title="VB基础"></a>VB基础</h2><p>宏是使用VB语言编写的，所以我们要了解一点VB的基础函数，先看一段代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Sub autoopen()</span><br><span class="line">b</span><br><span class="line">End Sub</span><br><span class="line">Function b()</span><br><span class="line">MsgBox ActiveDocument.BuiltInDocumentProperties(5)</span><br><span class="line">End Function</span><br></pre></td></tr></table></figure>
+
+<p>（1）sub与function</p>
+<p>上述宏代码中，含有一个Sub和一个Function。sub和function都类似于C中的函数。sub在VB中被称为过程，function被称为函数；sub没有返回值，function有返回值；一段宏一定是从sub开始执行的。在demo3中定义了一个过程 autoopen()，“End Sub”表示这个过程的结束。</p>
+<p>（2）VB基本函数</p>
+<p>“MsgBox ActiveDocument.BuiltInDocumentProperties(5)”调用了VB基本函数“MsgBox”，</p>
+<p>参数是”ActiveDocument.BuiltInDocumentProperties(5)”。这里实际上是“MsgBox (参数)”，但是VBA的容错率较高，不写括号，宏代码依然能够执行。即使我们将“MsgBox”写成“MSgbOx”，宏代码依然能够执行。一些宏病毒就是使用大小写混淆，增加病毒分析难度。</p>
+<p>除了MsgBox，VB中还有很多基本函数，各位可以百度“VB函数大全”。</p>
+<p>（3）对象</p>
+<p>VB中存在很多对象，如Application对象，Document对象，Adobd.stream对象等。对象实际上是代码和数据的组合，我们在使用对象时，要么使用对象的属性（就是数据），要么使用对象的方法（就是代码）。通过 “对象.属性&#x2F;方法”的方式使用对象的属性&#x2F;方法。ActiveDocument.BuiltInDocumentProperties(5)中就是使用了ActiveDocument对象的BuiltInDocumentProperties()方法，参数是5</p>
+<h2 id="工具检测"><a href="#工具检测" class="headerlink" title="工具检测"></a>工具检测</h2><p>oledump.py是一个用于分析OLE文件（复合文件二进制格式）的程序，我们可以使用它提取文档中的宏代码</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://github.com/decalage2/oledump-contrib">https://github.com/decalage2/oledump-contrib</a></p>
+</blockquote>
+<p>安装的问题，需要模块olefile，下载压缩包，运行python setup.py install（都在hong目录下，压缩包也在里面）</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://bitbucket.org/decalage/olefileio_pl/wiki/Install">https://bitbucket.org/decalage/olefileio_pl/wiki/Install</a></p>
+</blockquote>
+<p>oledump.py有许多参数可以选择，使用oledump.py -m 可以查看oledump.py 的帮助信息，这里我们要用到的参数是-s和-v</p>
+<p>-s 段号：选择上分析出的某一段来查看内容</p>
+<p>-v    	：解压缩VBA宏</p>
+<p>上面两个参数结合起来用就可以找出宏源码</p>
+<p>在实际分析时，-s后的参数可以选择‘a’，表示分析所有段的数据，还可以使用‘&gt;’符号将宏代码数据存储在新文件</p>
+<h2 id="防御手段"><a href="#防御手段" class="headerlink" title="防御手段"></a>防御手段</h2><h3 id="禁用宏"><a href="#禁用宏" class="headerlink" title="禁用宏"></a>禁用宏</h3><p>以word2013为例，禁用宏的方法是：单击开发工具菜单下的“宏”，单击“宏安全性”，在随后的出现的对话框中选择“禁用所有宏，并发出通知”</p>
+<p>缺陷：一是它拒绝了一切的宏执行，并不区分正常的宏和还是病毒宏，这会造成某些文档无法打开或出错；二是宏病毒防护无法阻止启动word时Autoexec.DOT中的宏和Normal.DOT中的宏自动执行</p>
+<h3 id="越过自动宏"><a href="#越过自动宏" class="headerlink" title="越过自动宏"></a>越过自动宏</h3><p>始终按住SHift键，将禁止存在的一起自动宏</p>
+<h1 id="CrackMe-004"><a href="#CrackMe-004" class="headerlink" title="CrackMe-004"></a>CrackMe-004</h1><h1 id="逆向学习-1"><a href="#逆向学习-1" class="headerlink" title="逆向学习"></a>逆向学习</h1><h2 id="工具-1"><a href="#工具-1" class="headerlink" title="工具"></a>工具</h2><blockquote>
+<p>OllyDbg(OD)：<a target="_blank" rel="noopener" href="https://www.52pojie.cn/thread-350397-1-1.html">https://www.52pojie.cn/thread-350397-1-1.html</a><br>PEID：<a target="_blank" rel="noopener" href="https://www.52pojie.cn/thread-170387-1-1.html">https://www.52pojie.cn/thread-170387-1-1.html</a><br>Exeinfo PE：<a target="_blank" rel="noopener" href="https://www.52pojie.cn/thread-437586-1-1.html">https://www.52pojie.cn/thread-437586-1-1.html</a><br>樱花补丁制作工具：<a target="_blank" rel="noopener" href="https://www.52pojie.cn/thread-62307-1-1.html">https://www.52pojie.cn/thread-62307-1-1.html</a><br>内存补丁生成器：<a target="_blank" rel="noopener" href="https://www.52pojie.cn/thread-162411-1-1.html">https://www.52pojie.cn/thread-162411-1-1.html</a><br>注册机生成器：<a target="_blank" rel="noopener" href="https://www.52pojie.cn/thread-159470-1-1.html">https://www.52pojie.cn/thread-159470-1-1.html</a><br>IDA Pro v7：<a target="_blank" rel="noopener" href="https://www.52pojie.cn/thread-675251-1-1.html">https://www.52pojie.cn/thread-675251-1-1.html</a></p>
+</blockquote>
+<h2 id="闯关题目-1"><a href="#闯关题目-1" class="headerlink" title="闯关题目"></a>闯关题目</h2><blockquote>
+<p>160个CrackMe的打包文件下载地址：<br>下载地址1：<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1cySNkj9uENG_ppK80BmjUQ">https://pan.baidu.com/s/1cySNkj9uENG_ppK80BmjUQ</a> 密码：8d77<br>下载链接2：<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/150wDRlmXTQjwm2-ey-3I6Q">https://pan.baidu.com/s/150wDRlmXTQjwm2-ey-3I6Q</a> 密码：qr21</p>
+</blockquote>
+<h2 id="第四关"><a href="#第四关" class="headerlink" title="第四关"></a>第四关</h2><p>首先老套路，先看有没有壳在大致看看程序本体，这里有个txt提供了部分信息（没有确定键、成功之后会有图片提示）</p>
+<p><img src="http://www.xt996.top/muggle/2020/01/20/1.20/19.png"></p>
+<p>查壳，emmmm无壳</p>
+<p><img src="http://www.xt996.top/muggle/2020/01/20/1.20/20.png"></p>
+<h3 id="爆破部分-1"><a href="#爆破部分-1" class="headerlink" title="爆破部分"></a>爆破部分</h3><p>emmm这题没有确定键没有提交，跟前面几题不太像，直接<code>右键--搜索中文搜索引擎--智能搜索</code>搜索<code>注册成功</code>等字样</p>
+<p><img src="http://www.xt996.top/muggle/2020/01/20/1.20/21.png"></p>
+<p>然后就是老套路了，往上翻翻特殊跳转语句，上面几行就有一个<code>jnz</code>但是它是往上的，继续往上看找到两个跳转，<code>0045803B</code>有点特殊直接跳过了<code>恭喜恭喜！注册成功</code>，可能就是这里了吧</p>
+<p><img src="http://www.xt996.top/muggle/2020/01/20/1.20/22.png"></p>
+<p>果断nop，哈哈果然成功</p>
+<p><img src="http://www.xt996.top/muggle/2020/01/20/1.20/23.png"></p>
+<h3 id="算法部分-2"><a href="#算法部分-2" class="headerlink" title="算法部分"></a>算法部分</h3><p>接下来就头大了，又不知道要找多久</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://example.com">XiongTaoTao</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2020/01/20/1.20/">http://example.com/2020/01/20/1.20/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">技术阿涛</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/CrackMe/">CrackMe</a><a class="post-meta__tags" href="/tags/%E9%80%86%E5%90%91/">逆向</a></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2020/01/21/no-1/" title="666"><img class="cover" src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">666</div></div></a></div><div class="next-post pull-right"><a href="/2020/01/19/1.19/" title="木马相关"><img class="cover" src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">木马相关</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2020/01/16/1.16/" title="逆向"><img class="cover" src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-01-16</div><div class="title">逆向</div></div></a></div><div><a href="/2020/01/15/x64dbg%E5%AD%A6%E4%B9%A0/" title="学习逆向"><img class="cover" src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-01-15</div><div class="title">学习逆向</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">XiongTaoTao</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">45</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">55</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">10</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%97%A9%E6%8A%A5"><span class="toc-number">1.</span> <span class="toc-text">早报</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#freebuf"><span class="toc-number">1.1.</span> <span class="toc-text">freebuf</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#CrackMe-003"><span class="toc-number">2.</span> <span class="toc-text">CrackMe-003</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%80%86%E5%90%91%E5%AD%A6%E4%B9%A0"><span class="toc-number">3.</span> <span class="toc-text">逆向学习</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B7%A5%E5%85%B7"><span class="toc-number">3.1.</span> <span class="toc-text">工具</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AF%E5%85%B3%E9%A2%98%E7%9B%AE"><span class="toc-number">3.2.</span> <span class="toc-text">闯关题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E5%85%B3"><span class="toc-number">3.3.</span> <span class="toc-text">第二关</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%97%E6%B3%95%E9%83%A8%E5%88%86"><span class="toc-number">3.3.1.</span> <span class="toc-text">算法部分</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E5%85%B3"><span class="toc-number">3.4.</span> <span class="toc-text">第三关</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#NAG%E9%83%A8%E5%88%86"><span class="toc-number">3.4.1.</span> <span class="toc-text">NAG部分</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%88%86%E7%A0%B4%E9%83%A8%E5%88%86"><span class="toc-number">3.4.2.</span> <span class="toc-text">爆破部分</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%97%E6%B3%95%E9%83%A8%E5%88%86-1"><span class="toc-number">3.4.3.</span> <span class="toc-text">算法部分</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%8F%E7%97%85%E6%AF%92"><span class="toc-number">4.</span> <span class="toc-text">宏病毒</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-number">4.1.</span> <span class="toc-text">基础知识</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#VB%E5%9F%BA%E7%A1%80"><span class="toc-number">4.2.</span> <span class="toc-text">VB基础</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B7%A5%E5%85%B7%E6%A3%80%E6%B5%8B"><span class="toc-number">4.3.</span> <span class="toc-text">工具检测</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%98%B2%E5%BE%A1%E6%89%8B%E6%AE%B5"><span class="toc-number">4.4.</span> <span class="toc-text">防御手段</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A6%81%E7%94%A8%E5%AE%8F"><span class="toc-number">4.4.1.</span> <span class="toc-text">禁用宏</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B6%8A%E8%BF%87%E8%87%AA%E5%8A%A8%E5%AE%8F"><span class="toc-number">4.4.2.</span> <span class="toc-text">越过自动宏</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#CrackMe-004"><span class="toc-number">5.</span> <span class="toc-text">CrackMe-004</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%80%86%E5%90%91%E5%AD%A6%E4%B9%A0-1"><span class="toc-number">6.</span> <span class="toc-text">逆向学习</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B7%A5%E5%85%B7-1"><span class="toc-number">6.1.</span> <span class="toc-text">工具</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AF%E5%85%B3%E9%A2%98%E7%9B%AE-1"><span class="toc-number">6.2.</span> <span class="toc-text">闯关题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E5%9B%9B%E5%85%B3"><span class="toc-number">6.3.</span> <span class="toc-text">第四关</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%88%86%E7%A0%B4%E9%83%A8%E5%88%86-1"><span class="toc-number">6.3.1.</span> <span class="toc-text">爆破部分</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%97%E6%B3%95%E9%83%A8%E5%88%86-2"><span class="toc-number">6.3.2.</span> <span class="toc-text">算法部分</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/03/10/3-10/" title="3.1"><img src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="3.1"/></a><div class="content"><a class="title" href="/2023/03/10/3-10/" title="3.1">3.1</a><time datetime="2023-03-10T12:01:33.000Z" title="发表于 2023-03-10 20:01:33">2023-03-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/03/10/restart/" title="restart"><img src="http://rraza0lac.hn-bkt.clouddn.com/img/image-20230310201154080.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="restart"/></a><div class="content"><a class="title" href="/2023/03/10/restart/" title="restart">restart</a><time datetime="2023-03-10T11:43:42.000Z" title="发表于 2023-03-10 19:43:42">2023-03-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/03/24/3.24/" title="3-24"><img src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="3-24"/></a><div class="content"><a class="title" href="/2020/03/24/3.24/" title="3-24">3-24</a><time datetime="2020-03-24T01:37:52.000Z" title="发表于 2020-03-24 09:37:52">2020-03-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/03/24/%E6%B8%97%E9%80%8F%E9%9D%A2%E8%AF%95%E9%A2%98/" title="渗透面试题"><img src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="渗透面试题"/></a><div class="content"><a class="title" href="/2020/03/24/%E6%B8%97%E9%80%8F%E9%9D%A2%E8%AF%95%E9%A2%98/" title="渗透面试题">渗透面试题</a><time datetime="2020-03-24T01:37:52.000Z" title="发表于 2020-03-24 09:37:52">2020-03-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/03/23/3.23/" title="3-23"><img src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="3-23"/></a><div class="content"><a class="title" href="/2020/03/23/3.23/" title="3-23">3-23</a><time datetime="2020-03-23T01:55:34.000Z" title="发表于 2020-03-23 09:55:34">2020-03-23</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By XiongTaoTao</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

@@ -1,0 +1,248 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"><title>3-24 | 技术阿涛</title><meta name="author" content="XiongTaoTao"><meta name="copyright" content="XiongTaoTao"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="学习Emotet木马特征，以及python导入egg">
+<meta property="og:type" content="article">
+<meta property="og:title" content="3-24">
+<meta property="og:url" content="http://example.com/2020/03/24/3.24/index.html">
+<meta property="og:site_name" content="技术阿涛">
+<meta property="og:description" content="学习Emotet木马特征，以及python导入egg">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg">
+<meta property="article:published_time" content="2020-03-24T01:37:52.000Z">
+<meta property="article:modified_time" content="2020-03-24T10:43:11.362Z">
+<meta property="article:author" content="XiongTaoTao">
+<meta property="article:tag" content="木马">
+<meta property="article:tag" content="python">
+<meta property="article:tag" content="毕业设计">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2020/03/24/3.24/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '3-24',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2020-03-24 18:43:11'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="技术阿涛" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">45</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">55</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">10</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw iconfont icon-shouyex"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw iconfont icon-zuixinwenzhang_huaban"></i><span> 找文章</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw iconfont icon-fenlei1"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw iconfont icon-biaoqian1"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw iconfont icon-shijianzhou"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw iconfont icon-shenghuo"></i><span> 生活</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/guestbook/"><i class="fa-fw iconfont icon-liaotian-04"></i><span> 留言板</span></a></li><li><a class="site-page child" href="/link/"><i class="fa-fw iconfont icon-lianjie"></i><span> 友人帐</span></a></li><li><a class="site-page child" href="/share/"><i class="fa-fw iconfont icon-fenxiang"></i><span> 分享</span></a></li><li><a class="site-page child" href="/gallery/"><i class="fa-fw iconfont icon-xiangce"></i><span> 相册</span></a></li><li><a class="site-page child" href="/books/"><i class="fa-fw iconfont icon-shuji"></i><span> 书籍</span></a></li><li><a class="site-page child" href="/FilmAndTV/"><i class="fa-fw iconfont icon-yingshi1"></i><span> 影视</span></a></li><li><a class="site-page child" href="/daohang/"><i class="fa-fw iconfont icon-daohang"></i><span> 导航站</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw iconfont icon-gerenzhongxin"></i><span> 关于笔者</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="技术阿涛"><span class="site-name">技术阿涛</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw iconfont icon-shouyex"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw iconfont icon-zuixinwenzhang_huaban"></i><span> 找文章</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw iconfont icon-fenlei1"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw iconfont icon-biaoqian1"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw iconfont icon-shijianzhou"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw iconfont icon-shenghuo"></i><span> 生活</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/guestbook/"><i class="fa-fw iconfont icon-liaotian-04"></i><span> 留言板</span></a></li><li><a class="site-page child" href="/link/"><i class="fa-fw iconfont icon-lianjie"></i><span> 友人帐</span></a></li><li><a class="site-page child" href="/share/"><i class="fa-fw iconfont icon-fenxiang"></i><span> 分享</span></a></li><li><a class="site-page child" href="/gallery/"><i class="fa-fw iconfont icon-xiangce"></i><span> 相册</span></a></li><li><a class="site-page child" href="/books/"><i class="fa-fw iconfont icon-shuji"></i><span> 书籍</span></a></li><li><a class="site-page child" href="/FilmAndTV/"><i class="fa-fw iconfont icon-yingshi1"></i><span> 影视</span></a></li><li><a class="site-page child" href="/daohang/"><i class="fa-fw iconfont icon-daohang"></i><span> 导航站</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw iconfont icon-gerenzhongxin"></i><span> 关于笔者</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">3-24</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-03-24T01:37:52.000Z" title="发表于 2020-03-24 09:37:52">2020-03-24</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2020-03-24T10:43:11.362Z" title="更新于 2020-03-24 18:43:11">2020-03-24</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%AF%8F%E6%97%A5%E5%AD%A6%E4%B9%A0%E5%B0%8F%E7%BB%93/">每日学习小结</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="3-24"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>学习Emotet木马特征，以及python导入egg</p>
+<span id="more"></span>
+
+<h1 id="freebuf"><a href="#freebuf" class="headerlink" title="freebuf"></a>freebuf</h1><h2 id="学习链接"><a href="#学习链接" class="headerlink" title="学习链接"></a>学习链接</h2><p>面试题</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.freebuf.com/vuls/228750.html">https://www.freebuf.com/vuls/228750.html</a></p>
+</blockquote>
+<p>任意文件读取漏洞经验</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.freebuf.com/articles/web/229648.html">https://www.freebuf.com/articles/web/229648.html</a></p>
+</blockquote>
+<p>webug靶场通关记录</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.freebuf.com/articles/web/151617.html">https://www.freebuf.com/articles/web/151617.html</a></p>
+</blockquote>
+<h2 id="修复CVE-2020-0796漏洞"><a href="#修复CVE-2020-0796漏洞" class="headerlink" title="修复CVE-2020-0796漏洞"></a>修复CVE-2020-0796漏洞</h2><ol>
+<li><p>腾讯电脑管家 <a target="_blank" rel="noopener" href="http://dlied6.qq.com/invc/QQPatch/QuickFix_SMB0796.exe"><code>SMB漏洞修复工具</code></a></p>
+</li>
+<li><p>安天 <code>SMBv3</code> 的 <code>RCE</code><a target="_blank" rel="noopener" href="https://bbs.antiy.cn/forum.php?mod=viewthread&tid=83848">漏洞强化工具</a></p>
+</li>
+<li><p>官方补丁 </p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2020-0796">https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2020-0796</a></p>
+</blockquote>
+</li>
+<li><p>如无法立即安装补丁，建议禁用 SMBv3 压缩，添加DisableCompression项，无需重启，可以防止远程命令执行，但无法防止针对 SMB 客户端的攻击，<code>powershell</code>代码:</p>
+</li>
+</ol>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Set-ItemProperty -Path &quot;HKLM:\SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters&quot; DisableCompression -Type DWORD -Value 1 -Force</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="Emotet木马"><a href="#Emotet木马" class="headerlink" title="Emotet木马"></a>Emotet木马</h1><p><strong>什么是Emotet木马病毒？</strong></p>
+<p>Emotet（也被称为Geodo或Heodo），一种模块化木马病毒，据称是由黑客组织Mealybug于2014年开发的。Emotet最初被设计为银行木马，被Mealybug用来通过垃圾电子邮件感染受害者设备，并在受害者登陆网银或加密钱包时窃取登陆凭证、个人身份信息（PII）和财务信息等。</p>
+<p>不仅如此，Emotet在后续的发展中还被添加了传播其他恶意软件的能力，包括其他银行木马（如Trickbot）。</p>
+<p><strong>恶意文档分为两类</strong></p>
+<p>在今年1月份，用来传播Emotet木马的恶意文档主要可以分为两类：第一类约占80%，虽然它们具有.doc扩展名，但实际上是XML文件；第二类则是典型的带有嵌入式恶意宏的Word文档。</p>
+<p>Menlo Security公司表示，将具有Base64编码数据的XML文档伪装成Word文档可能是为了逃避杀毒软件的检测。实际上，确实只有很少的杀毒软件能将这些用来传播Emotet木马的文档检测为“恶意”。</p>
+<p>虽然不同的恶意文档使用了的标题和内容也不尽相同，但几乎都使用了Microsoft Office的logo来诱使攻击目标启用恶意宏。</p>
+<p><strong>感染过程十分复杂</strong></p>
+<p>Menlo Security公司表示，新的Emotet变种的感染过程非常复杂，并遵循一个严格的流程。初始恶意脚本会生成多个进程，而这些进程将启动一个Powershell脚本，以将主有效载荷下载到受感染计算机的TEMP文件夹中。</p>
+<p>一旦主有效载荷被下载到受感染计算机，它就将会被激活，并开始向包含在一个命令和控制服务器（C2）网址列表中的所有网址按顺序发出连接请求。一旦连接成功，Emotet与攻击者的C2服务器也就建立了连接，而攻击者便可以通过C2通信来发送其他恶意软件。</p>
+<p><strong>实际分析对象</strong></p>
+<p>接触到的样本情况是，感染主机有数个下载者要求攻击溯源，在经历了镜像格式转换、关键文件位置排查、日志筛选，在powershell日志中找到了可疑记录。通过排查时间线，找到了可疑服务的开启，接着锁定时间在邮件中找到相关的样本。直接发现可疑邮件附带的doc文档，逆向分析发现有宏代码，打开执行powershell，具体操作从CC列表中下载exe文件，且有多个CC备用，下载成功之后解密出shellcode复制本身到服务目录下，之后释放文件消除痕迹。</p>
+<p><strong>freebuf分析</strong></p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.freebuf.com/articles/terminal/180390.html">https://www.freebuf.com/articles/terminal/180390.html</a></p>
+</blockquote>
+<h1 id="毕业设计"><a href="#毕业设计" class="headerlink" title="毕业设计"></a>毕业设计</h1><h2 id="关于sys-path-append"><a href="#关于sys-path-append" class="headerlink" title="关于sys.path.append()"></a>关于sys.path.append()</h2><blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/mandy-study/p/7735801.html">https://www.cnblogs.com/mandy-study/p/7735801.html</a>)</p>
+</blockquote>
+<p>当我们导入一个模块时：import  xxx，默认情况下python解析器会搜索当前目录、已安装的内置模块和第三方模块，搜索路径存放在<strong>sys模块的path</strong>中：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">**[python]** [view plain]</span><br><span class="line"></span><br><span class="line">(http://blog.csdn.net/jojoy_tester/article/details/54575264#) [copy](http://blog.csdn.net/jojoy_tester/article/details/54575264#)</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">[print](http://blog.csdn.net/jojoy_tester/article/details/54575264#)[?](http://blog.csdn.net/jojoy_tester/article/details/54575264#)</span><br><span class="line"></span><br><span class="line">1. \&gt;&gt;&gt; import sys </span><br><span class="line">2. \&gt;&gt;&gt; sys.path </span><br><span class="line"></span><br><span class="line">[&#x27;&#x27;, &#x27;C:\\Python352\\Lib\\idlelib&#x27;, &#x27;C:\\Python352\\python35.zip&#x27;, &#x27;C:\\Python352\\DLLs&#x27;, &#x27;C:\\Python352\\lib&#x27;, &#x27;C:\\Python352&#x27;, &#x27;C:\\Python352\\lib\\site-packages&#x27;, &#x27;C:\\Python352\\lib\\site-packages\\setuptools-28.6.1-py3.5.egg&#x27;, &#x27;C:\\Python352\\lib\\site-packages\\pip-8.1.2-py3.5.egg&#x27;, &#x27;C:\\Python352\\lib\\site-packages\\requests-2.11.1-py3.5.egg&#x27;, &#x27;C:\\Python352\\lib\\site-packages\\xlutils-2.0.0-py3.5.egg&#x27;, &#x27;C:\\Python352\\lib\\site-packages\\xlwt-1.1.2-py3.5.egg&#x27;, &#x27;C:\\Python352\\lib\\site-packages\\pymongo-3.3.1-py3.5-win-amd64.egg&#x27;, &#x27;C:\\Python352\\lib\\site-packages\\pytz-2016.7-py3.5.egg&#x27;, &#x27;C:\\Python352\\lib\\site-packages\\zope.interface-4.3.3-py3.5-win-amd64.egg&#x27;] </span><br></pre></td></tr></table></figure>
+
+
+
+<p>此时sys.path 返回的是一个列表！该路径已经添加到系统的环境变量了，当我们要添加自己的搜索目录时，可以通过列表的append()方法</p>
+<p>1.对于模块和自己写的脚本不在同一个目录下，在脚本开头加sys.path.append(‘xxx’)：</p>
+<p>eg.　　import sys </p>
+<p>　　　 sys.path.append(’引用模块的地址’) </p>
+<p>2.把路径添加到系统的环境变量，或把该路径的文件夹放进已经添加到系统环境变量的路径内。环境变量的内容会自动添加到模块搜索路径中。</p>
+<p>p.s.可以通过dir(sys)来查看他里面的方法和成员属性。</p>
+<h2 id="关于python2和3适配"><a href="#关于python2和3适配" class="headerlink" title="关于python2和3适配"></a>关于python2和3适配</h2><p>在开头加上from <strong>future</strong> import print_function这句之后，即使在python2.X，使用print就得像python3.X那样加括号使用。python2.X中print不需要括号，而在python3.X中则需要。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># python2.7</span><br><span class="line">print &quot;Hello world&quot;</span><br><span class="line"></span><br><span class="line"># python3</span><br><span class="line">print(&quot;Hello world&quot;)</span><br></pre></td></tr></table></figure>
+
+<p>　　如果某个版本中出现了某个新的功能特性，而且这个特性和当前版本中使用的不兼容，也就是它在该版本中不是语言标准，那么我如果想要使用的话就需要从future模块导入。</p>
+<p>　　其他例子：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">from __future__ import division</span><br><span class="line">from __future__ import absolute_import</span><br><span class="line">from __future__ import with_statement</span><br></pre></td></tr></table></figure>
+
+
+<p>　　加上这些，如果你的python版本是python2.X，你也得按照python3.X那样使用这些函数</p>
+<h2 id="webshell检测"><a href="#webshell检测" class="headerlink" title="webshell检测"></a>webshell检测</h2><p>利用yara规则匹配检测webshell</p>
+<p>导入egg包</p>
+<p>调用公用检测函数</p>
+<p>编译yara规则</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">def getRules(self, yara):</span><br><span class="line">    index = 0</span><br><span class="line">    filepath = &#123;&#125;</span><br><span class="line">    for dirpath, dirs, files in os.walk(self.rule):</span><br><span class="line">    	#os.walk() 方法是一个简单易用的文件、目录遍历器。</span><br><span class="line">        for file in files:</span><br><span class="line">            ypath = os.path.join(dirpath, file)</span><br><span class="line">            key = &quot;rule&quot; + str(index)</span><br><span class="line">            filepath[key] = ypath</span><br><span class="line">            index += 1</span><br><span class="line">            #遍历文件</span><br><span class="line">    yararule = yara.compile(filepaths=filepath)</span><br><span class="line">    return yararule</span><br></pre></td></tr></table></figure>
+
+<p>根据版本导入yara模块</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">def init_scan(self):</span><br><span class="line">       suspicious, malice, skip = False, False, False</span><br><span class="line">       try:</span><br><span class="line">           SYS_PATH = get_value(&#x27;SYS_PATH&#x27;)</span><br><span class="line">           #绝对路径</span><br><span class="line">           if sys.version_info &lt; (3, 0):</span><br><span class="line">           	#根据python版本导入模块</span><br><span class="line">               DEPENDENT_LIBRARIES_2_6 = &quot;/lib/egg/yara_python-3.5.0-py2.6-linux-2.32-x86_64.egg&quot;</span><br><span class="line">               DEPENDENT_LIBRARIES_3_10 = &quot;/lib/egg/yara_python-3.5.0-py2.7-linux-3.10-x86_64.egg&quot;</span><br><span class="line">               DEPENDENT_LIBRARIES_4_20 = &quot;/lib/egg/yara_python-3.8.1-py2.7-linux-4.20-x86_64.egg&quot;</span><br><span class="line">               DEPENDENT_LIBRARIES_16 = &quot;/lib/egg/yara_python-3.5.0-py2.7-macosx-10.12-x86_64.egg&quot;</span><br><span class="line">               DEPENDENT_LIBRARIES_17 = &quot;/lib/egg/yara_python-3.5.0-py2.7-macosx-10.13-x86_64.egg&quot;</span><br><span class="line">               _kernel = platform.release()</span><br><span class="line">               #platform.release操作系统版本号</span><br><span class="line">               if _kernel.startswith(&#x27;2.6&#x27;):</span><br><span class="line">                   sys.path.append(SYS_PATH + DEPENDENT_LIBRARIES_2_6)</span><br><span class="line">               elif _kernel.startswith(&#x27;3.&#x27;) and (&quot;6.&quot; in str(platform.dist())):</span><br><span class="line">                   sys.path.append(SYS_PATH + DEPENDENT_LIBRARIES_2_6)</span><br><span class="line">               elif _kernel.startswith(&#x27;3.&#x27;):</span><br><span class="line">                   sys.path.append(SYS_PATH + DEPENDENT_LIBRARIES_3_10)</span><br><span class="line">               elif _kernel.startswith(&#x27;4.&#x27;):</span><br><span class="line">                   sys.path.append(SYS_PATH + DEPENDENT_LIBRARIES_4_20)</span><br><span class="line">               elif _kernel.startswith(&#x27;16.&#x27;):</span><br><span class="line">                   sys.path.append(SYS_PATH + DEPENDENT_LIBRARIES_16)</span><br><span class="line">               elif _kernel.startswith(&#x27;17.&#x27;):</span><br><span class="line">                   sys.path.append(SYS_PATH + DEPENDENT_LIBRARIES_17)</span><br><span class="line">               else:</span><br><span class="line">                   return suspicious, malice, True</span><br><span class="line">               import yara</span><br><span class="line">           else:</span><br><span class="line">               return suspicious, malice, True</span><br></pre></td></tr></table></figure>
+
+<p><img src="http://www.xt996.top/muggle/2020/03/24/3.24/3.24-1.png"></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://example.com">XiongTaoTao</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2020/03/24/3.24/">http://example.com/2020/03/24/3.24/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">技术阿涛</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%9C%A8%E9%A9%AC/">木马</a><a class="post-meta__tags" href="/tags/python/">python</a><a class="post-meta__tags" href="/tags/%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1/">毕业设计</a></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/03/10/restart/" title="restart"><img class="cover" src="http://rraza0lac.hn-bkt.clouddn.com/img/image-20230310201154080.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">restart</div></div></a></div><div class="next-post pull-right"><a href="/2020/03/24/%E6%B8%97%E9%80%8F%E9%9D%A2%E8%AF%95%E9%A2%98/" title="渗透面试题"><img class="cover" src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">渗透面试题</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2020/02/28/2.28/" title="2-28"><img class="cover" src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-02-28</div><div class="title">2-28</div></div></a></div><div><a href="/2020/03/11/3.11/" title="3-11"><img class="cover" src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-03-11</div><div class="title">3-11</div></div></a></div><div><a href="/2020/03/03/3.3/" title="3-3"><img class="cover" src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-03-03</div><div class="title">3-3</div></div></a></div><div><a href="/2020/03/09/3.9/" title="3-9"><img class="cover" src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-03-09</div><div class="title">3-9</div></div></a></div><div><a href="/2020/03/19/%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1-%E6%96%87%E4%BB%B6%E6%A3%80%E6%B5%8B%E6%A8%A1%E5%9D%97/" title="filecheck"><img class="cover" src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-03-19</div><div class="title">filecheck</div></div></a></div><div><a href="/2020/01/10/1.10/" title="1-10"><img class="cover" src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-01-10</div><div class="title">1-10</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">XiongTaoTao</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">45</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">55</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">10</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#freebuf"><span class="toc-number">1.</span> <span class="toc-text">freebuf</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%A6%E4%B9%A0%E9%93%BE%E6%8E%A5"><span class="toc-number">1.1.</span> <span class="toc-text">学习链接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%AE%E5%A4%8DCVE-2020-0796%E6%BC%8F%E6%B4%9E"><span class="toc-number">1.2.</span> <span class="toc-text">修复CVE-2020-0796漏洞</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Emotet%E6%9C%A8%E9%A9%AC"><span class="toc-number">2.</span> <span class="toc-text">Emotet木马</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1"><span class="toc-number">3.</span> <span class="toc-text">毕业设计</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E4%BA%8Esys-path-append"><span class="toc-number">3.1.</span> <span class="toc-text">关于sys.path.append()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E4%BA%8Epython2%E5%92%8C3%E9%80%82%E9%85%8D"><span class="toc-number">3.2.</span> <span class="toc-text">关于python2和3适配</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#webshell%E6%A3%80%E6%B5%8B"><span class="toc-number">3.3.</span> <span class="toc-text">webshell检测</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/03/10/3-10/" title="3.1"><img src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="3.1"/></a><div class="content"><a class="title" href="/2023/03/10/3-10/" title="3.1">3.1</a><time datetime="2023-03-10T12:01:33.000Z" title="发表于 2023-03-10 20:01:33">2023-03-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/03/10/restart/" title="restart"><img src="http://rraza0lac.hn-bkt.clouddn.com/img/image-20230310201154080.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="restart"/></a><div class="content"><a class="title" href="/2023/03/10/restart/" title="restart">restart</a><time datetime="2023-03-10T11:43:42.000Z" title="发表于 2023-03-10 19:43:42">2023-03-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/03/24/3.24/" title="3-24"><img src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="3-24"/></a><div class="content"><a class="title" href="/2020/03/24/3.24/" title="3-24">3-24</a><time datetime="2020-03-24T01:37:52.000Z" title="发表于 2020-03-24 09:37:52">2020-03-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/03/24/%E6%B8%97%E9%80%8F%E9%9D%A2%E8%AF%95%E9%A2%98/" title="渗透面试题"><img src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="渗透面试题"/></a><div class="content"><a class="title" href="/2020/03/24/%E6%B8%97%E9%80%8F%E9%9D%A2%E8%AF%95%E9%A2%98/" title="渗透面试题">渗透面试题</a><time datetime="2020-03-24T01:37:52.000Z" title="发表于 2020-03-24 09:37:52">2020-03-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/03/23/3.23/" title="3-23"><img src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="3-23"/></a><div class="content"><a class="title" href="/2020/03/23/3.23/" title="3-23">3-23</a><time datetime="2020-03-23T01:55:34.000Z" title="发表于 2020-03-23 09:55:34">2020-03-23</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By XiongTaoTao</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

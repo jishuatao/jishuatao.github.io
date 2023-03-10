@@ -1,0 +1,264 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"><title>逆向 | 技术阿涛</title><meta name="author" content="XiongTaoTao"><meta name="copyright" content="XiongTaoTao"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="关注伊朗的APT组织，收集XSS检测工具，部分逆向知识的学习，从CrackMe开始入手">
+<meta property="og:type" content="article">
+<meta property="og:title" content="逆向">
+<meta property="og:url" content="http://example.com/2020/01/16/1.16/index.html">
+<meta property="og:site_name" content="技术阿涛">
+<meta property="og:description" content="关注伊朗的APT组织，收集XSS检测工具，部分逆向知识的学习，从CrackMe开始入手">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg">
+<meta property="article:published_time" content="2020-01-16T04:12:57.000Z">
+<meta property="article:modified_time" content="2020-03-23T09:20:39.150Z">
+<meta property="article:author" content="XiongTaoTao">
+<meta property="article:tag" content="CrackMe">
+<meta property="article:tag" content="XSS检测">
+<meta property="article:tag" content="APT组织">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2020/01/16/1.16/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '逆向',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2020-03-23 17:20:39'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="技术阿涛" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">45</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">55</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">10</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw iconfont icon-shouyex"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw iconfont icon-zuixinwenzhang_huaban"></i><span> 找文章</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw iconfont icon-fenlei1"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw iconfont icon-biaoqian1"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw iconfont icon-shijianzhou"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw iconfont icon-shenghuo"></i><span> 生活</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/guestbook/"><i class="fa-fw iconfont icon-liaotian-04"></i><span> 留言板</span></a></li><li><a class="site-page child" href="/link/"><i class="fa-fw iconfont icon-lianjie"></i><span> 友人帐</span></a></li><li><a class="site-page child" href="/share/"><i class="fa-fw iconfont icon-fenxiang"></i><span> 分享</span></a></li><li><a class="site-page child" href="/gallery/"><i class="fa-fw iconfont icon-xiangce"></i><span> 相册</span></a></li><li><a class="site-page child" href="/books/"><i class="fa-fw iconfont icon-shuji"></i><span> 书籍</span></a></li><li><a class="site-page child" href="/FilmAndTV/"><i class="fa-fw iconfont icon-yingshi1"></i><span> 影视</span></a></li><li><a class="site-page child" href="/daohang/"><i class="fa-fw iconfont icon-daohang"></i><span> 导航站</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw iconfont icon-gerenzhongxin"></i><span> 关于笔者</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="技术阿涛"><span class="site-name">技术阿涛</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw iconfont icon-shouyex"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw iconfont icon-zuixinwenzhang_huaban"></i><span> 找文章</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw iconfont icon-fenlei1"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw iconfont icon-biaoqian1"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw iconfont icon-shijianzhou"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw iconfont icon-shenghuo"></i><span> 生活</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/guestbook/"><i class="fa-fw iconfont icon-liaotian-04"></i><span> 留言板</span></a></li><li><a class="site-page child" href="/link/"><i class="fa-fw iconfont icon-lianjie"></i><span> 友人帐</span></a></li><li><a class="site-page child" href="/share/"><i class="fa-fw iconfont icon-fenxiang"></i><span> 分享</span></a></li><li><a class="site-page child" href="/gallery/"><i class="fa-fw iconfont icon-xiangce"></i><span> 相册</span></a></li><li><a class="site-page child" href="/books/"><i class="fa-fw iconfont icon-shuji"></i><span> 书籍</span></a></li><li><a class="site-page child" href="/FilmAndTV/"><i class="fa-fw iconfont icon-yingshi1"></i><span> 影视</span></a></li><li><a class="site-page child" href="/daohang/"><i class="fa-fw iconfont icon-daohang"></i><span> 导航站</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw iconfont icon-gerenzhongxin"></i><span> 关于笔者</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">逆向</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-01-16T04:12:57.000Z" title="发表于 2020-01-16 12:12:57">2020-01-16</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2020-03-23T09:20:39.150Z" title="更新于 2020-03-23 17:20:39">2020-03-23</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E9%80%86%E5%90%91/">逆向</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="逆向"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>关注伊朗的APT组织，收集XSS检测工具，部分逆向知识的学习，从CrackMe开始入手</p>
+<span id="more"></span>
+
+<h1 id="早报"><a href="#早报" class="headerlink" title="早报"></a>早报</h1><h2 id="伊朗APT组织"><a href="#伊朗APT组织" class="headerlink" title="伊朗APT组织"></a>伊朗APT组织</h2><h3 id="OliRig"><a href="#OliRig" class="headerlink" title="OliRig"></a>OliRig</h3><p>主要在中东开展业务的伊朗威胁组织，其目标是该地区各行各业的组织，偶尔也会将目标锁定在中东以外的组织，没有发现0days或使用高级漏洞利用程序，使用开源工具，例如 <a target="_blank" rel="noopener" href="https://github.com/gentilkiwi/mimikatz">Mimikatz</a> 和 <a target="_blank" rel="noopener" href="https://github.com/AlessandroZ/LaZagne/commits?author=AlessandroZ">laZagne</a>，Microsoft发行版或sysinternals上可用的常见sysadmin工具集</p>
+<h3 id="MuddyWater"><a href="#MuddyWater" class="headerlink" title="MuddyWater"></a>MuddyWater</h3><p>主要针对中东国家，也针对欧洲和北美国家。该组织的受害者主要是在电信，政府（IT服务）和石油部门，倾向于使用开源工具或系统内部工具在目标网络之间故意移动，而不是大规模运行漏洞利用程序或扫描程序</p>
+<h3 id="APT33"><a href="#APT33" class="headerlink" title="APT33"></a>APT33</h3><p>APT33是一个怀疑的伊朗威胁组织，至少从2013年开始运营。该组织的目标是美国，沙特阿拉伯和韩国等多个行业的组织，APT33通过使用诸如<strong>shamoon</strong> 和 <strong>stoneDrill的</strong>恶意软件显示了破坏意图 ，而Muddy大多希望“ <strong>后门</strong> ”受害者</p>
+<h3 id="CopyKittens"><a href="#CopyKittens" class="headerlink" title="CopyKittens"></a>CopyKittens</h3><p>至少从2013年就开始运营的伊朗网络间谍组织。它瞄准的国家包括以色列，沙特阿拉伯，土耳其，美国，约旦和德国，CopyKittens会在受攻击的网络内部产生更多的噪音，并且更易于检测，另一个特征是“代码签名”</p>
+<h3 id="Cleaver"><a href="#Cleaver" class="headerlink" title="Cleaver"></a>Cleaver</h3><p>Cleaver攻击功能随着时间的推移发展非常迅速，自2012年以来一直活跃。它们似乎已渗透到一些世界经济强国中</p>
+<h2 id="一款优秀的XSS批量检测工具"><a href="#一款优秀的XSS批量检测工具" class="headerlink" title="一款优秀的XSS批量检测工具"></a>一款优秀的XSS批量检测工具</h2><p>NoXss收集在笔记目录下</p>
+<h3 id="工作原理"><a href="#工作原理" class="headerlink" title="工作原理"></a>工作原理</h3><p>NoXss主要是通过“符号闭合”来检测xss隐患，使用基于“反射位置”的payload进行探测（目前一共8个），相比fuzz减少了很多盲目性。比如当请求参数的值出现在response的javascript代码段中，并且是以双引号的形式进行闭合，那么NoXss将使用xssjs”;这个payload；如果是以单引号的形式进行闭合，则会使用xssjs’;进行测试。更多的位置分类以及payload请参考<a target="_blank" rel="noopener" href="https://github.com/lwzSoviet/NoXss/blob/master/README.md">https://github.com/lwzSoviet/NoXss/blob/master/README.md</a></p>
+<p><strong>但请不要对NoXss抱有太多的期望，它对较为复杂的xss（比如存储型）无能为力。</strong></p>
+<h3 id="支持配置请求头"><a href="#支持配置请求头" class="headerlink" title="支持配置请求头"></a>支持配置请求头</h3><p>在批量检测的过程中通常需要维持登录态，一些应用的后端还会校验Referer甚至其他的一些自定义的HTTP请求头部，NoXss支持用户对此进行配置：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python start.py --url url --cookie cookie</span><br></pre></td></tr></table></figure>
+
+<p>默认情况下，NoXss会根据当前扫描的url自动添加Referer头部。</p>
+<h1 id="逆向学习"><a href="#逆向学习" class="headerlink" title="逆向学习"></a>逆向学习</h1><p>我写的博客</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41581915/article/details/104009189">https://blog.csdn.net/qq_41581915/article/details/104009189</a></p>
+</blockquote>
+<h2 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h2><blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.52pojie.cn/thread-350397-1-1.html">OllyDbg</a>(OD)：<a target="_blank" rel="noopener" href="https://www.52pojie.cn/thread-350397-1-1.html">https://www.52pojie.cn/thread-350397-1-1.html</a><br><a target="_blank" rel="noopener" href="https://www.52pojie.cn/thread-12865-1-1.html">PEID</a>：<a target="_blank" rel="noopener" href="https://www.52pojie.cn/thread-170387-1-1.html">https://www.52pojie.cn/thread-170387-1-1.html</a><br><a target="_blank" rel="noopener" href="https://www.52pojie.cn/thread-437586-1-1.html">Exeinfo PE</a>：<a target="_blank" rel="noopener" href="https://www.52pojie.cn/thread-437586-1-1.html">https://www.52pojie.cn/thread-437586-1-1.html</a><br>樱花补丁制作工具：<a target="_blank" rel="noopener" href="https://www.52pojie.cn/thread-62307-1-1.html">https://www.52pojie.cn/thread-62307-1-1.html</a><br>内存补丁生成器：<a target="_blank" rel="noopener" href="https://www.52pojie.cn/thread-162411-1-1.html">https://www.52pojie.cn/thread-162411-1-1.html</a><br>注册机生成器：<a target="_blank" rel="noopener" href="https://www.52pojie.cn/thread-159470-1-1.html">https://www.52pojie.cn/thread-159470-1-1.html</a><br><a target="_blank" rel="noopener" href="https://www.52pojie.cn/thread-675251-1-1.html">IDA</a> Pro v7：<a target="_blank" rel="noopener" href="https://www.52pojie.cn/thread-675251-1-1.html">https://www.52pojie.cn/thread-675251-1-1.html</a></p>
+</blockquote>
+<h2 id="大纲"><a href="#大纲" class="headerlink" title="大纲"></a>大纲</h2><blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.52pojie.cn/thread-582852-1-1.html">https://www.52pojie.cn/thread-582852-1-1.html</a></p>
+</blockquote>
+<h2 id="第一课"><a href="#第一课" class="headerlink" title="第一课"></a>第一课</h2><h3 id="加壳"><a href="#加壳" class="headerlink" title="加壳"></a>加壳</h3><p>工具一般都是通过目录下的<strong>userdb.txt</strong>（查壳程序不同可能数据库名有出入）数据库进行加壳程序特征对比</p>
+<h2 id="crackme"><a href="#crackme" class="headerlink" title="crackme"></a>crackme</h2><p>从今天开始小白要学习逆向知识，自己学习没有啥头绪，不如就从CrackMe开始，一关关打下去也会有所收获把！</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.52pojie.cn/thread-709699-1-1.html">https://www.52pojie.cn/thread-709699-1-1.html</a></p>
+</blockquote>
+<h3 id="第一关"><a href="#第一关" class="headerlink" title="第一关"></a>第一关</h3><p>首先用工具查看一些基本的信息，可以看到编译程序是<strong>Delphi3.0</strong>，没有壳</p>
+<p><img src="http://www.xt996.top/muggle/2020/01/16/1.16/1.png" alt="1"></p>
+<p>进去的第一个界面，嘲讽一下。。。</p>
+<p><img src="http://www.xt996.top/muggle/2020/01/16/1.16/2.png" alt="2"></p>
+<p>然后是程序主体，分别有三个按钮</p>
+<p>一个是<code>Serial/Name</code>，需要输入用户名和注册码才能通过，另外一个<code>Serial</code>只需要输入一个注册码一类的东西，最后就是退出程序</p>
+<p><img src="http://www.xt996.top/muggle/2020/01/16/1.16/3.png" alt="3"></p>
+<p>这里先点击最左侧的<code>Serial/Name</code></p>
+<p><img src="http://www.xt996.top/muggle/2020/01/16/1.16/4.png" alt="4"></p>
+<p>这里提示输入用户名和注册码，随便填入提交，观察提示</p>
+<p><img src="http://www.xt996.top/muggle/2020/01/16/1.16/5.png" alt="5"></p>
+<p>点击<code>Check it Baby!</code> 它会弹出一个对话框提示： <code>Sorry， The Serial is incorrect !</code></p>
+<p>再换几个随意试试，发现就这一种情况。</p>
+<p>OK，出现了对话框这就很好办，说明作者在校验注册码之后发现如果错误了就直接弹窗，我们只要找到弹出对话框的地方，向上跟踪，就可以找出判断是否正确的地方了</p>
+<p>接着就用到OD来分析</p>
+<p>看了好久总算晓得一点OD的使用方法</p>
+<blockquote>
+<p>OD打开需要调试的程序</p>
+<p>打开之后，点击运行的图标</p>
+<p>程序正常运行，可以随时暂停检测行为</p>
+</blockquote>
+<p>使用OD打开程序后，进行上面重复的操作，在出现对话框提示<code>Sorry， The Serial is incorrect !</code>时，点击暂停，打开<strong>主线程调用堆栈</strong>信息</p>
+<p><img src="http://www.xt996.top/muggle/2020/01/16/1.16/6.png" alt="6"></p>
+<p>有一些攻略是这么写的</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">这里有两个MessageBox的地址，第一个地址为77D5082F这个地址明显太大,不在模块的领空，不是的。</span><br><span class="line">第二个地址为0042A1AE，和00400100地址非常接近，十有八九就是它了。</span><br><span class="line">右键 show call, 在Call上面设置断点。</span><br></pre></td></tr></table></figure>
+
+<p>然后自己去了解了一下<code>MessageBox</code> 的功能就是显示一个消息对话框，在弹窗时，我们暂停进程，然后在OD中找到那一段来分析判断错误弹窗的条件，我的理解大概就是这样</p>
+<p>按照上面的操作，进去之后就是这样的</p>
+<p><img src="http://www.xt996.top/muggle/2020/01/16/1.16/7.png" alt="7"></p>
+<p><code>show call</code>进去后按<code>F2</code>设置断点</p>
+<blockquote>
+<p>注意反复调试需要关闭断点，不会一直卡在那个断点处</p>
+<p>可以把断点理解为存档</p>
+</blockquote>
+<p><img src="http://www.xt996.top/muggle/2020/01/16/1.16/8.png" alt="8"></p>
+<p>上下查看，发现与弹窗内容相同的字符串，哈哈这可能是个突破点</p>
+<p><img src="http://www.xt996.top/muggle/2020/01/16/1.16/9.png" alt="9"></p>
+<p>JNZ会通过它上面的call 004039FC 判断我们的伪码是否正确，判断的结果存在EAX中，如果EAX不等于就跳转到错误提示信息框那里。</p>
+<p>我们的目的是无论伪码是否正确都通过验证，所以最简单的办法就是将jnz这句使用NOP填充，我们尝试一下：选择JNZ这句，右键<code>Binary</code>-&gt;<code>Fill with NOPS</code>.回到原始程序，再次点击<code>Check it baby!</code></p>
+<p>提示<code>Good Job！</code>通过了！</p>
+<p>但是经过测试，必须要<strong>用户名大于四位</strong>，才能通过</p>
+<p><img src="http://www.xt996.top/muggle/2020/01/16/1.16/10.png" alt="10"></p>
+<p>小于四位，运行会停止，这个校验字符串长度是在断点上方，查看上方<code>jeg</code>部分，如果想要输入的账户长度不大于4，只需要把JGE给修改成JMP让其强制跳转即可</p>
+<p><img src="http://www.xt996.top/muggle/2020/01/16/1.16/12.png" alt="12"></p>
+<p><img src="http://www.xt996.top/muggle/2020/01/16/1.16/11.png" alt="11"></p>
+<p>上面这些就是爆破的部分，然后接下来尝试能否分析出注册机算法</p>
+<p>将所有断点、修改的内容右键UNDO取消，然后重新一遍操作，随便输入然后报错，跳转<code>show call</code></p>
+<p><img src="http://www.xt996.top/muggle/2020/01/16/1.16/13.png" alt="13"></p>
+<p>这里将选中代码复制出来查看</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">0042FAFE  |.  E8 F93EFDFF   call Acid_bur.004039FC ;  这个CALL的返回值</span><br><span class="line">0042FB03  |.  75 1A         jnz XAcid_bur.0042FB1F   ;  上一个CALL的返回值不等于0则跳转到错误消息</span><br><span class="line">0042FB05  |.  6A 00         push 0x0</span><br><span class="line">0042FB07  |.  B9 CCFB4200   mov ecx,Acid_bur.0042FBCC</span><br><span class="line">0042FB0C  |.  BA D8FB4200   mov edx,Acid_bur.0042FBD8</span><br><span class="line">0042FB11  |.  A1 480A4300   mov eax,dword ptr ds:[0x430A48]</span><br><span class="line">0042FB16  |.  8B00          mov eax,dword ptr ds:[eax]</span><br><span class="line">0042FB18  |.  E8 53A6FFFF   call Acid_bur.0042A170</span><br><span class="line">0042FB1D  |.  EB 18         jmp XAcid_bur.0042FB37 ;  强制跳转，跳过了错误显示。</span><br><span class="line">0042FB1F  |&gt;  6A 00         push 0x0</span><br><span class="line">0042FB21  |.  B9 74FB4200   mov ecx,Acid_bur.0042FB74</span><br><span class="line">0042FB26  |.  BA 80FB4200   mov edx,Acid_bur.0042FB80</span><br><span class="line">0042FB2B  |.  A1 480A4300   mov eax,dword ptr ds:[0x430A48]</span><br><span class="line">0042FB30  |.  8B00          mov eax,dword ptr ds:[eax]</span><br><span class="line">0042FB32  |.  E8 39A6FFFF   call Acid_bur.0042A170 ;  函数内调用了MessageBox显示错误</span><br></pre></td></tr></table></figure>
+
+<p>所以在<code>0042FAFE</code>处设置断点，启动调试，注意将窗口最大化方便查看<strong>寄存器</strong></p>
+<p><img src="http://www.xt996.top/muggle/2020/01/16/1.16/14.png" alt="14"></p>
+<p>这里可以看到，输入的注册码在寄存器中显示，同时上方还有一串字符，大胆猜测为计算出来后的注册码</p>
+<p>尝试将输入的注册码替换为寄存器的，保留用户名</p>
+<p><img src="http://www.xt996.top/muggle/2020/01/16/1.16/15.png" alt="15"></p>
+<p>emmmm然后就得分析这个注册码怎么来的</p>
+<p>就在<code>0042FAFE</code>往上翻翻，给出的部分注释</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">0042FA79  |&gt; \8D55 F0       lea edx,[local.4]</span><br><span class="line">0042FA7C  |.  8B83 DC010000 mov eax,dword ptr ds:[ebx+0x1DC]</span><br><span class="line">0042FA82  |.  E8 D1AFFEFF   call Acid_bur.0041AA58            ;  获取账户，字符串，字符串首地址存储在EBP-0X10处</span><br><span class="line">0042FA87  |.  8B45 F0       mov eax,[local.4]</span><br><span class="line">0042FA8A  |.  0FB600        movzx eax,byte ptr ds:[eax]       ;  DWORD DATA = (DWORD)buff[0];</span><br><span class="line">0042FA8D  |.  F72D 50174300 imul dword ptr ds:[0x431750]      ;  DATA * 0x43175 == DATA * 0x29</span><br><span class="line">0042FA93  |.  A3 50174300   mov dword ptr ds:[0x431750],eax   ;  0x431750 = DATA * 0x29;</span><br><span class="line">0042FA98  |.  A1 50174300   mov eax,dword ptr ds:[0x431750]</span><br><span class="line">0042FA9D  |.  0105 50174300 add dword ptr ds:[0x431750],eax   ;  0x431750 *= 2</span><br><span class="line">0042FAA3  |.  8D45 FC       lea eax,[local.1]</span><br><span class="line">0042FAA6  |.  BA ACFB4200   mov edx,Acid_bur.0042FBAC</span><br><span class="line">0042FAAB  |.  E8 583CFDFF   call Acid_bur.00403708            ;  将CW字符串首地址存储在EBP-0x4处</span><br><span class="line">0042FAB0  |.  8D45 F8       lea eax,[local.2]</span><br><span class="line">0042FAB3  |.  BA B8FB4200   mov edx,Acid_bur.0042FBB8         ;  CRACKED</span><br><span class="line">0042FAB8  |.  E8 4B3CFDFF   call Acid_bur.00403708            ;  将字符串地址存储在EBP-0X8处</span><br><span class="line">0042FABD  |.  FF75 FC       push [local.1]</span><br><span class="line">0042FAC0  |.  68 C8FB4200   push Acid_bur.0042FBC8            ;  UNICODE &quot;-&quot;</span><br><span class="line">0042FAC5  |.  8D55 E8       lea edx,[local.6]</span><br><span class="line">0042FAC8  |.  A1 50174300   mov eax,dword ptr ds:[0x431750]</span><br><span class="line">0042FACD  |.  E8 466CFDFF   call Acid_bur.00406718            ;  将0x431750存储的十六进制转换成字符串，地址存储在EBP-0x18处</span><br><span class="line">0042FAD2  |.  FF75 E8       push [local.6]</span><br><span class="line">0042FAD5  |.  68 C8FB4200   push Acid_bur.0042FBC8            ;  UNICODE &quot;-&quot;</span><br><span class="line">0042FADA  |.  FF75 F8       push [local.2]</span><br><span class="line">0042FADD  |.  8D45 F4       lea eax,[local.3]</span><br><span class="line">0042FAE0  |.  BA 05000000   mov edx,0x5</span><br><span class="line">0042FAE5  |.  E8 C23EFDFF   call Acid_bur.004039AC            ;  字符串拼接。(EBP-0X4)+(EBP-0X18)+(EBP-0X8) 存储在ebp-0xC</span><br><span class="line">0042FAEA  |.  8D55 F0       lea edx,[local.4]</span><br><span class="line">0042FAED  |.  8B83 E0010000 mov eax,dword ptr ds:[ebx+0x1E0]</span><br><span class="line">0042FAF3  |.  E8 60AFFEFF   call Acid_bur.0041AA58            ;  得到输入的密码</span><br><span class="line">0042FAF8  |.  8B55 F0       mov edx,[local.4]</span><br><span class="line">0042FAFB  |.  8B45 F4       mov eax,[local.3]</span><br><span class="line">0042FAFE  |.  E8 F93EFDFF   call Acid_bur.004039FC            ;  输入的密码与程序计算出来的KEY做比较</span><br><span class="line">0042FB03  |.  75 1A         jnz XAcid_bur.0042FB1F            ;  上一个CALL的返回值不等于0则跳转到错误消息</span><br></pre></td></tr></table></figure>
+
+<p>攻略上把这一段转换成C语言，得出结论：在计算KEY中，只使用了用户的第一个字母，后三位没用。所以，账户abcd和aaaa使用的KEY是相同的</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">void Decryption(char* mima)</span><br><span class="line">&#123;</span><br><span class="line">    char szBuff[260];</span><br><span class="line">    unsigned long data = (unsigned long)mima[0];</span><br><span class="line">    data *= 0X29;</span><br><span class="line">    data *= 2;</span><br><span class="line">    sprintf(szBuff, &quot;CW-%d-CRACKED&quot;, data);</span><br><span class="line">    printf(&quot;%s \r\n&quot;, szBuff);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>emmm之后还得研究</p>
+<p>第二个按钮，操作类似，暂停之后，往上找到<code>jnz</code>直接NOP就OK<img src="http://www.xt996.top/muggle/2020/01/16/1.16/16.png" alt="16"></p>
+<p>继续往上看发现注册码是一个固定的值</p>
+<p><img src="http://www.xt996.top/muggle/2020/01/16/1.16/17.png" alt="17"></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://example.com">XiongTaoTao</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2020/01/16/1.16/">http://example.com/2020/01/16/1.16/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">技术阿涛</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/CrackMe/">CrackMe</a><a class="post-meta__tags" href="/tags/XSS%E6%A3%80%E6%B5%8B/">XSS检测</a><a class="post-meta__tags" href="/tags/APT%E7%BB%84%E7%BB%87/">APT组织</a></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2020/01/19/1.6/" title="1-6"><img class="cover" src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">1-6</div></div></a></div><div class="next-post pull-right"><a href="/2020/01/15/1.15/" title="1-15"><img class="cover" src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">1-15</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2020/01/20/1.20/" title="1-20"><img class="cover" src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-01-20</div><div class="title">1-20</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">XiongTaoTao</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">45</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">55</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">10</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%97%A9%E6%8A%A5"><span class="toc-number">1.</span> <span class="toc-text">早报</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BC%8A%E6%9C%97APT%E7%BB%84%E7%BB%87"><span class="toc-number">1.1.</span> <span class="toc-text">伊朗APT组织</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#OliRig"><span class="toc-number">1.1.1.</span> <span class="toc-text">OliRig</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MuddyWater"><span class="toc-number">1.1.2.</span> <span class="toc-text">MuddyWater</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#APT33"><span class="toc-number">1.1.3.</span> <span class="toc-text">APT33</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CopyKittens"><span class="toc-number">1.1.4.</span> <span class="toc-text">CopyKittens</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Cleaver"><span class="toc-number">1.1.5.</span> <span class="toc-text">Cleaver</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E6%AC%BE%E4%BC%98%E7%A7%80%E7%9A%84XSS%E6%89%B9%E9%87%8F%E6%A3%80%E6%B5%8B%E5%B7%A5%E5%85%B7"><span class="toc-number">1.2.</span> <span class="toc-text">一款优秀的XSS批量检测工具</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="toc-number">1.2.1.</span> <span class="toc-text">工作原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%94%AF%E6%8C%81%E9%85%8D%E7%BD%AE%E8%AF%B7%E6%B1%82%E5%A4%B4"><span class="toc-number">1.2.2.</span> <span class="toc-text">支持配置请求头</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%80%86%E5%90%91%E5%AD%A6%E4%B9%A0"><span class="toc-number">2.</span> <span class="toc-text">逆向学习</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B7%A5%E5%85%B7"><span class="toc-number">2.1.</span> <span class="toc-text">工具</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%A7%E7%BA%B2"><span class="toc-number">2.2.</span> <span class="toc-text">大纲</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E8%AF%BE"><span class="toc-number">2.3.</span> <span class="toc-text">第一课</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%A0%E5%A3%B3"><span class="toc-number">2.3.1.</span> <span class="toc-text">加壳</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#crackme"><span class="toc-number">2.4.</span> <span class="toc-text">crackme</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E5%85%B3"><span class="toc-number">2.4.1.</span> <span class="toc-text">第一关</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/03/10/3-10/" title="3.1"><img src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="3.1"/></a><div class="content"><a class="title" href="/2023/03/10/3-10/" title="3.1">3.1</a><time datetime="2023-03-10T12:01:33.000Z" title="发表于 2023-03-10 20:01:33">2023-03-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/03/10/restart/" title="restart"><img src="http://rraza0lac.hn-bkt.clouddn.com/img/image-20230310201154080.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="restart"/></a><div class="content"><a class="title" href="/2023/03/10/restart/" title="restart">restart</a><time datetime="2023-03-10T11:43:42.000Z" title="发表于 2023-03-10 19:43:42">2023-03-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/03/24/3.24/" title="3-24"><img src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="3-24"/></a><div class="content"><a class="title" href="/2020/03/24/3.24/" title="3-24">3-24</a><time datetime="2020-03-24T01:37:52.000Z" title="发表于 2020-03-24 09:37:52">2020-03-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/03/24/%E6%B8%97%E9%80%8F%E9%9D%A2%E8%AF%95%E9%A2%98/" title="渗透面试题"><img src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="渗透面试题"/></a><div class="content"><a class="title" href="/2020/03/24/%E6%B8%97%E9%80%8F%E9%9D%A2%E8%AF%95%E9%A2%98/" title="渗透面试题">渗透面试题</a><time datetime="2020-03-24T01:37:52.000Z" title="发表于 2020-03-24 09:37:52">2020-03-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/03/23/3.23/" title="3-23"><img src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="3-23"/></a><div class="content"><a class="title" href="/2020/03/23/3.23/" title="3-23">3-23</a><time datetime="2020-03-23T01:55:34.000Z" title="发表于 2020-03-23 09:55:34">2020-03-23</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By XiongTaoTao</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
