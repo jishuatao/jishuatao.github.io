@@ -1,59 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>Hexo</title>
+  <title>技术阿涛</title>
   
-  
+  <subtitle>这是一个小小的网站</subtitle>
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2023-03-10T05:58:03.626Z</updated>
+  <updated>2023-03-10T12:11:16.105Z</updated>
   <id>http://example.com/</id>
   
   <author>
-    <name>John Doe</name>
+    <name>XiongTaoTao</name>
     
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>restart</title>
-    <link href="http://example.com/2023/03/10/restart/"/>
-    <id>http://example.com/2023/03/10/restart/</id>
-    <published>2023-03-10T04:43:42.000Z</published>
-    <updated>2023-03-10T05:58:03.626Z</updated>
+    <title>3.1</title>
+    <link href="http://example.com/2023/03/10/3-10/"/>
+    <id>http://example.com/2023/03/10/3-10/</id>
+    <published>2023-03-10T12:01:33.000Z</published>
+    <updated>2023-03-10T12:11:16.105Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="tips"><a href="#tips" class="headerlink" title="tips"></a>tips</h3><p>无法打开应用，因为Apple无法检查其是否包含恶意软件解决方法</p><p>在应用程序-&gt;实用工具中找到<code>终端</code>，打开，执行下面一条命令，禁用新安全检查即可。</p><p>sudo spctl –master-disable</p><p>sdaad</p><p>![截屏2023-03-10 下午1.50.44](&#x2F;Users&#x2F;mac&#x2F;mylog&#x2F;source&#x2F;_posts&#x2F;截屏2023-03-10 下午1.50.44.png)</p>]]></content>
+    <content type="html"><![CDATA[<h2 id="O-目标-1保障好项目的质量，进一步提升内外部满意度-96-和区域服务口碑和价值感知—服务体验"><a href="#O-目标-1保障好项目的质量，进一步提升内外部满意度-96-和区域服务口碑和价值感知—服务体验" class="headerlink" title="O(目标)-1保障好项目的质量，进一步提升内外部满意度(96%)和区域服务口碑和价值感知—服务体验"></a>O(目标)-1保障好项目的质量，进一步提升内外部满意度(96%)和区域服务口碑和价值感知—服务体验</h2><h3 id="关键结果KR-1"><a href="#关键结果KR-1" class="headerlink" title="关键结果KR-1"></a>关键结果KR-1</h3><p>每周检视事件闭环工作，关注闭环时效，将事件跟踪表与交付物一并整理发送</p><h3 id="关键结果KR-2"><a href="#关键结果KR-2" class="headerlink" title="关键结果KR-2"></a>关键结果KR-2</h3><p>针对事件较少客户（近一周无事件），主动分析设备日志，梳理外部攻击情况整理报告推送</p><h3 id="关键结果KR-3"><a href="#关键结果KR-3" class="headerlink" title="关键结果KR-3"></a>关键结果KR-3</h3><p>通过资产梳理、暴露面梳理、威胁狩猎、免费重保等方式对感知度较低的客户提升感知</p><h3 id="关键结果KR-4"><a href="#关键结果KR-4" class="headerlink" title="关键结果KR-4"></a>关键结果KR-4</h3><p>根据客户不同需求，提供非标准化交付，例如：每月提供病毒主机，每周整理弱口令等</p><h2 id="O-目标-2实现续约率80-x2F-续费率100-x2F-转化率40-—客户经营"><a href="#O-目标-2实现续约率80-x2F-续费率100-x2F-转化率40-—客户经营" class="headerlink" title="O(目标)-2实现续约率80% &#x2F;续费率100%&#x2F;转化率40%—客户经营"></a>O(目标)-2实现续约率80% &#x2F;续费率100%&#x2F;转化率40%—客户经营</h2><h3 id="关键结果KR-1-1"><a href="#关键结果KR-1-1" class="headerlink" title="关键结果KR-1"></a>关键结果KR-1</h3><p>加强客户预算管理意识，在预算前后有意识的开展主动服务，提供一到两次主动服务案例</p><h3 id="关键结果KR-2-1"><a href="#关键结果KR-2-1" class="headerlink" title="关键结果KR-2"></a>关键结果KR-2</h3><p>持续提升测试效果和效率，确保个人测试项目转正率超过40%，关注组内测试项目，跟进项目满意度关键举措</p><h3 id="关键结果KR-3-1"><a href="#关键结果KR-3-1" class="headerlink" title="关键结果KR-3"></a>关键结果KR-3</h3><p>参与中心相关意识培训，探讨扩容、增值服务的拓展思路，对小资产客户、续费风险客户进行风险提前识别和解决</p><h3 id="关键结果KR-4-1"><a href="#关键结果KR-4-1" class="headerlink" title="关键结果KR-4"></a>关键结果KR-4</h3><p>检视提供商机有效性，与销售或客户沟通，推动商机落地</p><h2 id="O-目标-3确保全年毛利55-—效率提升"><a href="#O-目标-3确保全年毛利55-—效率提升" class="headerlink" title="O(目标)-3确保全年毛利55%—效率提升"></a>O(目标)-3确保全年毛利55%—效率提升</h2><h3 id="关键结果KR-1-2"><a href="#关键结果KR-1-2" class="headerlink" title="关键结果KR-1"></a>关键结果KR-1</h3><p>纯MSS客户，相关汇报、问题处置、应急响应等工作，在个人能力满足前提下尽可能由服务经理承接</p><h3 id="关键结果KR-2-2"><a href="#关键结果KR-2-2" class="headerlink" title="关键结果KR-2"></a>关键结果KR-2</h3><p>加强客户经营意识，综合服务、联合交付等项目，在不影响客户满意度情况下，尽可能降低上门处置、汇报等经营成本</p><h3 id="关键结果KR-3-2"><a href="#关键结果KR-3-2" class="headerlink" title="关键结果KR-3"></a>关键结果KR-3</h3><p>根据客户高潜、低潜客户筛选标准，减少不必要的消耗提升整体工作效率及人均效益（主要在主动服务上进行区分）</p><h2 id="O-目标-4任职晋级达到T2级别以上—个人提升"><a href="#O-目标-4任职晋级达到T2级别以上—个人提升" class="headerlink" title="O(目标)-4任职晋级达到T2级别以上—个人提升"></a>O(目标)-4任职晋级达到T2级别以上—个人提升</h2><h3 id="关键结果KR-1-3"><a href="#关键结果KR-1-3" class="headerlink" title="关键结果KR-1"></a>关键结果KR-1</h3><p>积极参与运营中心服务经理技术能力提升专项，通过培训、实践、考核，年底任职晋级达到T2级别</p><h3 id="关键结果KR-2-3"><a href="#关键结果KR-2-3" class="headerlink" title="关键结果KR-2"></a>关键结果KR-2</h3><p>参与网络安全实验室，积累优秀报告</p><h3 id="关键结果KR-3-3"><a href="#关键结果KR-3-3" class="headerlink" title="关键结果KR-3"></a>关键结果KR-3</h3><p>针对Windows、Linux常见上机排查流程输出文档，上传知识库</p><h3 id="关键结果KR-4-2"><a href="#关键结果KR-4-2" class="headerlink" title="关键结果KR-4"></a>关键结果KR-4</h3><p>提升漏洞挖掘能力，类似（威胁狩猎、客户通报漏洞等）场景下，积累漏洞挖掘经验并记录文档</p>]]></content>
     
     
       
       
-    <summary type="html">&lt;h3 id=&quot;tips&quot;&gt;&lt;a href=&quot;#tips&quot; class=&quot;headerlink&quot; title=&quot;tips&quot;&gt;&lt;/a&gt;tips&lt;/h3&gt;&lt;p&gt;无法打开应用，因为Apple无法检查其是否包含恶意软件解决方法&lt;/p&gt;
-&lt;p&gt;在应用程序-&amp;gt;实用工具中找到&lt;code&gt;</summary>
+    <summary type="html">&lt;h2 id=&quot;O-目标-1保障好项目的质量，进一步提升内外部满意度-96-和区域服务口碑和价值感知—服务体验&quot;&gt;&lt;a href=&quot;#O-目标-1保障好项目的质量，进一步提升内外部满意度-96-和区域服务口碑和价值感知—服务体验&quot; class=&quot;headerlink&quot; title</summary>
       
     
     
     
+    <category term="工作" scheme="http://example.com/categories/%E5%B7%A5%E4%BD%9C/"/>
+    
+    
+    <category term="OKR" scheme="http://example.com/tags/OKR/"/>
     
   </entry>
   
   <entry>
-    <title>Hello World</title>
-    <link href="http://example.com/2023/03/10/hello-world/"/>
-    <id>http://example.com/2023/03/10/hello-world/</id>
-    <published>2023-03-10T03:57:29.792Z</published>
-    <updated>2023-03-10T03:57:29.792Z</updated>
+    <title>restart</title>
+    <link href="http://example.com/2023/03/10/restart/"/>
+    <id>http://example.com/2023/03/10/restart/</id>
+    <published>2023-03-10T11:43:42.000Z</published>
+    <updated>2023-03-10T12:12:05.783Z</updated>
     
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+    <content type="html"><![CDATA[<h3 id="Tips1"><a href="#Tips1" class="headerlink" title="Tips1"></a>Tips1</h3><p>无法打开应用，因为Apple无法检查其是否包含恶意软件解决方法</p><p>在应用程序-&gt;实用工具中找到<code>终端</code>，打开，执行下面一条命令，禁用新安全检查即可。</p><p>sudo spctl –master-disable</p><h3 id="Tips2"><a href="#Tips2" class="headerlink" title="Tips2"></a>Tips2</h3><p>测试图床Typora+PicGo+七牛云</p><p>参考链接：</p><p><code>https://blog.csdn.net/qq_45931842/article/details/119544403</code></p><p><img src="http://rraza0lac.hn-bkt.clouddn.com/img/image-20230310201154080.png" alt="image-20230310201154080"></p>]]></content>
     
     
       
       
-    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt; for</summary>
+    <summary type="html">&lt;h3 id=&quot;Tips1&quot;&gt;&lt;a href=&quot;#Tips1&quot; class=&quot;headerlink&quot; title=&quot;Tips1&quot;&gt;&lt;/a&gt;Tips1&lt;/h3&gt;&lt;p&gt;无法打开应用，因为Apple无法检查其是否包含恶意软件解决方法&lt;/p&gt;
+&lt;p&gt;在应用程序-&amp;gt;实用工具中找到&lt;c</summary>
       
     
     
     
+    <category term="踩坑" scheme="http://example.com/categories/%E8%B8%A9%E5%9D%91/"/>
+    
+    
+    <category term="小技巧" scheme="http://example.com/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/"/>
     
   </entry>
   
