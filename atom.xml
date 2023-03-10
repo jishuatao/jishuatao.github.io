@@ -40,4 +40,29 @@
     
   </entry>
   
+  <entry>
+    <title>restart</title>
+    <link href="http://example.com/2023/03/10/restart/"/>
+    <id>http://example.com/2023/03/10/restart/</id>
+    <published>2023-03-10T11:43:42.000Z</published>
+    <updated>2023-03-10T12:39:09.789Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="Tips1"><a href="#Tips1" class="headerlink" title="Tips1"></a>Tips1</h3><p>无法打开应用，因为Apple无法检查其是否包含恶意软件解决方法</p><p>在应用程序-&gt;实用工具中找到<code>终端</code>，打开，执行下面一条命令，禁用新安全检查即可。</p><p>sudo spctl –master-disable</p><h3 id="Tips2"><a href="#Tips2" class="headerlink" title="Tips2"></a>Tips2</h3><p>测试图床Typora+PicGo+七牛云</p><p>参考链接：</p><p><code>https://blog.csdn.net/qq_45931842/article/details/119544403</code></p><p><img src="http://rraza0lac.hn-bkt.clouddn.com/img/image-20230310201154080.png" alt="image-20230310201154080"></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h3 id=&quot;Tips1&quot;&gt;&lt;a href=&quot;#Tips1&quot; class=&quot;headerlink&quot; title=&quot;Tips1&quot;&gt;&lt;/a&gt;Tips1&lt;/h3&gt;&lt;p&gt;无法打开应用，因为Apple无法检查其是否包含恶意软件解决方法&lt;/p&gt;
+&lt;p&gt;在应用程序-&amp;gt;实用工具中找到&lt;c</summary>
+      
+    
+    
+    
+    <category term="踩坑" scheme="http://example.com/categories/%E8%B8%A9%E5%9D%91/"/>
+    
+    
+    <category term="小技巧" scheme="http://example.com/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/"/>
+    
+  </entry>
+  
 </feed>
