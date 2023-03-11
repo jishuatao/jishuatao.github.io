@@ -82,9 +82,9 @@
     <category term="每日学习小结" scheme="http://example.com/categories/%E6%AF%8F%E6%97%A5%E5%AD%A6%E4%B9%A0%E5%B0%8F%E7%BB%93/"/>
     
     
-    <category term="python" scheme="http://example.com/tags/python/"/>
-    
     <category term="木马" scheme="http://example.com/tags/%E6%9C%A8%E9%A9%AC/"/>
+    
+    <category term="python" scheme="http://example.com/tags/python/"/>
     
     <category term="毕业设计" scheme="http://example.com/tags/%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1/"/>
     
@@ -448,9 +448,9 @@
     
     <category term="python" scheme="http://example.com/tags/python/"/>
     
-    <category term="数据库" scheme="http://example.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
-    
     <category term="毕业设计" scheme="http://example.com/tags/%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1/"/>
+    
+    <category term="数据库" scheme="http://example.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     
   </entry>
   
