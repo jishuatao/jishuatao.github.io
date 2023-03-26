@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2023-03-18T04:39:50.100Z</updated>
+  <updated>2023-03-26T16:37:10.982Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>攻防演练应急-Round-2</title>
+    <link href="http://example.com/2023/03/27/%E6%94%BB%E9%98%B2%E6%BC%94%E7%BB%83%E5%BA%94%E6%80%A5-Round-2/"/>
+    <id>http://example.com/2023/03/27/%E6%94%BB%E9%98%B2%E6%BC%94%E7%BB%83%E5%BA%94%E6%80%A5-Round-2/</id>
+    <published>2023-03-26T16:35:45.000Z</published>
+    <updated>2023-03-26T16:37:10.982Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="题目要求"><a href="#题目要求" class="headerlink" title="题目要求"></a><strong>题目要求</strong></h1><p>客户说域控被打了，通过和现场⼈员沟通得到以下信息:</p><p>1、web(内网IP: 192.168.52.143)存在多个webshell, 存在异常帐号(⾮客户添加) </p><p>2、域控在内网(192.168.52.138) </p><p>3、时间⼤概在12⽉4⽇</p><h1 id="情况梳理"><a href="#情况梳理" class="headerlink" title="情况梳理"></a><strong>情况梳理</strong></h1><p>1、Win7主机对外开放web服务，YXcms存在前台模块修改文件功能（webshell大概率通过此漏洞攻击、写入），存在PHPmyadmin、管理后台弱口令（admin:123456）（rootroot），主机存在webshell、CS后门</p><p>2、综合域控服务器情况，推测攻击者拿下Web权限后，通过常见漏洞如永恒之蓝等（135、445）进行横向攻击，票据登录后上线CS，添加后门账号，服务器存在新增账号、CS后门</p><p>3、推测攻击者通过域控主机或堆溢出漏洞获取权限，并未开展后续攻击，主机并未发现后门病毒文件</p><table><thead><tr><th><em><strong>*2022&#x2F;12&#x2F;4 0:33*</strong></em></th><th>IP 192.168.161.88发起扫描</th></tr></thead><tbody><tr><td><em><strong>*2022&#x2F;12&#x2F;4 1:04*</strong></em></td><td>IP 192.168.161.88停止扫描</td></tr><tr><td><em><strong>*2022&#x2F;12&#x2F;4 1:06*</strong></em></td><td>IP 192.168.161.88登录yxcms后台</td></tr><tr><td><em><strong>*2022&#x2F;12&#x2F;4 1:39*</strong></em></td><td>IP 192.168.161.88编辑“前台模板”acomment.php</td></tr><tr><td><em><strong>*2022&#x2F;12&#x2F;4 1:46*</strong></em></td><td>webshell（acomment.php）修改时间</td></tr><tr><td><em><strong>*2022&#x2F;12&#x2F;4 1:47*</strong></em></td><td>IP 192.168.161.88访问db.sql（数据库相关信息）</td></tr><tr><td><em><strong>*2022&#x2F;12&#x2F;4 1:49*</strong></em></td><td>IP 192.168.161.88访问phpmyadmin</td></tr><tr><td><em><strong>*2022&#x2F;12&#x2F;4 1:53*</strong></em></td><td>IP 192.168.161.88尝试SQL查询写入webshell</td></tr><tr><td><em><strong>*2022&#x2F;12&#x2F;4 2:00*</strong></em></td><td>webshell（controller.php）修改时间</td></tr><tr><td><em><strong>*2022&#x2F;12&#x2F;4 2:02*</strong></em></td><td>webshell（controller.php）第一次请求</td></tr><tr><td><em><strong>*2022&#x2F;12&#x2F;4 3:28*</strong></em></td><td>sfavsrv.exe上传web主机时间（192.168.161.87:89）</td></tr><tr><td><em><strong>*2022&#x2F;12&#x2F;4 18:14*</strong></em></td><td>sfavsvc.exe上传web主机时间（192.168.161.87:5555）</td></tr><tr><td><em><strong>*2022&#x2F;12&#x2F;4 20:27*</strong></em></td><td>webshell（controller.php）最后一次请求</td></tr><tr><td><em><strong>*2022&#x2F;12&#x2F;4 22:27*</strong></em></td><td>域控CS后门最后一次访问时间</td></tr><tr><td><em><strong>*2022&#x2F;12&#x2F;4 22:41*</strong></em></td><td>域控服务器新增qax3账号</td></tr></tbody></table><h1 id="排查情况"><a href="#排查情况" class="headerlink" title="排查情况"></a><strong>排查情况</strong></h1><h2 id="Win7-Web（192-168-52-143）"><a href="#Win7-Web（192-168-52-143）" class="headerlink" title="Win7-Web（192.168.52.143）"></a><strong>Win7-Web（192.168.52.143）</strong></h2><p>首先确认主机对外开放web服务（需手动启动PHPstudy），且存在双网卡</p><p><img src="http://rraza0lac.hn-bkt.clouddn.com/img/wps1.jpg" alt="img"> </p><p><img src="http://rraza0lac.hn-bkt.clouddn.com/img/wps2.jpg" alt="img"> </p><p><img src="http://rraza0lac.hn-bkt.clouddn.com/img/wps3.jpg" alt="img"> </p><p>根据提供情况，找到对应WEB根目录进行Webshell扫描，发现两个webshell</p><p><img src="http://rraza0lac.hn-bkt.clouddn.com/img/wps4.jpg" alt="img"> </p><p>通过后门排查工具发现CS后门（sfavsrv.exe）</p><p><img src="http://rraza0lac.hn-bkt.clouddn.com/img/wps5.jpg" alt="img"> </p><p>查看对应开放网站，相应页面存在信息泄露，包括后台管理页面、网站备份文件等</p><p><img src="http://rraza0lac.hn-bkt.clouddn.com/img/wps6.jpg" alt="img"> </p><p><img src="http://rraza0lac.hn-bkt.clouddn.com/img/wps7.jpg" alt="img"> </p><p>通过定位Webshell文件，关联文件落地时间符合提供情况，通过恶意代码信息推测攻击者通过蚁剑工具连接</p><p><img src="http://rraza0lac.hn-bkt.clouddn.com/img/wps8.jpg" alt="img"> </p><p><img src="http://rraza0lac.hn-bkt.clouddn.com/img/wps9.jpg" alt="img"> </p><p>关联网站页面接口，发现CMS管理后台登录（admin:123456）、PHPmyadmin（rootroot）均为默认密码</p><p><img src="http://rraza0lac.hn-bkt.clouddn.com/img/wps10.jpg" alt="img"> </p><p><img src="http://rraza0lac.hn-bkt.clouddn.com/img/wps11.jpg" alt="img"> </p><p>排查webshell文件落地时间前后web日志，确认攻击时间线：</p><table><thead><tr><th><em><strong>*2022&#x2F;12&#x2F;4 0:33*</strong></em></th><th>IP 192.168.161.88发起扫描</th></tr></thead><tbody><tr><td><em><strong>*2022&#x2F;12&#x2F;4 1:04*</strong></em></td><td>IP 192.168.161.88停止扫描</td></tr><tr><td><em><strong>*2022&#x2F;12&#x2F;4 1:06*</strong></em></td><td>IP 192.168.161.88登录yxcms后台</td></tr><tr><td><em><strong>*2022&#x2F;12&#x2F;4 1:39*</strong></em></td><td>IP 192.168.161.88编辑“前台模板”acomment.php</td></tr><tr><td><em><strong>*2022&#x2F;12&#x2F;4 1:46*</strong></em></td><td>webshell（acomment.php）修改时间</td></tr><tr><td><em><strong>*2022&#x2F;12&#x2F;4 1:47*</strong></em></td><td>IP 192.168.161.88访问db.sql（数据库相关信息）</td></tr><tr><td></td><td></td></tr><tr><td><em><strong>*2022&#x2F;12&#x2F;4 1:49*</strong></em></td><td>IP 192.168.161.88访问phpmyadmin</td></tr><tr><td><em><strong>*2022&#x2F;12&#x2F;4 1:53*</strong></em></td><td>IP 192.168.161.88尝试SQL查询写入webshell</td></tr><tr><td></td><td></td></tr><tr><td><em><strong>*2022&#x2F;12&#x2F;4 2:00*</strong></em></td><td>webshell（controller.php）修改时间</td></tr><tr><td><em><strong>*2022&#x2F;12&#x2F;4 2:02*</strong></em></td><td>webshell（controller.php）第一次请求</td></tr><tr><td></td><td></td></tr><tr><td><em><strong>*2022&#x2F;12&#x2F;4 3:28*</strong></em></td><td>sfavsrv.exe上传时间（192.168.161.87:89）</td></tr><tr><td><em><strong>*2022&#x2F;12&#x2F;4 18:14*</strong></em></td><td>sfavsvc.exe上传时间（192.168.161.87:5555）</td></tr><tr><td></td><td></td></tr><tr><td><em><strong>*2022&#x2F;12&#x2F;4 20:27*</strong></em></td><td>webshell（controller.php）最后一次请求</td></tr></tbody></table><p><img src="http://rraza0lac.hn-bkt.clouddn.com/img/wps12.jpg" alt="img"><img src="http://rraza0lac.hn-bkt.clouddn.com/img/wps13.jpg" alt="img"> </p><p><img src="http://rraza0lac.hn-bkt.clouddn.com/img/wps14.jpg" alt="img"><img src="http://rraza0lac.hn-bkt.clouddn.com/img/wps15.jpg" alt="img"> </p><p>通过攻击日志确认攻击者攻击入口，通过验证确认漏洞存在；</p><p>YXcms存在前台模块修改文件功能（webshell大概率通过此漏洞攻击、写入）</p><p><img src="http://rraza0lac.hn-bkt.clouddn.com/img/wps16.jpg" alt="img"> </p><p>PHPmyadmin则是存在SQL语句执行模块</p><p><img src="http://rraza0lac.hn-bkt.clouddn.com/img/wps17.jpg" alt="img"> </p><p>确认WEB攻击情况后，对主机进行其他常规项分析</p><p><img src="http://rraza0lac.hn-bkt.clouddn.com/img/wps18.jpg" alt="img"> </p><p>定位之前发现CS后门进程，以及对应持久化操作（伪装googleupdate服务）</p><p><img src="http://rraza0lac.hn-bkt.clouddn.com/img/wps19.jpg" alt="img"> </p><p><img src="http://rraza0lac.hn-bkt.clouddn.com/img/wps20.jpg" alt="img"> </p><p>还发现同目录下存在其他可疑文件</p><p><img src="http://rraza0lac.hn-bkt.clouddn.com/img/wps21.jpg" alt="img"> </p><p>再次启动发现黑客C2地址：<em><strong>*192.168.161.87*</strong></em></p><p><img src="http://rraza0lac.hn-bkt.clouddn.com/img/wps22.jpg" alt="img"> </p><p>其他可疑文件C2地址也为：****192.168.161.87****，文件“ew_for_Win.exe”，未发现其他信息，但文件落地时间为同一天也较为可疑</p><p><img src="http://rraza0lac.hn-bkt.clouddn.com/img/wps23.jpg" alt="img"> </p><p>还发现可疑计划任务，尝试ping恶意域名</p><p><img src="http://rraza0lac.hn-bkt.clouddn.com/img/wps24.jpg" alt="img"> </p><p><img src="http://rraza0lac.hn-bkt.clouddn.com/img/wps25.jpg" alt="img"> </p><p>根据情况确认可疑用户：****qax****，登录时间也符合排查情况</p><p><img src="http://rraza0lac.hn-bkt.clouddn.com/img/wps26.jpg" alt="img"> </p><p>最后确认当前主机为god域成员，随后对其他域控服务进行排查</p><p><img src="http://rraza0lac.hn-bkt.clouddn.com/img/wps27.jpg" alt="img"> </p><h2 id="Win2008域控（192-168-52-138）"><a href="#Win2008域控（192-168-52-138）" class="headerlink" title="Win2008域控（192.168.52.138）"></a><strong>Win2008域控（192.168.52.138）</strong></h2><p>首先确认域控信息，以及域内其他主机</p><p><img src="http://rraza0lac.hn-bkt.clouddn.com/img/wps28.jpg" alt="img"> </p><p>域控服务器相关高危端口（135、445、3389等）均开放</p><p><img src="http://rraza0lac.hn-bkt.clouddn.com/img/wps29.jpg" alt="img"> </p><p>确认服务器并没有打上永恒之蓝等补丁</p><p><img src="http://rraza0lac.hn-bkt.clouddn.com/img/wps30.jpg" alt="img"> </p><p>在排查启动项时，发现存在与上诉发现类似命名的计划任务，文件一致</p><p><img src="http://rraza0lac.hn-bkt.clouddn.com/img/wps31.jpg" alt="img"> </p><p><img src="http://rraza0lac.hn-bkt.clouddn.com/img/wps32.jpg" alt="img"> </p><p>排查系统日志发现时间点2022&#x2F;12&#x2F;4 22:41:06，新增账号</p><p><img src="http://rraza0lac.hn-bkt.clouddn.com/img/wps33.jpg" alt="img"> </p><p>随后发现可疑注册表操作</p><p><img src="http://rraza0lac.hn-bkt.clouddn.com/img/wps34.jpg" alt="img"> </p><p>对应temp目录存在疑似反弹shell缓存文件</p><p><img src="http://rraza0lac.hn-bkt.clouddn.com/img/wps35.jpg" alt="img"> </p><p><img src="http://rraza0lac.hn-bkt.clouddn.com/img/wps36.jpg" alt="img"> </p><p>综合域控服务器情况，推测攻击者拿下Web权限后，通过常见漏洞如永恒之蓝等（135、445）进行横向攻击，票据登录后上线CS，添加后门账号</p><h2 id="域成员Win2003（192-168-52-141）"><a href="#域成员Win2003（192-168-52-141）" class="headerlink" title="域成员Win2003（192.168.52.141）"></a><strong>域成员Win2003（192.168.52.141）</strong></h2><p>排查进程、启动项、服务、网络连接等，暂未发现异常</p><p>查看系统日志发现在对应12&#x2F;4时间段，域控IP登录域成员主机</p><p><img src="http://rraza0lac.hn-bkt.clouddn.com/img/wps37.jpg" alt="img"> </p><p>此外还发现主机上安装Kingview 6.53软件，且监听777端口</p><p><img src="http://rraza0lac.hn-bkt.clouddn.com/img/wps38.jpg" alt="img"> </p><p>关联发现存在堆溢出漏洞</p><p>类别：堆溢出</p><p>描述：此漏洞存在于KingView6.53软件的HistorySvr.exe进程中，这个软件服务程序在TCP 777端口监听时收到一个超长请求，导致堆缓冲区溢出从而执行任何代码。（<a href="https://www.cnblogs.com/justforfun12/p/5256405.html%EF%BC%89">https://www.cnblogs.com/justforfun12/p/5256405.html）</a></p><p><img src="http://rraza0lac.hn-bkt.clouddn.com/img/wps39.jpg" alt="img"> </p><p>但该主机上并未留有之前发现CS后门，推测攻击者通过域控主机或堆溢出漏洞获取权限，并未开展后续攻击</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;题目要求&quot;&gt;&lt;a href=&quot;#题目要求&quot; class=&quot;headerlink&quot; title=&quot;题目要求&quot;&gt;&lt;/a&gt;&lt;strong&gt;题目要求&lt;/strong&gt;&lt;/h1&gt;&lt;p&gt;客户说域控被打了，通过和现场⼈员沟通得到以下信息:&lt;/p&gt;
+&lt;p&gt;1、web(内网IP: </summary>
+      
+    
+    
+    
+    <category term="学习" scheme="http://example.com/categories/%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+    <category term="域渗透" scheme="http://example.com/tags/%E5%9F%9F%E6%B8%97%E9%80%8F/"/>
+    
+    <category term="Windows" scheme="http://example.com/tags/Windows/"/>
+    
+  </entry>
   
   <entry>
     <title>攻防演练应急</title>
@@ -243,9 +270,9 @@
     <category term="每日学习小结" scheme="http://example.com/categories/%E6%AF%8F%E6%97%A5%E5%AD%A6%E4%B9%A0%E5%B0%8F%E7%BB%93/"/>
     
     
-    <category term="python" scheme="http://example.com/tags/python/"/>
-    
     <category term="木马" scheme="http://example.com/tags/%E6%9C%A8%E9%A9%AC/"/>
+    
+    <category term="python" scheme="http://example.com/tags/python/"/>
     
     <category term="毕业设计" scheme="http://example.com/tags/%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1/"/>
     
@@ -461,9 +488,9 @@
     <category term="每日学习小结" scheme="http://example.com/categories/%E6%AF%8F%E6%97%A5%E5%AD%A6%E4%B9%A0%E5%B0%8F%E7%BB%93/"/>
     
     
-    <category term="python" scheme="http://example.com/tags/python/"/>
-    
     <category term="VPN" scheme="http://example.com/tags/VPN/"/>
+    
+    <category term="python" scheme="http://example.com/tags/python/"/>
     
     <category term="流量分析" scheme="http://example.com/tags/%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/"/>
     
@@ -491,33 +518,6 @@
     <category term="python" scheme="http://example.com/tags/python/"/>
     
     <category term="数据库处理" scheme="http://example.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A4%84%E7%90%86/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>3-12</title>
-    <link href="http://example.com/2020/03/12/3.12/"/>
-    <id>http://example.com/2020/03/12/3.12/</id>
-    <published>2020-03-12T03:55:57.000Z</published>
-    <updated>2020-03-16T07:32:54.146Z</updated>
-    
-    <content type="html"><![CDATA[<p>哈哈，记录一下菜菜的一天</p><span id="more"></span><h1 id="系统锁屏壁纸存放位置"><a href="#系统锁屏壁纸存放位置" class="headerlink" title="系统锁屏壁纸存放位置"></a>系统锁屏壁纸存放位置</h1><p>C:\Users\用户名\appdata\Local\Packages\Microsoft.Windows.ContentDeliveryManager\Local</p><h1 id="python按行切割txt为多个文件"><a href="#python按行切割txt为多个文件" class="headerlink" title="python按行切割txt为多个文件"></a>python按行切割txt为多个文件</h1><p>可以用notepad++–编辑–开始&#x2F;结束选择–ctrl-G定位行–开始&#x2F;结束选择–复制粘贴新建</p><p>主要使用的菜单</p><p>英文是：Edit-&gt;Begin&#x2F;End Select<br>中文是：编辑-&gt;开始&#x2F;结束 选择</p><p>操作步骤：<br>1、ctrl+g跳转到10000行位置，在行号栏位置右键点击，选择（Edit-&gt;Begin&#x2F;End Select）菜单，使菜单处于勾选状态；<br>2、ctrl+g跳转到20000行位置，在行号栏位置右键点击，选择（Edit-&gt;Begin&#x2F;End Select）菜单，这时可以看到就选择了10000行-20000行之间的文本，（Edit-&gt;Begin&#x2F;End Select）菜单处于未勾选状态。</p><p>done!</p><h1 id="正则匹配字符数字"><a href="#正则匹配字符数字" class="headerlink" title="正则匹配字符数字"></a>正则匹配字符数字</h1><p>^[A-Za-z0-9]+$</p><p>notepad++查找字符，在当前文件中查找，复制结果</p><blockquote><p><a href="http://blog.nsfocus.net/emergency-response-case-study/">http://blog.nsfocus.net/emergency-response-case-study/</a></p><p><a href="https://wangzhan.qianxin.com/Activity/xingtu">https://wangzhan.qianxin.com/Activity/xingtu</a></p></blockquote>]]></content>
-    
-    
-    <summary type="html">&lt;p&gt;哈哈，记录一下菜菜的一天&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="每日学习小结" scheme="http://example.com/categories/%E6%AF%8F%E6%97%A5%E5%AD%A6%E4%B9%A0%E5%B0%8F%E7%BB%93/"/>
-    
-    
-    <category term="python" scheme="http://example.com/tags/python/"/>
-    
-    <category term="日志分析" scheme="http://example.com/tags/%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90/"/>
-    
-    <category term="正则" scheme="http://example.com/tags/%E6%AD%A3%E5%88%99/"/>
-    
-    <category term="notepad++" scheme="http://example.com/tags/notepad/"/>
     
   </entry>
   

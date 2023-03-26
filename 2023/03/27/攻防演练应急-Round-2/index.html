@@ -1,0 +1,379 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"><title>攻防演练应急-Round-2 | 技术阿涛</title><meta name="author" content="XiongTaoTao"><meta name="copyright" content="XiongTaoTao"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="题目要求客户说域控被打了，通过和现场⼈员沟通得到以下信息: 1、web(内网IP: 192.168.52.143)存在多个webshell, 存在异常帐号(⾮客户添加)  2、域控在内网(192.168.52.138)  3、时间⼤概在12⽉4⽇ 情况梳理1、Win7主机对外开放web服务，YXcms存在前台模块修改文件功能（webshell大概率通过此漏洞攻击、写入），存在PHPmyadmin、">
+<meta property="og:type" content="article">
+<meta property="og:title" content="攻防演练应急-Round-2">
+<meta property="og:url" content="http://example.com/2023/03/27/%E6%94%BB%E9%98%B2%E6%BC%94%E7%BB%83%E5%BA%94%E6%80%A5-Round-2/index.html">
+<meta property="og:site_name" content="技术阿涛">
+<meta property="og:description" content="题目要求客户说域控被打了，通过和现场⼈员沟通得到以下信息: 1、web(内网IP: 192.168.52.143)存在多个webshell, 存在异常帐号(⾮客户添加)  2、域控在内网(192.168.52.138)  3、时间⼤概在12⽉4⽇ 情况梳理1、Win7主机对外开放web服务，YXcms存在前台模块修改文件功能（webshell大概率通过此漏洞攻击、写入），存在PHPmyadmin、">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://rraza0lac.hn-bkt.clouddn.com/img/wps11.jpg">
+<meta property="article:published_time" content="2023-03-26T16:35:45.000Z">
+<meta property="article:modified_time" content="2023-03-26T16:37:10.982Z">
+<meta property="article:author" content="XiongTaoTao">
+<meta property="article:tag" content="域渗透">
+<meta property="article:tag" content="Windows">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://rraza0lac.hn-bkt.clouddn.com/img/wps11.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2023/03/27/%E6%94%BB%E9%98%B2%E6%BC%94%E7%BB%83%E5%BA%94%E6%80%A5-Round-2/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '攻防演练应急-Round-2',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-03-27 00:37:10'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="技术阿涛" type="application/atom+xml">
+</head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://xiongmaoyan.github.io/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">52</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">61</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw iconfont icon-shouyex"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw iconfont icon-zuixinwenzhang_huaban"></i><span> 找文章</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw iconfont icon-fenlei1"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw iconfont icon-biaoqian1"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw iconfont icon-shijianzhou"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw iconfont icon-shenghuo"></i><span> 生活</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/guestbook/"><i class="fa-fw iconfont icon-liaotian-04"></i><span> 留言板</span></a></li><li><a class="site-page child" href="/link/"><i class="fa-fw iconfont icon-lianjie"></i><span> 友人帐</span></a></li><li><a class="site-page child" href="/share/"><i class="fa-fw iconfont icon-fenxiang"></i><span> 分享</span></a></li><li><a class="site-page child" href="/gallery/"><i class="fa-fw iconfont icon-xiangce"></i><span> 相册</span></a></li><li><a class="site-page child" href="/books/"><i class="fa-fw iconfont icon-shuji"></i><span> 书籍</span></a></li><li><a class="site-page child" href="/FilmAndTV/"><i class="fa-fw iconfont icon-yingshi1"></i><span> 影视</span></a></li><li><a class="site-page child" href="/daohang/"><i class="fa-fw iconfont icon-daohang"></i><span> 导航站</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw iconfont icon-gerenzhongxin"></i><span> 关于笔者</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('http://rraza0lac.hn-bkt.clouddn.com/img/wps11.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="技术阿涛"><span class="site-name">技术阿涛</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw iconfont icon-shouyex"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw iconfont icon-zuixinwenzhang_huaban"></i><span> 找文章</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw iconfont icon-fenlei1"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw iconfont icon-biaoqian1"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw iconfont icon-shijianzhou"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw iconfont icon-shenghuo"></i><span> 生活</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/guestbook/"><i class="fa-fw iconfont icon-liaotian-04"></i><span> 留言板</span></a></li><li><a class="site-page child" href="/link/"><i class="fa-fw iconfont icon-lianjie"></i><span> 友人帐</span></a></li><li><a class="site-page child" href="/share/"><i class="fa-fw iconfont icon-fenxiang"></i><span> 分享</span></a></li><li><a class="site-page child" href="/gallery/"><i class="fa-fw iconfont icon-xiangce"></i><span> 相册</span></a></li><li><a class="site-page child" href="/books/"><i class="fa-fw iconfont icon-shuji"></i><span> 书籍</span></a></li><li><a class="site-page child" href="/FilmAndTV/"><i class="fa-fw iconfont icon-yingshi1"></i><span> 影视</span></a></li><li><a class="site-page child" href="/daohang/"><i class="fa-fw iconfont icon-daohang"></i><span> 导航站</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw iconfont icon-gerenzhongxin"></i><span> 关于笔者</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">攻防演练应急-Round-2</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-03-26T16:35:45.000Z" title="发表于 2023-03-27 00:35:45">2023-03-27</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-03-26T16:37:10.982Z" title="更新于 2023-03-27 00:37:10">2023-03-27</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="攻防演练应急-Round-2"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="题目要求"><a href="#题目要求" class="headerlink" title="题目要求"></a><strong>题目要求</strong></h1><p>客户说域控被打了，通过和现场⼈员沟通得到以下信息:</p>
+<p>1、web(内网IP: 192.168.52.143)存在多个webshell, 存在异常帐号(⾮客户添加) </p>
+<p>2、域控在内网(192.168.52.138) </p>
+<p>3、时间⼤概在12⽉4⽇</p>
+<h1 id="情况梳理"><a href="#情况梳理" class="headerlink" title="情况梳理"></a><strong>情况梳理</strong></h1><p>1、Win7主机对外开放web服务，YXcms存在前台模块修改文件功能（webshell大概率通过此漏洞攻击、写入），存在PHPmyadmin、管理后台弱口令（admin:123456）（rootroot），主机存在webshell、CS后门</p>
+<p>2、综合域控服务器情况，推测攻击者拿下Web权限后，通过常见漏洞如永恒之蓝等（135、445）进行横向攻击，票据登录后上线CS，添加后门账号，服务器存在新增账号、CS后门</p>
+<p>3、推测攻击者通过域控主机或堆溢出漏洞获取权限，并未开展后续攻击，主机并未发现后门病毒文件</p>
+<table>
+<thead>
+<tr>
+<th><em><strong>*2022&#x2F;12&#x2F;4 0:33*</strong></em></th>
+<th>IP 192.168.161.88发起扫描</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><em><strong>*2022&#x2F;12&#x2F;4 1:04*</strong></em></td>
+<td>IP 192.168.161.88停止扫描</td>
+</tr>
+<tr>
+<td><em><strong>*2022&#x2F;12&#x2F;4 1:06*</strong></em></td>
+<td>IP 192.168.161.88登录yxcms后台</td>
+</tr>
+<tr>
+<td><em><strong>*2022&#x2F;12&#x2F;4 1:39*</strong></em></td>
+<td>IP 192.168.161.88编辑“前台模板”acomment.php</td>
+</tr>
+<tr>
+<td><em><strong>*2022&#x2F;12&#x2F;4 1:46*</strong></em></td>
+<td>webshell（acomment.php）修改时间</td>
+</tr>
+<tr>
+<td><em><strong>*2022&#x2F;12&#x2F;4 1:47*</strong></em></td>
+<td>IP 192.168.161.88访问db.sql（数据库相关信息）</td>
+</tr>
+<tr>
+<td><em><strong>*2022&#x2F;12&#x2F;4 1:49*</strong></em></td>
+<td>IP 192.168.161.88访问phpmyadmin</td>
+</tr>
+<tr>
+<td><em><strong>*2022&#x2F;12&#x2F;4 1:53*</strong></em></td>
+<td>IP 192.168.161.88尝试SQL查询写入webshell</td>
+</tr>
+<tr>
+<td><em><strong>*2022&#x2F;12&#x2F;4 2:00*</strong></em></td>
+<td>webshell（controller.php）修改时间</td>
+</tr>
+<tr>
+<td><em><strong>*2022&#x2F;12&#x2F;4 2:02*</strong></em></td>
+<td>webshell（controller.php）第一次请求</td>
+</tr>
+<tr>
+<td><em><strong>*2022&#x2F;12&#x2F;4 3:28*</strong></em></td>
+<td>sfavsrv.exe上传web主机时间（192.168.161.87:89）</td>
+</tr>
+<tr>
+<td><em><strong>*2022&#x2F;12&#x2F;4 18:14*</strong></em></td>
+<td>sfavsvc.exe上传web主机时间（192.168.161.87:5555）</td>
+</tr>
+<tr>
+<td><em><strong>*2022&#x2F;12&#x2F;4 20:27*</strong></em></td>
+<td>webshell（controller.php）最后一次请求</td>
+</tr>
+<tr>
+<td><em><strong>*2022&#x2F;12&#x2F;4 22:27*</strong></em></td>
+<td>域控CS后门最后一次访问时间</td>
+</tr>
+<tr>
+<td><em><strong>*2022&#x2F;12&#x2F;4 22:41*</strong></em></td>
+<td>域控服务器新增qax3账号</td>
+</tr>
+</tbody></table>
+<h1 id="排查情况"><a href="#排查情况" class="headerlink" title="排查情况"></a><strong>排查情况</strong></h1><h2 id="Win7-Web（192-168-52-143）"><a href="#Win7-Web（192-168-52-143）" class="headerlink" title="Win7-Web（192.168.52.143）"></a><strong>Win7-Web（192.168.52.143）</strong></h2><p>首先确认主机对外开放web服务（需手动启动PHPstudy），且存在双网卡</p>
+<p><img src="http://rraza0lac.hn-bkt.clouddn.com/img/wps1.jpg" alt="img"> </p>
+<p><img src="http://rraza0lac.hn-bkt.clouddn.com/img/wps2.jpg" alt="img"> </p>
+<p><img src="http://rraza0lac.hn-bkt.clouddn.com/img/wps3.jpg" alt="img"> </p>
+<p>根据提供情况，找到对应WEB根目录进行Webshell扫描，发现两个webshell</p>
+<p><img src="http://rraza0lac.hn-bkt.clouddn.com/img/wps4.jpg" alt="img"> </p>
+<p>通过后门排查工具发现CS后门（sfavsrv.exe）</p>
+<p><img src="http://rraza0lac.hn-bkt.clouddn.com/img/wps5.jpg" alt="img"> </p>
+<p>查看对应开放网站，相应页面存在信息泄露，包括后台管理页面、网站备份文件等</p>
+<p><img src="http://rraza0lac.hn-bkt.clouddn.com/img/wps6.jpg" alt="img"> </p>
+<p><img src="http://rraza0lac.hn-bkt.clouddn.com/img/wps7.jpg" alt="img"> </p>
+<p>通过定位Webshell文件，关联文件落地时间符合提供情况，通过恶意代码信息推测攻击者通过蚁剑工具连接</p>
+<p><img src="http://rraza0lac.hn-bkt.clouddn.com/img/wps8.jpg" alt="img"> </p>
+<p><img src="http://rraza0lac.hn-bkt.clouddn.com/img/wps9.jpg" alt="img"> </p>
+<p>关联网站页面接口，发现CMS管理后台登录（admin:123456）、PHPmyadmin（rootroot）均为默认密码</p>
+<p><img src="http://rraza0lac.hn-bkt.clouddn.com/img/wps10.jpg" alt="img"> </p>
+<p><img src="http://rraza0lac.hn-bkt.clouddn.com/img/wps11.jpg" alt="img"> </p>
+<p>排查webshell文件落地时间前后web日志，确认攻击时间线：</p>
+<table>
+<thead>
+<tr>
+<th><em><strong>*2022&#x2F;12&#x2F;4 0:33*</strong></em></th>
+<th>IP 192.168.161.88发起扫描</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><em><strong>*2022&#x2F;12&#x2F;4 1:04*</strong></em></td>
+<td>IP 192.168.161.88停止扫描</td>
+</tr>
+<tr>
+<td><em><strong>*2022&#x2F;12&#x2F;4 1:06*</strong></em></td>
+<td>IP 192.168.161.88登录yxcms后台</td>
+</tr>
+<tr>
+<td><em><strong>*2022&#x2F;12&#x2F;4 1:39*</strong></em></td>
+<td>IP 192.168.161.88编辑“前台模板”acomment.php</td>
+</tr>
+<tr>
+<td><em><strong>*2022&#x2F;12&#x2F;4 1:46*</strong></em></td>
+<td>webshell（acomment.php）修改时间</td>
+</tr>
+<tr>
+<td><em><strong>*2022&#x2F;12&#x2F;4 1:47*</strong></em></td>
+<td>IP 192.168.161.88访问db.sql（数据库相关信息）</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><em><strong>*2022&#x2F;12&#x2F;4 1:49*</strong></em></td>
+<td>IP 192.168.161.88访问phpmyadmin</td>
+</tr>
+<tr>
+<td><em><strong>*2022&#x2F;12&#x2F;4 1:53*</strong></em></td>
+<td>IP 192.168.161.88尝试SQL查询写入webshell</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><em><strong>*2022&#x2F;12&#x2F;4 2:00*</strong></em></td>
+<td>webshell（controller.php）修改时间</td>
+</tr>
+<tr>
+<td><em><strong>*2022&#x2F;12&#x2F;4 2:02*</strong></em></td>
+<td>webshell（controller.php）第一次请求</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><em><strong>*2022&#x2F;12&#x2F;4 3:28*</strong></em></td>
+<td>sfavsrv.exe上传时间（192.168.161.87:89）</td>
+</tr>
+<tr>
+<td><em><strong>*2022&#x2F;12&#x2F;4 18:14*</strong></em></td>
+<td>sfavsvc.exe上传时间（192.168.161.87:5555）</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><em><strong>*2022&#x2F;12&#x2F;4 20:27*</strong></em></td>
+<td>webshell（controller.php）最后一次请求</td>
+</tr>
+</tbody></table>
+<p><img src="http://rraza0lac.hn-bkt.clouddn.com/img/wps12.jpg" alt="img"><img src="http://rraza0lac.hn-bkt.clouddn.com/img/wps13.jpg" alt="img"> </p>
+<p><img src="http://rraza0lac.hn-bkt.clouddn.com/img/wps14.jpg" alt="img"><img src="http://rraza0lac.hn-bkt.clouddn.com/img/wps15.jpg" alt="img"> </p>
+<p>通过攻击日志确认攻击者攻击入口，通过验证确认漏洞存在；</p>
+<p>YXcms存在前台模块修改文件功能（webshell大概率通过此漏洞攻击、写入）</p>
+<p><img src="http://rraza0lac.hn-bkt.clouddn.com/img/wps16.jpg" alt="img"> </p>
+<p>PHPmyadmin则是存在SQL语句执行模块</p>
+<p><img src="http://rraza0lac.hn-bkt.clouddn.com/img/wps17.jpg" alt="img"> </p>
+<p>确认WEB攻击情况后，对主机进行其他常规项分析</p>
+<p><img src="http://rraza0lac.hn-bkt.clouddn.com/img/wps18.jpg" alt="img"> </p>
+<p>定位之前发现CS后门进程，以及对应持久化操作（伪装googleupdate服务）</p>
+<p><img src="http://rraza0lac.hn-bkt.clouddn.com/img/wps19.jpg" alt="img"> </p>
+<p><img src="http://rraza0lac.hn-bkt.clouddn.com/img/wps20.jpg" alt="img"> </p>
+<p>还发现同目录下存在其他可疑文件</p>
+<p><img src="http://rraza0lac.hn-bkt.clouddn.com/img/wps21.jpg" alt="img"> </p>
+<p>再次启动发现黑客C2地址：<em><strong>*192.168.161.87*</strong></em></p>
+<p><img src="http://rraza0lac.hn-bkt.clouddn.com/img/wps22.jpg" alt="img"> </p>
+<p>其他可疑文件C2地址也为：****192.168.161.87****，文件“ew_for_Win.exe”，未发现其他信息，但文件落地时间为同一天也较为可疑</p>
+<p><img src="http://rraza0lac.hn-bkt.clouddn.com/img/wps23.jpg" alt="img"> </p>
+<p>还发现可疑计划任务，尝试ping恶意域名</p>
+<p><img src="http://rraza0lac.hn-bkt.clouddn.com/img/wps24.jpg" alt="img"> </p>
+<p><img src="http://rraza0lac.hn-bkt.clouddn.com/img/wps25.jpg" alt="img"> </p>
+<p>根据情况确认可疑用户：****qax****，登录时间也符合排查情况</p>
+<p><img src="http://rraza0lac.hn-bkt.clouddn.com/img/wps26.jpg" alt="img"> </p>
+<p>最后确认当前主机为god域成员，随后对其他域控服务进行排查</p>
+<p><img src="http://rraza0lac.hn-bkt.clouddn.com/img/wps27.jpg" alt="img"> </p>
+<h2 id="Win2008域控（192-168-52-138）"><a href="#Win2008域控（192-168-52-138）" class="headerlink" title="Win2008域控（192.168.52.138）"></a><strong>Win2008域控（192.168.52.138）</strong></h2><p>首先确认域控信息，以及域内其他主机</p>
+<p><img src="http://rraza0lac.hn-bkt.clouddn.com/img/wps28.jpg" alt="img"> </p>
+<p>域控服务器相关高危端口（135、445、3389等）均开放</p>
+<p><img src="http://rraza0lac.hn-bkt.clouddn.com/img/wps29.jpg" alt="img"> </p>
+<p>确认服务器并没有打上永恒之蓝等补丁</p>
+<p><img src="http://rraza0lac.hn-bkt.clouddn.com/img/wps30.jpg" alt="img"> </p>
+<p>在排查启动项时，发现存在与上诉发现类似命名的计划任务，文件一致</p>
+<p><img src="http://rraza0lac.hn-bkt.clouddn.com/img/wps31.jpg" alt="img"> </p>
+<p><img src="http://rraza0lac.hn-bkt.clouddn.com/img/wps32.jpg" alt="img"> </p>
+<p>排查系统日志发现时间点2022&#x2F;12&#x2F;4 22:41:06，新增账号</p>
+<p><img src="http://rraza0lac.hn-bkt.clouddn.com/img/wps33.jpg" alt="img"> </p>
+<p>随后发现可疑注册表操作</p>
+<p><img src="http://rraza0lac.hn-bkt.clouddn.com/img/wps34.jpg" alt="img"> </p>
+<p>对应temp目录存在疑似反弹shell缓存文件</p>
+<p><img src="http://rraza0lac.hn-bkt.clouddn.com/img/wps35.jpg" alt="img"> </p>
+<p><img src="http://rraza0lac.hn-bkt.clouddn.com/img/wps36.jpg" alt="img"> </p>
+<p>综合域控服务器情况，推测攻击者拿下Web权限后，通过常见漏洞如永恒之蓝等（135、445）进行横向攻击，票据登录后上线CS，添加后门账号</p>
+<h2 id="域成员Win2003（192-168-52-141）"><a href="#域成员Win2003（192-168-52-141）" class="headerlink" title="域成员Win2003（192.168.52.141）"></a><strong>域成员Win2003（192.168.52.141）</strong></h2><p>排查进程、启动项、服务、网络连接等，暂未发现异常</p>
+<p>查看系统日志发现在对应12&#x2F;4时间段，域控IP登录域成员主机</p>
+<p><img src="http://rraza0lac.hn-bkt.clouddn.com/img/wps37.jpg" alt="img"> </p>
+<p>此外还发现主机上安装Kingview 6.53软件，且监听777端口</p>
+<p><img src="http://rraza0lac.hn-bkt.clouddn.com/img/wps38.jpg" alt="img"> </p>
+<p>关联发现存在堆溢出漏洞</p>
+<p>类别：堆溢出</p>
+<p>描述：此漏洞存在于KingView6.53软件的HistorySvr.exe进程中，这个软件服务程序在TCP 777端口监听时收到一个超长请求，导致堆缓冲区溢出从而执行任何代码。（<a target="_blank" rel="noopener" href="https://www.cnblogs.com/justforfun12/p/5256405.html%EF%BC%89">https://www.cnblogs.com/justforfun12/p/5256405.html）</a></p>
+<p><img src="http://rraza0lac.hn-bkt.clouddn.com/img/wps39.jpg" alt="img"> </p>
+<p>但该主机上并未留有之前发现CS后门，推测攻击者通过域控主机或堆溢出漏洞获取权限，并未开展后续攻击</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://example.com">XiongTaoTao</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2023/03/27/%E6%94%BB%E9%98%B2%E6%BC%94%E7%BB%83%E5%BA%94%E6%80%A5-Round-2/">http://example.com/2023/03/27/%E6%94%BB%E9%98%B2%E6%BC%94%E7%BB%83%E5%BA%94%E6%80%A5-Round-2/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">技术阿涛</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%9F%9F%E6%B8%97%E9%80%8F/">域渗透</a><a class="post-meta__tags" href="/tags/Windows/">Windows</a></div><div class="post_share"><div class="social-share" data-image="http://rraza0lac.hn-bkt.clouddn.com/img/wps11.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2023/03/17/%E6%94%BB%E9%98%B2%E6%BC%94%E7%BB%83%E5%BA%94%E6%80%A5/" title="攻防演练应急"><img class="cover" src="http://rraza0lac.hn-bkt.clouddn.com/img/image-20230318112421377.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">攻防演练应急</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2023/03/17/%E6%94%BB%E9%98%B2%E6%BC%94%E7%BB%83%E5%BA%94%E6%80%A5/" title="攻防演练应急"><img class="cover" src="http://rraza0lac.hn-bkt.clouddn.com/img/image-20230318112421377.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-03-17</div><div class="title">攻防演练应急</div></div></a></div><div><a href="/2020/01/07/1.7/" title="1-7"><img class="cover" src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-01-07</div><div class="title">1-7</div></div></a></div><div><a href="/2023/03/16/Windows-Dll%E5%8A%AB%E6%8C%81/" title="Windows-Dll劫持"><img class="cover" src="http://rraza0lac.hn-bkt.clouddn.com/img/image-20230315230843562.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-03-16</div><div class="title">Windows-Dll劫持</div></div></a></div><div><a href="/2023/03/17/%E5%B0%8F%E5%B7%A5%E5%85%B7get/" title="小工具get"><img class="cover" src="http://rraza0lac.hn-bkt.clouddn.com/img/image-20230317222820431.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-03-17</div><div class="title">小工具get</div></div></a></div><div><a href="/2023/03/17/%E7%BD%91%E9%A1%B5%E5%8A%AB%E6%8C%81/" title="网页劫持"><img class="cover" src="http://rraza0lac.hn-bkt.clouddn.com/img/image-20230315230843562.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-03-17</div><div class="title">网页劫持</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://xiongmaoyan.github.io/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">XiongTaoTao</div><div class="author-info__description">一个知道魔法🧙‍♂️的麻瓜ß</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">52</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">61</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E8%A6%81%E6%B1%82"><span class="toc-number">1.</span> <span class="toc-text">题目要求</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%83%85%E5%86%B5%E6%A2%B3%E7%90%86"><span class="toc-number">2.</span> <span class="toc-text">情况梳理</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8E%92%E6%9F%A5%E6%83%85%E5%86%B5"><span class="toc-number">3.</span> <span class="toc-text">排查情况</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Win7-Web%EF%BC%88192-168-52-143%EF%BC%89"><span class="toc-number">3.1.</span> <span class="toc-text">Win7-Web（192.168.52.143）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Win2008%E5%9F%9F%E6%8E%A7%EF%BC%88192-168-52-138%EF%BC%89"><span class="toc-number">3.2.</span> <span class="toc-text">Win2008域控（192.168.52.138）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%9F%E6%88%90%E5%91%98Win2003%EF%BC%88192-168-52-141%EF%BC%89"><span class="toc-number">3.3.</span> <span class="toc-text">域成员Win2003（192.168.52.141）</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/03/27/%E6%94%BB%E9%98%B2%E6%BC%94%E7%BB%83%E5%BA%94%E6%80%A5-Round-2/" title="攻防演练应急-Round-2"><img src="http://rraza0lac.hn-bkt.clouddn.com/img/wps11.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="攻防演练应急-Round-2"/></a><div class="content"><a class="title" href="/2023/03/27/%E6%94%BB%E9%98%B2%E6%BC%94%E7%BB%83%E5%BA%94%E6%80%A5-Round-2/" title="攻防演练应急-Round-2">攻防演练应急-Round-2</a><time datetime="2023-03-26T16:35:45.000Z" title="发表于 2023-03-27 00:35:45">2023-03-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/03/17/%E6%94%BB%E9%98%B2%E6%BC%94%E7%BB%83%E5%BA%94%E6%80%A5/" title="攻防演练应急"><img src="http://rraza0lac.hn-bkt.clouddn.com/img/image-20230318112421377.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="攻防演练应急"/></a><div class="content"><a class="title" href="/2023/03/17/%E6%94%BB%E9%98%B2%E6%BC%94%E7%BB%83%E5%BA%94%E6%80%A5/" title="攻防演练应急">攻防演练应急</a><time datetime="2023-03-17T14:51:08.000Z" title="发表于 2023-03-17 22:51:08">2023-03-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/03/17/%E5%B0%8F%E5%B7%A5%E5%85%B7get/" title="小工具get"><img src="http://rraza0lac.hn-bkt.clouddn.com/img/image-20230317222820431.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="小工具get"/></a><div class="content"><a class="title" href="/2023/03/17/%E5%B0%8F%E5%B7%A5%E5%85%B7get/" title="小工具get">小工具get</a><time datetime="2023-03-17T14:26:39.000Z" title="发表于 2023-03-17 22:26:39">2023-03-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/03/17/%E7%BD%91%E9%A1%B5%E5%8A%AB%E6%8C%81/" title="网页劫持"><img src="http://rraza0lac.hn-bkt.clouddn.com/img/image-20230315230843562.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="网页劫持"/></a><div class="content"><a class="title" href="/2023/03/17/%E7%BD%91%E9%A1%B5%E5%8A%AB%E6%8C%81/" title="网页劫持">网页劫持</a><time datetime="2023-03-17T03:25:15.000Z" title="发表于 2023-03-17 11:25:15">2023-03-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/03/16/Windows-Dll%E5%8A%AB%E6%8C%81/" title="Windows-Dll劫持"><img src="http://rraza0lac.hn-bkt.clouddn.com/img/image-20230315230843562.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Windows-Dll劫持"/></a><div class="content"><a class="title" href="/2023/03/16/Windows-Dll%E5%8A%AB%E6%8C%81/" title="Windows-Dll劫持">Windows-Dll劫持</a><time datetime="2023-03-16T03:40:29.000Z" title="发表于 2023-03-16 11:40:29">2023-03-16</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By XiongTaoTao</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
