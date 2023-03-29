@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2023-03-26T16:37:10.982Z</updated>
+  <updated>2023-03-29T08:05:59.395Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>mac踩坑</title>
+    <link href="http://example.com/2023/03/29/mac%E8%B8%A9%E5%9D%91/"/>
+    <id>http://example.com/2023/03/29/mac%E8%B8%A9%E5%9D%91/</id>
+    <published>2023-03-29T02:56:59.000Z</published>
+    <updated>2023-03-29T08:05:59.395Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Mac-Python环境配置"><a href="#Mac-Python环境配置" class="headerlink" title="Mac Python环境配置"></a>Mac Python环境配置</h1><p>系统默认安装python2</p><p><img src="http://rraza0lac.hn-bkt.clouddn.com/img/image-20230329105910934.png" alt="image-20230329105910934"></p><p>但没有pip</p><p><img src="http://rraza0lac.hn-bkt.clouddn.com/img/image-20230329105948466.png" alt="image-20230329105948466"></p><p>但python3有对应pip3</p><p><img src="http://rraza0lac.hn-bkt.clouddn.com/img/image-20230329110035707.png" alt="image-20230329110035707"></p><h2 id="解决pip共存"><a href="#解决pip共存" class="headerlink" title="解决pip共存"></a>解决pip共存</h2><p>安装brew</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/bin/bash -c &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)&quot;</span><br></pre></td></tr></table></figure><p>执行成功后，还需要加入环境变量</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(echo; echo &#x27;eval &quot;$(/opt/homebrew/bin/brew shellenv)&quot;&#x27;) &gt;&gt; /Users/mac/.zprofile</span><br><span class="line">eval &quot;$(/opt/homebrew/bin/brew shellenv)&quot;</span><br></pre></td></tr></table></figure><p><img src="http://rraza0lac.hn-bkt.clouddn.com/img/image-20230329112759051.png" alt="image-20230329112759051"></p><p>下载对应版本的pip</p><p><code>https://bootstrap.pypa.io/pip/2.7/</code></p><p>用对应python执行脚本，但执行成功会遇到如下报错</p><p><img src="http://rraza0lac.hn-bkt.clouddn.com/img/image-20230329160456778.png" alt="image-20230329160456778"></p><p>此时需要添加环境变量，参考链接</p><p><code>https://blog.csdn.net/weixin_35683614/article/details/112716912</code></p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export &quot;PATH=/Users/gangzhao/Library/Python/2.7/bin:$PATH&quot;</span><br></pre></td></tr></table></figure><h2 id="Mac执行shell脚本报错-Operation-not-permitted处理"><a href="#Mac执行shell脚本报错-Operation-not-permitted处理" class="headerlink" title="Mac执行shell脚本报错 Operation not permitted处理"></a>Mac执行shell脚本报错 Operation not permitted处理</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-bash: ./install.sh: /bin/bash: bad interpreter: Operation not permitted</span><br></pre></td></tr></table></figure><p>出现这个问题的主要原因是：<code>-rwxrwxrwx@</code> 文件的属性最后带个@，这个@代表的是更多的一些属性，具体含义不太清楚，但有它就是执行不了</p><p>解决：可以用这个命令来去除这个属性：<br><code>xattr -d com.apple.quarantine ./*</code></p><p>后来进入目录发现目录下面的文件还是带有@属性，我们到根目录加一个-r就好了：<code>xattr -d -r com.apple.quarantine ./*</code></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;Mac-Python环境配置&quot;&gt;&lt;a href=&quot;#Mac-Python环境配置&quot; class=&quot;headerlink&quot; title=&quot;Mac Python环境配置&quot;&gt;&lt;/a&gt;Mac Python环境配置&lt;/h1&gt;&lt;p&gt;系统默认安装python2&lt;/p&gt;
+&lt;p&gt;&lt;</summary>
+      
+    
+    
+    
+    <category term="踩坑" scheme="http://example.com/categories/%E8%B8%A9%E5%9D%91/"/>
+    
+    
+    <category term="Mac" scheme="http://example.com/tags/Mac/"/>
+    
+  </entry>
   
   <entry>
     <title>攻防演练应急-Round-2</title>
@@ -488,36 +513,13 @@
     <category term="每日学习小结" scheme="http://example.com/categories/%E6%AF%8F%E6%97%A5%E5%AD%A6%E4%B9%A0%E5%B0%8F%E7%BB%93/"/>
     
     
-    <category term="VPN" scheme="http://example.com/tags/VPN/"/>
-    
     <category term="python" scheme="http://example.com/tags/python/"/>
+    
+    <category term="VPN" scheme="http://example.com/tags/VPN/"/>
     
     <category term="流量分析" scheme="http://example.com/tags/%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/"/>
     
     <category term="CVE" scheme="http://example.com/tags/CVE/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>3-13</title>
-    <link href="http://example.com/2020/03/13/3.13/"/>
-    <id>http://example.com/2020/03/13/3.13/</id>
-    <published>2020-03-13T00:55:57.000Z</published>
-    <updated>2020-03-16T07:56:14.874Z</updated>
-    
-    <content type="html"><![CDATA[<p>学习python，将数据库导入内存</p><span id="more"></span><h1 id="读取文本文件内容转化为list"><a href="#读取文本文件内容转化为list" class="headerlink" title="读取文本文件内容转化为list"></a>读取文本文件内容转化为list</h1><p>1.目的</p><p>读取cal.txt内容，然后通过python脚本转化为list内容</p><p>2.文件内容</p> <figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">cal.txt</span><br><span class="line"></span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td></tr></table></figure><p>cal.py脚本内容：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment">#coding = UFT-8</span></span><br><span class="line">result=[]</span><br><span class="line">fd = file( <span class="string">&quot;cal.txt&quot;</span>, <span class="string">&quot;r&quot;</span> )</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> line <span class="keyword">in</span> fd.readlines():</span><br><span class="line">    result.append(<span class="built_in">list</span>(<span class="built_in">map</span>(<span class="built_in">int</span>,line.split(<span class="string">&#x27;,&#x27;</span>))))</span><br><span class="line"><span class="built_in">print</span>(result)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> result:</span><br><span class="line">    <span class="keyword">for</span> it <span class="keyword">in</span> item:</span><br><span class="line">       <span class="built_in">print</span> it</span><br></pre></td></tr></table></figure><p>执行结果内容：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[[<span class="number">12</span>], [<span class="number">13</span>], [<span class="number">14</span>], [<span class="number">15</span>], [<span class="number">16</span>]]</span><br><span class="line"><span class="number">12</span></span><br><span class="line"><span class="number">13</span></span><br><span class="line"><span class="number">14</span></span><br><span class="line"><span class="number">15</span></span><br><span class="line"><span class="number">16</span></span><br></pre></td></tr></table></figure><h1 id="sqlite3数据库加载内存"><a href="#sqlite3数据库加载内存" class="headerlink" title="sqlite3数据库加载内存"></a>sqlite3数据库加载内存</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">import sqlite3</span><br><span class="line"></span><br><span class="line">new_db = sqlite3.connect(&#x27;:memory:&#x27;) # create a memory database</span><br><span class="line"></span><br><span class="line">old_db = sqlite3.connect(&#x27;test.db&#x27;)</span><br><span class="line"></span><br><span class="line">query = &quot;&quot;.join(line for line in old_db.iterdump())</span><br><span class="line"></span><br><span class="line"># Dump old database in the new one. </span><br><span class="line">new_db.executescript(query)</span><br></pre></td></tr></table></figure><h1 id="在for循环里提前返回下一行的值"><a href="#在for循环里提前返回下一行的值" class="headerlink" title="在for循环里提前返回下一行的值"></a>在for循环里提前返回下一行的值</h1><blockquote><p><a href="https://www.jb51.net/article/128985.htm">https://www.jb51.net/article/128985.htm</a></p></blockquote><p>创建迭代器</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">status_iterator = iter(i)</span><br><span class="line"></span><br><span class="line">print (next(status_iterator))</span><br></pre></td></tr></table></figure><p>循环读取文件的内容：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/python</span><br><span class="line"># -*- coding: UTF-8 -*-</span><br><span class="line"> </span><br><span class="line"># 打开文件</span><br><span class="line">fo = open(&quot;runoob.txt&quot;, &quot;r+&quot;)</span><br><span class="line">print &quot;文件名为: &quot;, fo.name</span><br><span class="line"> </span><br><span class="line">for index in range(5):</span><br><span class="line">    line = fo.next()</span><br><span class="line">    print &quot;第 %d 行 - %s&quot; % (index, line)</span><br><span class="line"> </span><br><span class="line"># 关闭文件</span><br><span class="line">fo.close()</span><br></pre></td></tr></table></figure><p>以上实例输出结果为：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">文件名为:  runoob.txt</span><br><span class="line">第 0 行 - 这是第一行</span><br><span class="line"></span><br><span class="line">第 1 行 - 这是第二行</span><br><span class="line"></span><br><span class="line">第 2 行 - 这是第三行</span><br><span class="line"></span><br><span class="line">第 3 行 - 这是第四行</span><br><span class="line"></span><br><span class="line">第 4 行 - 这是第五行</span><br></pre></td></tr></table></figure><h1 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h1><p>  怎样查找当前记录的下一条记录呢？</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">li1 = [3, 4, 5, 6, 7]</span><br><span class="line">i = 0</span><br><span class="line">for rec in li1:</span><br><span class="line">    print &quot;this record is: &quot; + str(rec)</span><br><span class="line">    if i + 1 &lt; len(li1):</span><br><span class="line">        print &quot;next record is: &quot; + str(li1[i + 1]       </span><br><span class="line">    else:</span><br><span class="line">        print &quot;the last record!&quot;</span><br><span class="line">    print &#x27;\n&#x27;</span><br><span class="line">    i += 1</span><br></pre></td></tr></table></figure><p>​       运行结果：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">this record is: 3</span><br><span class="line">next record is: 4</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">this record is: 4</span><br><span class="line">next record is: 5</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">this record is: 5</span><br><span class="line">next record is: 6</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">this record is: 6</span><br><span class="line">next record is: 7</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">this record is: 7</span><br><span class="line">the last record!</span><br></pre></td></tr></table></figure>]]></content>
-    
-    
-    <summary type="html">&lt;p&gt;学习python，将数据库导入内存&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="每日学习小结" scheme="http://example.com/categories/%E6%AF%8F%E6%97%A5%E5%AD%A6%E4%B9%A0%E5%B0%8F%E7%BB%93/"/>
-    
-    
-    <category term="python" scheme="http://example.com/tags/python/"/>
-    
-    <category term="数据库处理" scheme="http://example.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A4%84%E7%90%86/"/>
     
   </entry>
   
